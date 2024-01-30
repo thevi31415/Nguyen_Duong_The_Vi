@@ -1,0 +1,28 @@
+﻿
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Set a higher z-index than main */
+    background-color: #fff; /* Set your background color */
+    border-bottom: 1px solid #ccc; /* Set your border color */
+}
+
+main {
+    margin-top: 80px; /* Set a margin to push the content below the fixed nav */
+    padding: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    background-color: white;
+}
