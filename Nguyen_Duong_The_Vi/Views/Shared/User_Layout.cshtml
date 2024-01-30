@@ -11,7 +11,7 @@
 <body class="bg-gray-100">
     <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
-            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a  asp-controller="Home" asp-action="Index" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="/images/avt.jpg" class="h-14 w-14 rounded-full" alt="Flowbite Logo">
 
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Nguyen Duong The Vi</span>
@@ -53,14 +53,16 @@
 
 
 
-    <footer class="bg-white dark:bg-gray-900">
+    <footer class="bg-white border-t border-gray-200">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="https://flowbite.com/" class="flex items-center">
                     
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"> Nguyen Duong The Vi</span>
+                     
                     </a>
+                    
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                     <div>
@@ -167,8 +169,8 @@
     main {
         margin-top: 80px; /* Set a margin to push the content below the fixed nav */
         padding: 0px;
-        margin-right: 40px;
-        margin-left: 40px;
+        margin-right: 0px;
+        margin-left: 0px;
         background-color: white;
     }
 
