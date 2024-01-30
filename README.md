@@ -12,6 +12,17 @@
 ## Introduction
 This is my personal website, built with ASP.NET Core 6. The interface is constructed using Bootstrap and Tailwind CSS
 
+The website interface is primarily built using Tailwind CSS:
+<p align="center">
+  <a href="https://tailwindcss.com" target="_blank">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/HEAD/.github/logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/HEAD/.github/logo-light.svg">
+      <img alt="Tailwind CSS" src="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/HEAD/.github/logo-light.svg" width="350" height="70" style="max-width: 100%;">
+    </picture>
+  </a>
+</p>
+
 ## Technologies Used
 - ASP.NET 6 MVC: The core framework for building web applications with Model-View-Controller architecture.
 
