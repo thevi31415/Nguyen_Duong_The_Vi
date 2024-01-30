@@ -72,7 +72,22 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
-            return View();
+
+            var posts = _db.posts.ToList();
+            var categrory = _db.categories.ToList();
+            var categrorypost = _db.postCategories.ToList();
+            var postsAndCategories = (from pc in _db.postCategories
+                                      join p in _db.posts on pc.IDPOST equals p.ID
+                                      join c in _db.categories on pc.IDCATEGORY equals c.IDCATEGORY
+                                      group c by p.ID into groupedCategories
+                                      select new PostAndCategrory
+                                      {
+                                          IDPost = groupedCategories.Key,
+                                          Categories = groupedCategories.ToList(),
+                                      }).ToList();
+            ViewBag.PostsAndCategories = postsAndCategories;
+            return View(posts);
+          
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Post>
+@{
 
     Layout = "User_Layout";
 }
@@ -19,7 +20,7 @@
 
 
 <div class="container mx-auto p-8">
-    <div class="space-y-2 pb-8 pt-6 md:space-y-5">
+ <div class="space-y-2 pb-8 pt-6 md:space-y-5">
     <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Blog</h1>
 </div>
     <div class="flex sm:space-x-24">
@@ -48,7 +49,102 @@
             </div>
         </div>
         <div>
+
+
+@* 
+            @foreach (var postAndCategory in ViewBag.PostsAndCategories)
+            {
+                <div>
+                    <h3>@postAndCategory.</h3>
+                    <ul>
+                        @foreach (var category in postAndCategory.Categories)
+                        {
+                            <li>@category.TITLE</li>
+                        }
+                    </ul>
+                </div>
+            } *@
             <ul>
+                @foreach (var post in Model)
+                {
+                    <li class="py-5">
+                        <article class="flex flex-col space-y-2 xl:space-y-0">
+                            <dl>
+                                <dt class="sr-only">Published on</dt>
+                                <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                                    <time datetime="@post.PUBLISHED.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")">
+                                        @post.PUBLISHED.ToString("MMMM dd, yyyy")
+                                    </time>
+                                </dd>
+                            </dl>
+                            <div class="space-y-3">
+                                <div>
+                                    <h2 class="text-2xl font-bold leading-8 tracking-tight">
+                                        <a class="hover-title text-gray-900 dark:text-gray-100" href="/blog/release-of-tailwind-nextjs-starter-blog-v2.0">
+                                            @post.TITLE
+                                        </a>
+                                    </h2>
+                                    <div class="flex flex-wrap mt-3 mb-3">
+                                    @if (post.PostCategories != null)
+                                    {
+                                        foreach (var postCategory in post.PostCategories)
+                                        {
+                                            var categoryTitle = postCategory.Category?.TITLE;
+                                            var categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+
+                                            if (!string.IsNullOrEmpty(categoryTitle))
+                                            {
+                                                var firstChar = categoryTitle.ToUpper()[0];
+
+                                                if (firstChar >= 'A' && firstChar <= 'C')
+                                                {
+                                                    categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+                                                }
+                                                else if (firstChar >= 'D' && firstChar <= 'G')
+                                                {
+                                                    categoryClass = "bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300";
+                                                }
+                                                else if (firstChar >= 'H' && firstChar <= 'K')
+                                                {
+                                                    categoryClass = "bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300";
+                                                }
+                                                else if (firstChar >= 'L' && firstChar <= 'O')
+                                                {
+                                                    categoryClass = "bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300";
+                                                }
+                                                else if (firstChar >= 'P' && firstChar <= 'S')
+                                                {
+                                                    categoryClass = "bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300";
+                                                }
+                                                else if (firstChar >= 'T' && firstChar <= 'V')
+                                                {
+                                                    categoryClass = "bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300";
+                                                }
+                                                else if (firstChar >= 'W' && firstChar <= 'Z')
+                                                {
+                                                    categoryClass = "bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300";
+                                                }
+                                                else 
+                                                {
+                                                    categoryClass = "bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300";
+                                                }
+                                            }
+
+                                            <a class="@categoryClass" href="/tags/@categoryTitle">
+                                                @categoryTitle
+                                            </a>
+                                           
+                                        }
+                                    }
+
+                                </div>
+                                <div class="prose max-w-none text-gray-500 dark:text-gray-400">
+                                    @post.CONTEXT
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                }
                 <li class="py-5">
                     <article class="flex flex-col space-y-2 xl:space-y-0">
                         <dl>
@@ -60,7 +156,7 @@
                                 <h2 class="text-2xl font-bold leading-8 tracking-tight">
                                     <a class="hover-title text-gray-900 dark:text-gray-100" href="/blog/release-of-tailwind-nextjs-starter-blog-v2.0">Release of Tailwind Nextjs Starter Blog v2.0</a>
                                 </h2>
-                                <div class="flex flex-wrap">
+                                <div class="flex flex-wrap ">
                                     <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a>
                                     <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">tailwind</a>
                                     <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">guide</a>
@@ -86,14 +182,14 @@
                                 <div class="flex flex-wrap mt-3 mb-3">
 
 
-                                    <a class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a>
-                                    <a class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">Dark</a>
-                                    <a class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</a>
-                                    <a class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</a>
-                                    <a class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</a>
-                                    <a class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</a>
-                                    <a class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</a>
-                                    <a class="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</a>
+                                    <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a>
+                                    <a class="bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">Dark</a>
+                                    <a class="bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</a>
+                                    <a class="bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</a>
+                                    <a class="bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</a>
+                                    <a class="bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</a>
+                                    <a class="bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</a>
+                                    <a class="bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</a>
 
 
                                 </div>

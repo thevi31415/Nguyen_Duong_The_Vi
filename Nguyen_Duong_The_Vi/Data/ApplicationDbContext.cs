@@ -12,5 +12,8 @@ namespace Nguyen_Duong_The_Vi.Data
 
         }
         public DbSet<ThongTin> thongTins { get; set; }
+        public DbSet<Post> posts { get; set; }
+        public DbSet<Category> categories { get; set; }
+        public DbSet<PostCategory> postCategories { get; set; }
     }
 }
