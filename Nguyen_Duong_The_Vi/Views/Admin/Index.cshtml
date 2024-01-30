@@ -1,0 +1,69 @@
+﻿
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <!-- Include the Tailwind CSS CDN or link to your local file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="text-white font-bold text-xl">Admin Panel</div>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-white">Home</a></li>
+                    <li><a href="#" class="text-white">Dashboard</a></li>
+                    <li><a href="#" class="text-white">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-lg">
+
+        <!-- Page Title -->
+        <h1 class="text-2xl font-bold mb-4">Admin Management Page</h1>
+
+        <!-- Cards/Grid for Data Display -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <!-- Card 1 -->
+            <div class="bg-blue-200 p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Users</h2>
+                <p class="text-gray-700">Manage user data and permissions.</p>
+                <a href="#" class="text-blue-600 mt-2 inline-block">View Details</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-green-200 p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Settings</h2>
+                <p class="text-gray-700">Configure system settings.</p>
+                <a href="#" class="text-green-600 mt-2 inline-block">View Details</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-yellow-200 p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold mb-2">Reports</h2>
+                <p class="text-gray-700">Generate and analyze reports.</p>
+                <a href="#" class="text-yellow-600 mt-2 inline-block">View Details</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <p>&copy; 2024 Admin Panel. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
