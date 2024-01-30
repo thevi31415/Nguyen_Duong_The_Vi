@@ -10,27 +10,38 @@
     <link href="path-to-your-tailwind-css-file" rel="stylesheet">
     <title>Your Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
 </head>
 
+<div class="relative h-96 min-h-0 bg-cover bg-center w-full" style="background-image: url('/images/bg_hero.jpg');">
+    <!-- Overlay for better text visibility -->
+    <div class="absolute inset-0 bg-black opacity-50"></div>
 
-<body class="bg-gray-100">
-   
-        <!-- Hero Banner -->
-        <div class="bg-cover bg-center relative h-96" style="background-image: url('/images/bg_hero.jpg');">
-            <!-- Overlay for better text visibility -->
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-                <h1 class="text-white text-5xl font-bold">Your Hero Banner Title</h1>
-            </div>
+    <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white">
+            <h1 class="text-5xl font-bold ">Hi! I'm Nguyen Duong The Vi 😍!</h1>
+            <p class="text-lg mt-4">Welcome to my amazing world of creativity.</p>
+            <!-- Add more content as needed -->
         </div>
-
-        <!-- Rest of the Main Content -->
-        <div class="container mx-auto p-8">
-            <!-- Your main content elements -->
-            <!-- Add your main content here -->
-        </div>
-   
+    </div>
+</div>
 
 
-</body>
+<div class="container mx-auto p-8">
+    <!-- Your main content elements -->
+    <!-- Add your main content here -->
+</div>
+
+
+
+
 </html>
+<style>
+    main {
+        margin-top: 80px; /* Set a margin to push the content below the fixed nav */
+        padding: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+</style>
