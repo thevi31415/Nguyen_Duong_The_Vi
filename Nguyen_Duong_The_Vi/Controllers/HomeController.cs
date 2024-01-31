@@ -61,7 +61,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             return View();
         }
-        public IActionResult Blog(int? page)
+        public IActionResult Blog(int? page, string searchString, string searchBy)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
             if (firstThongTin == null)
@@ -76,12 +76,28 @@ namespace Nguyen_Duong_The_Vi.Controllers
             
 
 
-            int pageSize = 3;
+            int pageSize = 6;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
 
 
 
-            var posts = _db.posts.OrderByDescending(p => p.PUBLISHED).ToList();
+            IQueryable<Post> postlist = _db.posts;
+
+           
+            Console.WriteLine("Tìm kiem: searchby: " + searchBy);
+            Console.WriteLine("Tìm kiem: searchstring: " + searchString);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+               
+                    postlist = postlist.Where(x => x.TITLE.Contains(searchString));
+                
+             
+            }
+            else
+            {
+                postlist = _db.posts;
+            }
+
 
             var categrory = _db.categories.ToList();
             var categrorypost = _db.postCategories.ToList();
@@ -96,8 +112,12 @@ namespace Nguyen_Duong_The_Vi.Controllers
                                       }).ToList();
             ViewBag.PostsAndCategories = postsAndCategories;
 
-
+            var posts = postlist.OrderByDescending(p => p.PUBLISHED).ToList();
             PagedList<Post> lst = new PagedList<Post>(posts, pageNumber, pageSize);
+
+
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["SearchBy"] = searchBy;
             return View(lst);
           
         }

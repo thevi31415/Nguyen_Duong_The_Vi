@@ -24,30 +24,29 @@
 <div class="container mx-auto p-8" style="margin-left: 220px;">
     <div class="space-y-2 pb-8 pt-6 md:space-y-5">
         <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Blog</h1>
+        <form class="search_bar" asp-action="Blog" asp-controller="Home" method="get">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </div>
+                <input type="search" name="searchString" value="@ViewData["CurrentFilter"]" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tìm kiếm theo tên bài đăng ..." required>
+                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+            </div>
+        </form>
+
     </div>
+
+
     <div class="flex sm:space-x-24">
         <div class="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
             <div class="px-6 py-4">
                 <h3 class="font-bold uppercase text-primary-500">All Posts</h3>
                 <ul>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged next-js" href="/tags/next-js">next-js (6)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged guide" href="/tags/guide">guide (5)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged tailwind" href="/tags/tailwind">tailwind (3)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged feature" href="/tags/feature">feature (2)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged markdown" href="/tags/markdown">markdown (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged code" href="/tags/code">code (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged features" href="/tags/features">features (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged math" href="/tags/math">math (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged ols" href="/tags/ols">ols (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged github" href="/tags/github">github (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged holiday" href="/tags/holiday">holiday (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged canada" href="/tags/canada">canada (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged images" href="/tags/images">images (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged writings" href="/tags/writings">writings (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged book" href="/tags/book">book (1)</a></li>
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged reflection" href="/tags/reflection">reflection (1)</a></li>
+            
                     <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged multi-author" href="/tags/multi-author">multi-author (1)</a></li>
-
 
                     <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-150 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default (10)</a></li>
 
@@ -65,39 +64,10 @@
                     <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
 
                     <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
-
-
-                    <a class="bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</a>
-                    <a class="bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</a>
-                    <a class="bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</a>
-                    <a class="bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</a>
-                    <a class="bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</a>
-                    <a class="bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</a>
-
-
-
                 </ul>
             </div>
         </div>
         <div class="full-width-article">
-
-
-
-
-
-            @*
-            @foreach (var postAndCategory in ViewBag.PostsAndCategories)
-            {
-            <div>
-            <h3>@postAndCategory.</h3>
-            <ul>
-            @foreach (var category in postAndCategory.Categories)
-            {
-            <li>@category.TITLE</li>
-            }
-            </ul>
-            </div>
-            } *@
             <ul>
                 <ol class="relative border-s border-gray-200 dark:border-gray-700">
                     @foreach (var post in Model)
@@ -203,7 +173,7 @@
                             <li>
                                 @if (Model.HasPreviousPage)
                                 {
-                                    <a href="@Url.Action("Blog", new { page = Model.PageNumber - 1 })" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                <a href="@Url.Action("Blog", new { page = Model.PageNumber - 1, searchString = ViewData["CurrentFilter"], searchBy = "TITLE"  })" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                         <span class="sr-only">Previous</span>
                                         <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
@@ -215,14 +185,14 @@
                             @for (var i = 1; i <= Model.PageCount; i++)
                             {
                                 <li>
-                                    <a href="@Url.Action("Blog", new { page = i })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">@i</a>
+                                <a href="@Url.Action("Blog", new { page = i, searchString = ViewData["CurrentFilter"], searchBy = "TITLE"  })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">@i</a>
                                 </li>
                             }
 
                             <li>
                                 @if (Model.HasNextPage)
                                 {
-                                    <a href="@Url.Action("Blog", new { page = Model.PageNumber + 1 })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                <a href="@Url.Action("Blog", new { page = Model.PageNumber + 1 , searchString = ViewData["CurrentFilter"], searchBy ="TITLE" })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                         <span class="sr-only">Next</span>
                                         <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
@@ -237,7 +207,7 @@
 
     </div>
 </div>
-        </div>
+ </div>
 
 
 
@@ -260,4 +230,11 @@
     .full-width-article {
         width: 100vh;
     }
+
+    .search_bar {
+        width: 65vw; /* Thay đổi giá trị này theo nhu cầu của bạn */
+    }
+
+   
+
 </style>
