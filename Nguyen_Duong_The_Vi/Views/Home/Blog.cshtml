@@ -80,6 +80,9 @@
         <div>
 
 
+  
+
+
 @* 
             @foreach (var postAndCategory in ViewBag.PostsAndCategories)
             {
@@ -94,16 +97,22 @@
                 </div>
             } *@
             <ul>
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">
                 @foreach (var post in Model)
                 {
-                    <li class="py-5">
+                  <li class="mb-0 ms-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                            <time class="mb-1 text-sm font-medium  leading-none text-gray-500 dark:text-gray-500" style="font-size: 20px;">
+                           
+                                    @post.PUBLISHED.ToString("MMMM dd, yyyy")
+                                
+                            </time>
+                    <li class="py-5" style="margin-left: 15px">
                         <article class="flex flex-col  border rounded-lg p-4 space-y-2 xl:space-y-0">
                             <dl>
                                 <dt class="sr-only">Published on</dt>
                                 <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                                    <time datetime="@post.PUBLISHED.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")">
-                                        @post.PUBLISHED.ToString("MMMM dd, yyyy")
-                                    </time>
+                                    
                                 </dd>
                             </dl>
                             <div class="space-y-3">
@@ -183,7 +192,33 @@
                             </div>
                         </article>
                     </li>
+                 </li>
                 }
+                </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <li class="py-5">
                     <article class="flex flex-col space-y-2 xl:space-y-0 border rounded-lg p-4">
