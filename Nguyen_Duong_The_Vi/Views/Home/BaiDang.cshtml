@@ -87,17 +87,13 @@
                 </div>
             </header>
         </div>
-        <div grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0>
-            <div class="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-                <p>
+    
+              
                     @Html.Raw(@Model.CONTEXT);
-                </p>
-            </div>
-        </div>
-        <div class="flex justify-end mt-4">
-            <button id="copyLinkBtn" class="bg-blue-500 text-white px-4 py-2 rounded-full mr-2">Copy Link</button>
-            <button id="shareBtn" class="bg-green-500 text-white px-4 py-2 rounded-full">Share</button>
-        </div>
+               
+       
+
+       
     </article>
 
 
@@ -114,4 +110,11 @@
         margin-right: 0px;
         margin-left: 0px;
     }
+</style>
+<style>
+    article {
+        word-wrap: break-word;
+    }
+
+    /* Các quy tắc CSS khác có thể được thêm vào theo nhu cầu của bạn */
 </style>
