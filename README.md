@@ -67,3 +67,5 @@ Copyright © 2024, [Nguyen Duong The Vi](https://github.com/thevi31415).
 - ASP.NET Documentation
 - Entity Framework Core Documentation
 - Bootstrap Documentation
+- https://github.com/timlrx/tailwind-nextjs-starter-blog
+- https://tailwindui.com/components
