@@ -89,7 +89,50 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(posts);
           
         }
+        public IActionResult BaiDang(int? id)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
 
+            }
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var post = _db.posts
+         .Include(p => p.PostCategories)
+         .FirstOrDefault(c => c.ID == id);
+
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+
+
+            List<Category> categories = _db.postCategories
+                .Where(pc => pc.IDPOST == post.ID)
+                .Select(pc => pc.Category)
+                .ToList();
+
+   
+            PostAndCategrory postAndCategory = new PostAndCategrory
+            {
+                IDPost = post.ID,
+                Categories = categories
+            };
+
+
+            ViewBag.PostCategories = postAndCategory;
+            return View(post);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

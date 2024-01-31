@@ -4,7 +4,7 @@
     {
         public int IDPost;
         
-       public List<Category> Categories;
+         public List<Category>? Categories;
 
     }
 }

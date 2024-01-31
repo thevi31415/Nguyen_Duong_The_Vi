@@ -1,0 +1,101 @@
+﻿@model Post
+@{
+
+    Layout = "User_Layout";
+   
+}
+<section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+
+    <article>
+        <div class="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
+            <header class="pt-6 xl:pb-6">
+                <div class="space-y-1 text-center">
+                    <dl class="space-y-10">
+                        <div>
+                            <dt class="sr-only">Published on</dt>
+                            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                                <time datetime="2023-08-05T00:00:00.000Z">Saturday, August 5, 2023</time>
+                            </dd>
+                        </div>
+                    </dl>
+                    <div>
+                        <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 font-segoe-ui">
+                            @Model.TITLE
+                        </h1>
+                        <p class="text-lg font-bold leading-6 text-gray-700 dark:text-gray-300 mt-6 mb-6">
+                            By <span class="text-red-500">@Model.AUTHOR</span>
+                        </p>
+                        <!-- Categories -->
+                        <div class="flex justify-center space-x-2 mt-2">
+                            
+                            @if (@ViewBag.PostCategories != null)
+                            {
+                                foreach (var postCategory in ViewBag.PostCategories.Categories)
+                                {
+                                    var categoryTitle = postCategory.TITLE.ToString();
+                                    var categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+
+                                    if (!string.IsNullOrEmpty(categoryTitle))
+                                    {
+                                        var firstChar = categoryTitle.ToUpper()[0];
+
+                                        if (firstChar >= 'A' && firstChar <= 'C')
+                                        {
+                                            categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+                                        }
+                                        else if (firstChar >= 'D' && firstChar <= 'G')
+                                        {
+                                            categoryClass = "bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300";
+                                        }
+                                        else if (firstChar >= 'H' && firstChar <= 'K')
+                                        {
+                                            categoryClass = "bg-red-100 text-red-800 text-150 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 ";
+                                        }
+                                        else if (firstChar >= 'L' && firstChar <= 'O')
+                                        {
+                                            categoryClass = "bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300";
+                                        }
+                                        else if (firstChar >= 'P' && firstChar <= 'S')
+                                        {
+                                            categoryClass = "bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300";
+                                        }
+                                        else if (firstChar >= 'T' && firstChar <= 'V')
+                                        {
+                                            categoryClass = "bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300";
+                                        }
+                                        else if (firstChar >= 'W' && firstChar <= 'Z')
+                                        {
+                                            categoryClass = "bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300";
+                                        }
+                                        else
+                                        {
+                                            categoryClass = "bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300";
+                                        }
+                                    }
+
+                                    <a class="@categoryClass" style="font-size: 1.3em"; href="/tags/@categoryTitle">
+                                        @categoryTitle
+                                    </a>
+
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0>
+            <div class="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
+                <p>
+                    @Model.CONTEXT
+                </p>
+            </div>
+        </div>
+        <div class="flex justify-end mt-4">
+            <button id="copyLinkBtn" class="bg-blue-500 text-white px-4 py-2 rounded-full mr-2">Copy Link</button>
+            <button id="shareBtn" class="bg-green-500 text-white px-4 py-2 rounded-full">Share</button>
+        </div>
+    </article>
+
+
+</section>
