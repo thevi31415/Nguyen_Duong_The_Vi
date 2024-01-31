@@ -32,10 +32,14 @@ namespace Nguyen_Duong_The_Vi.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
+    
         public IActionResult TaoBaiDang(Post obj, IFormCollection form)
         {
             if (ModelState.IsValid)
             {
+                obj.LIKE = 0;
+                obj.VIEW = 0;
+                obj.PUBLISHED = DateTime.Now;
                 _db.posts.Add(obj);
                 _db.SaveChanges();
 

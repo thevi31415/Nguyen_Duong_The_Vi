@@ -1,5 +1,6 @@
 ﻿@model Post
-{
+@{
+
     Layout = "Admin_Layout";
 }
 <!DOCTYPE html>
@@ -10,6 +11,7 @@
     <title>Admin Management</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.ckeditor.com/4.23.0-lts/standard/ckeditor.js"></script>
 </head>
 
 
@@ -30,32 +32,30 @@
         <label asp-for="SUMMARY"></label>
         <input asp-for="SUMMARY" class="form-control" />
     </div>
+
+
     <div class="form-group">
         <label asp-for="CONTEXT"></label>
-        <input asp-for="CONTEXT" class="form-control" />
+        <textarea asp-for="CONTEXT" class="form-control" name="CONTEXT" id="CONTEXT"></textarea>
     </div>
-    <div class="form-group">
-        <label asp-for="PUBLISHED"></label>
-        <input asp-for="PUBLISHED" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="VIEW"></label>
-        <input asp-for="VIEW" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="LIKE"></label>
-        <input asp-for="LIKE" class="form-control" />
-    </div>
+  
     <div class="form-group">
         <label asp-for="PostCategories"></label>
         <select asp-for="PostCategories" asp-items="@(new SelectList(ViewBag.Categories, "IDCATEGORY", "TITLE"))" class="form-control" multiple></select>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
+
+    
 </form>
 
 
 
 
-
 </html>
+@section DoanJS{
+    <script>
+        CKEDITOR.replace('CONTEXT')
+    </script>
+
+}
 

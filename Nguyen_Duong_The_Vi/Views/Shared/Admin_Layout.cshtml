@@ -22,11 +22,12 @@
             </div>
         </div>
     </nav>
-
+    <script src="~/plugin/ckeditor/ckeditor.js"></script>
     <!-- Main Content -->
     <div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-lg">
 
         @RenderBody();
+        @RenderSection("DoanJS", false);
 
     </div>
 

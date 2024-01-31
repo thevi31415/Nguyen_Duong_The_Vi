@@ -73,7 +73,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             }
 
-            var posts = _db.posts.ToList();
+            var posts = _db.posts.OrderByDescending(p => p.PUBLISHED).ToList();
+
             var categrory = _db.categories.ToList();
             var categrorypost = _db.postCategories.ToList();
             var postsAndCategories = (from pc in _db.postCategories
