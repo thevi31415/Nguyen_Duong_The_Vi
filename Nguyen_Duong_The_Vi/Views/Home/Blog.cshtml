@@ -1,4 +1,6 @@
-﻿@model List<Post>
+﻿﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model X.PagedList.IPagedList<Post>
 @{
 
     Layout = "User_Layout";
@@ -19,10 +21,10 @@
 
 
 
-<div class="container mx-auto p-8">
- <div class="space-y-2 pb-8 pt-6 md:space-y-5">
-    <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Blog</h1>
-</div>
+<div class="container mx-auto p-8" style="margin-left: 220px;">
+    <div class="space-y-2 pb-8 pt-6 md:space-y-5">
+        <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Blog</h1>
+    </div>
     <div class="flex sm:space-x-24">
         <div class="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
             <div class="px-6 py-4">
@@ -64,244 +66,177 @@
 
                     <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
 
-                    
+
                     <a class="bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</a>
                     <a class="bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</a>
                     <a class="bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</a>
                     <a class="bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</a>
                     <a class="bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</a>
                     <a class="bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</a>
-                
-                
-                
+
+
+
                 </ul>
             </div>
         </div>
-        <div>
+        <div class="full-width-article">
 
 
-  
 
 
-@* 
+
+            @*
             @foreach (var postAndCategory in ViewBag.PostsAndCategories)
             {
-                <div>
-                    <h3>@postAndCategory.</h3>
-                    <ul>
-                        @foreach (var category in postAndCategory.Categories)
-                        {
-                            <li>@category.TITLE</li>
-                        }
-                    </ul>
-                </div>
+            <div>
+            <h3>@postAndCategory.</h3>
+            <ul>
+            @foreach (var category in postAndCategory.Categories)
+            {
+            <li>@category.TITLE</li>
+            }
+            </ul>
+            </div>
             } *@
             <ul>
-            <ol class="relative border-s border-gray-200 dark:border-gray-700">
-                @foreach (var post in Model)
-                {
-                  <li class="mb-0 ms-4">
+                <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                    @foreach (var post in Model)
+                    {
+                        <li class="mb-0 ms-4  border-width-100">
                             <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                             <time class="mb-1 text-sm font-medium  leading-none text-gray-500 dark:text-gray-500" style="font-size: 20px;">
-                           
-                                    @post.PUBLISHED.ToString("MMMM dd, yyyy")
-                                
+
+                                @post.PUBLISHED.ToString("MMMM dd, yyyy")
+
                             </time>
-                    <li class="py-5" style="margin-left: 15px">
-                        <article class="flex flex-col  border rounded-lg p-4 space-y-2 xl:space-y-0">
-                            <dl>
-                                <dt class="sr-only">Published on</dt>
-                                <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                                    
-                                </dd>
-                            </dl>
-                            <div class="space-y-3">
-                                <div>
-                                    <h2 class="text-2xl font-bold leading-8 tracking-tight">
-                                        <a class="hover-title text-gray-900 dark:text-gray-100" asp-controller="Home" asp-action="BaiDang" asp-route-id="@post.ID">
-                                            @post.TITLE
-                                        </a>
-                                    </h2>
-                                   
-                                    <div class="flex flex-wrap mt-3 mb-3">
-                                    @if (post.PostCategories != null)
-                                    {
-                                        foreach (var postCategory in post.PostCategories)
-                                        {
-                                            var categoryTitle = postCategory.Category?.TITLE;
-                                            var categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+                        <li class="py-5" style="margin-left: 15px">
+                            <article class="full-width-article flex flex-col border rounded-lg p-4 space-y-2 xl:space-y-0">
+                                <dl>
+                                    <dt class="sr-only">Published on</dt>
+                                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
 
-                                            if (!string.IsNullOrEmpty(categoryTitle))
-                                            {
-                                                var firstChar = categoryTitle.ToUpper()[0];
-
-                                                if (firstChar >= 'A' && firstChar <= 'C')
-                                                {
-                                                    categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
-                                                }
-                                                else if (firstChar >= 'D' && firstChar <= 'G')
-                                                {
-                                                    categoryClass = "bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300";
-                                                }
-                                                else if (firstChar >= 'H' && firstChar <= 'K')
-                                                {
-                                                    categoryClass = "bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300";
-                                                }
-                                                else if (firstChar >= 'L' && firstChar <= 'O')
-                                                {
-                                                    categoryClass = "bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300";
-                                                }
-                                                else if (firstChar >= 'P' && firstChar <= 'S')
-                                                {
-                                                    categoryClass = "bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300";
-                                                }
-                                                else if (firstChar >= 'T' && firstChar <= 'V')
-                                                {
-                                                    categoryClass = "bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300";
-                                                }
-                                                else if (firstChar >= 'W' && firstChar <= 'Z')
-                                                {
-                                                    categoryClass = "bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300";
-                                                }
-                                                else 
-                                                {
-                                                    categoryClass = "bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300";
-                                                }
-                                            }
-
-                                            <a class="@categoryClass" href="/tags/@categoryTitle">
-                                                @categoryTitle
+                                    </dd>
+                                </dl>
+                                <div class="space-y-3">
+                                    <div>
+                                        <h2 class="text-2xl font-bold leading-8 tracking-tight">
+                                            <a class="hover-title text-gray-900 dark:text-gray-100" asp-controller="Home" asp-action="BaiDang" asp-route-id="@post.ID">
+                                                    @post.TITLE
                                             </a>
-                                           
-                                        }
-                                    }
+                                        </h2>
 
-                                </div>
-                                   
-                                <div class="prose max-w-none text-gray-500 dark:text-gray-400">
-                                    @post.SUMMARY
-                                </div>
-                                    <div class="flex items-center text-gray-500 dark:text-gray-400">
-                                        <span class="me-4">
-                                            <i class="bi bi-eye-fill text-blue-500"></i> @post.VIEW
-                                        </span>
-                                        <span>
-                                            <i class="bi bi-heart-fill text-red-500"></i> @post.LIKE
-                                        </span>
+                                        <div class="flex flex-wrap mt-3 mb-3">
+                                                @if (post.PostCategories != null)
+                                                {
+                                                    foreach (var postCategory in post.PostCategories)
+                                                    {
+                                                        var categoryTitle = postCategory.Category?.TITLE;
+                                                        var categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+
+                                                        if (!string.IsNullOrEmpty(categoryTitle))
+                                                        {
+                                                            var firstChar = categoryTitle.ToUpper()[0];
+
+                                                            if (firstChar >= 'A' && firstChar <= 'C')
+                                                            {
+                                                                categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+                                                            }
+                                                            else if (firstChar >= 'D' && firstChar <= 'G')
+                                                            {
+                                                                categoryClass = "bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300";
+                                                            }
+                                                            else if (firstChar >= 'H' && firstChar <= 'K')
+                                                            {
+                                                                categoryClass = "bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300";
+                                                            }
+                                                            else if (firstChar >= 'L' && firstChar <= 'O')
+                                                            {
+                                                                categoryClass = "bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300";
+                                                            }
+                                                            else if (firstChar >= 'P' && firstChar <= 'S')
+                                                            {
+                                                                categoryClass = "bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300";
+                                                            }
+                                                            else if (firstChar >= 'T' && firstChar <= 'V')
+                                                            {
+                                                                categoryClass = "bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300";
+                                                            }
+                                                            else if (firstChar >= 'W' && firstChar <= 'Z')
+                                                            {
+                                                                categoryClass = "bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300";
+                                                            }
+                                                            else
+                                                            {
+                                                                categoryClass = "bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300";
+                                                            }
+                                                        }
+
+                                                    <a class="@categoryClass" href="/tags/@categoryTitle">
+                                                            @categoryTitle
+                                                    </a>
+
+                                                    }
+                                                }
+
+                                        </div>
+
+                                        <div class="prose max-w-none text-gray-500 dark:text-gray-400">
+                                                @post.SUMMARY
+                                        </div>
+                                        <div class="flex items-center text-gray-500 dark:text-gray-400">
+                                            <span class="me-4">
+                                                <i class="bi bi-eye-fill text-blue-500"></i> @post.VIEW
+                                            </span>
+                                            <span>
+                                                <i class="bi bi-heart-fill text-red-500"></i> @post.LIKE
+                                            </span>
+                                        </div>
                                     </div>
-                            </div>
-                        </article>
-                    </li>
-                 </li>
-                }
-                </ol>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <li class="py-5">
-                    <article class="flex flex-col space-y-2 xl:space-y-0 border rounded-lg p-4">
-                        <dl>
-                            <dt class="sr-only">Published on</dt>
-                            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                                <time datetime="2023-08-05T00:00:00.000Z">August 5, 2023</time>
-                            </dd>
-                        </dl>
-                        <div class="space-y-3">
-                            <div>
-                                <h2 class="text-2xl font-bold leading-8 tracking-tight">
-                                    <a class="hover-title text-gray-900 dark:text-gray-100" href="/blog/release-of-tailwind-nextjs-starter-blog-v2.0">
-                                        Release of Tailwind Nextjs Starter Blog v2.0
+                            </article>
+                        </li>
+                        </li>
+                    }
+               </ol>
+            <div class="pagination mx-auto">
+               
+                        <ul class="flex items-center -space-x-px h-8 text-sm">
+                            <li>
+                                @if (Model.HasPreviousPage)
+                                {
+                                    <a href="@Url.Action("Blog", new { page = Model.PageNumber - 1 })" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        <span class="sr-only">Previous</span>
+                                        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                                        </svg>
                                     </a>
-                                </h2>
-                                <div class="flex flex-wrap">
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a>
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">tailwind</a>
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">guide</a>
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/feature">feature</a>
-                                </div>
-                            </div>
-                            <div class="prose max-w-none text-gray-500 dark:text-gray-400">
-                                Release of Tailwind Nextjs Starter Blog template v2.0, refactored with Nextjs App directory and React Server Components setup. Discover the new features and how to migrate from V1.
-                            </div>
-                        </div>
-                    </article>
-                </li>
+                                }
+                            </li>
 
+                            @for (var i = 1; i <= Model.PageCount; i++)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Blog", new { page = i })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">@i</a>
+                                </li>
+                            }
 
-                <li class="py-5">
-                    <article class="flex flex-col space-y-2 xl:space-y-0">
-                        <dl>
-                            <dt class="sr-only">Published on</dt>
-                            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2023-08-05T00:00:00.000Z">August 5, 2023</time></dd>
-                        </dl>
-                        <div class="space-y-3">
-                            <div>
-                                <h2 class="text-2xl font-bold leading-8 tracking-tight">
-                                    <a class="hover-title text-gray-900 dark:text-gray-100" ">Release of Tailwind Nextjs Starter Blog v2.0</a>
-                                </h2>
-                                <div class="flex flex-wrap mt-3 mb-3">
-
-
-                                    <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a>
-                                    <a class="bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">Dark</a>
-                                    <a class="bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">Red</a>
-                                    <a class="bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Green</a>
-                                    <a class="bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Yellow</a>
-                                    <a class="bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Indigo</a>
-                                    <a class="bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">Purple</a>
-                                    <a class="bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">Pink</a>
-
-
-                                </div>
-                            </div>
-                            <div class="prose max-w-none text-gray-500 dark:text-gray-400">Release of Tailwind Nextjs Starter Blog template v2.0, refactored with Nextjs App directory and React Server Components setup.Discover the new features and how to migrate from V1.</div>
-                        </div>
-                    </article>
-                </li>
-                </li>
-                <li class="py-5">
-                    <article class="flex flex-col space-y-2 xl:space-y-0">
-                        <dl>
-                            <dt class="sr-only">Published on</dt>
-                            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"><time datetime="2023-08-05T00:00:00.000Z">August 5, 2023</time></dd>
-                        </dl>
-                        <div class="space-y-3">
-                            <div>
-                                <h2 class="text-2xl font-bold leading-8 tracking-tight"><a class="text-gray-900 dark:text-gray-100" href="/blog/release-of-tailwind-nextjs-starter-blog-v2.0">Release of Tailwind Nextjs Starter Blog v2.0</a></h2>
-                                <div class="flex flex-wrap">
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/next-js">next-js</a>
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/tailwind">tailwind</a>
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/guide">guide</a>
-                                    <a class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" href="/tags/feature">feature</a>
-                                </div>
-                            </div>
-                            <div class="prose max-w-none text-gray-500 dark:text-gray-400">Release of Tailwind Nextjs Starter Blog template v2.0, refactored with Nextjs App directory and React Server Components setup.Discover the new features and how to migrate from V1.</div>
-                        </div>
-                    </article>
-                </li>
+                            <li>
+                                @if (Model.HasNextPage)
+                                {
+                                    <a href="@Url.Action("Blog", new { page = Model.PageNumber + 1 })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        <span class="sr-only">Next</span>
+                                        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                        </svg>
+                                    </a>
+                                }
+                            </li>
+                        </ul>
             </ul>
+
+        </div>
+
+    </div>
+</div>
         </div>
 
 
@@ -320,4 +255,9 @@
         .hover-title:hover {
             color: #e53e3e; /* Màu đỏ khi hover */
         }
+</style>
+<style>
+    .full-width-article {
+        width: 100vh;
+    }
 </style>

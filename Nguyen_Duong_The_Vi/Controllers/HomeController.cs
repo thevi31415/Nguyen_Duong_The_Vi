@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace Nguyen_Duong_The_Vi.Controllers
 {
@@ -60,7 +61,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             return View();
         }
-        public IActionResult Blog()
+        public IActionResult Blog(int? page)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
             if (firstThongTin == null)
@@ -72,6 +73,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
+            
+
+
+            int pageSize = 3;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+
+
 
             var posts = _db.posts.OrderByDescending(p => p.PUBLISHED).ToList();
 
@@ -87,7 +95,10 @@ namespace Nguyen_Duong_The_Vi.Controllers
                                           Categories = groupedCategories.ToList(),
                                       }).ToList();
             ViewBag.PostsAndCategories = postsAndCategories;
-            return View(posts);
+
+
+            PagedList<Post> lst = new PagedList<Post>(posts, pageNumber, pageSize);
+            return View(lst);
           
         }
         public IActionResult BaiDang(int? id)
