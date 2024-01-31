@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <!-- Include the Tailwind CSS CDN or link to your local file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div class="text-white font-bold text-xl">Admin Panel</div>
+                <ul class="flex space-x-4">
+                    <li><a asp-controller="Admin" asp-action="QuanLyBaiDang" class="text-white">Quản lý bài đăng</a></li>
+                    <li><a href="#" class="text-white">Dashboard</a></li>
+                    <li><a href="#" class="text-white">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-lg">
+
+        @RenderBody();
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <p>&copy; 2024 Admin Panel. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
