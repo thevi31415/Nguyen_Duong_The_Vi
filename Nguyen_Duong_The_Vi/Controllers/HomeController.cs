@@ -129,7 +129,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(lst);
           
         }
-        public IActionResult Tag(int? id)
+        public IActionResult Tag(int? page, int? id)
 
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
@@ -141,6 +141,10 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 ViewBag.ThongTin = firstThongTin;
             }
+
+            int pageSize = 6;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+
 
             int? targetCategoryID = id; 
             List<Post> postlist = _db.posts.Include(p => p.PostCategories).ThenInclude(pc => pc.Category).ToList();
@@ -161,10 +165,10 @@ namespace Nguyen_Duong_The_Vi.Controllers
                .Where(p => p.PostCategories != null && p.PostCategories.Any(pc => pc.IDCATEGORY == targetCategoryID))
                .OrderByDescending(p => p.PUBLISHED)
                .ToList();
-         
 
+            PagedList<Post> lst = new PagedList<Post>(posts, pageNumber, pageSize);
 
-            return View(posts);
+            return View(lst);
         }
 
         public IActionResult BaiDang(int? id)
