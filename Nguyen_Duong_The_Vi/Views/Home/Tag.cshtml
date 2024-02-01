@@ -5,110 +5,15 @@
     Layout = "User_Layout";
 }
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Nguyen Duong The Vi</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="TemplateMo">
-    <title>First Portfolio Bootstrap 5 Theme</title>
-</head>
 
 
+<div class="py-16 sm:text-left">
+    <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">Tag "@ViewBag.NameTags" </h1>
+</div>
 
-
-<div class="container mx-auto p-8" style="margin-left: 220px;">
-    <div class="space-y-2 pb-8 pt-6 md:space-y-5">
-        <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Tag "@ViewBag.NameTags" </h1>
-    </div>
-
-
-    <div class="flex sm:space-x-24">
-        <div class="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
-            <div class="px-6 py-4">
-                <h3 class="font-bold uppercase text-primary-500">All Posts</h3>
-                <ul>
-
-
-
-
-                   @*  @foreach (var category in (List<CategoryViewModel>)ViewBag.categoryWithPostCountList)
-                    {
-                        string colorClass = "bg-pink-100 text-pink-800";
-
-                        if (category.TITLECATEGORY.StartsWith("A", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("B", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("C", StringComparison.OrdinalIgnoreCase))
-                        {
-                            colorClass = "bg-blue-100 text-blue-800";
-                        }
-                        else if (category.TITLECATEGORY.StartsWith("D", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("E", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("F", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("G", StringComparison.OrdinalIgnoreCase))
-                        {
-                            colorClass = "bg-gray-100 text-gray-800";
-                        }
-                        else if (category.TITLECATEGORY.StartsWith("H", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("I", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("J", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("K", StringComparison.OrdinalIgnoreCase))
-                        {
-                            colorClass = "bg-red-100 text-red-800";
-                        }
-                        else if (
-                        category.TITLECATEGORY.StartsWith("L", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("M", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("N", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("O", StringComparison.OrdinalIgnoreCase))
-                        {
-                            colorClass = "bg-green-100 text-green-800";
-                        }
-                        else if (category.TITLECATEGORY.StartsWith("P", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("Q", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("R", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("S", StringComparison.OrdinalIgnoreCase))
-
-                        {
-                            colorClass = "bg-yellow-100 text-yellow-800";
-                        }
-                        else if (
-                        category.TITLECATEGORY.StartsWith("T", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("U", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("V", StringComparison.OrdinalIgnoreCase))
-
-                        {
-                            colorClass = "bg-indigo-100 text-indigo-800";
-                        }
-                        else if (category.TITLECATEGORY.StartsWith("W", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("X", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("Y", StringComparison.OrdinalIgnoreCase) ||
-                        category.TITLECATEGORY.StartsWith("Z", StringComparison.OrdinalIgnoreCase))
-                        {
-                            colorClass = "bg-purple-100 text-purple-800";
-                        }
-
-                        <li class="my-3">
-                            <a class="@(colorClass) text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:@(colorClass.Replace("bg-", "dark:bg-")).dark:text-@(colorClass.Replace("bg-", "dark:text-"))" style="font-size:22px;">
-                                @category.TITLECATEGORY (@category.PostCount)
-                            </a>
-                        </li>
-                    }  *@
-
-
-
-
-
-
-                </ul>
-            </div>
-        </div>
-        <div class="full-width-article">
-            <ul>
-                <ol class="relative border-s border-gray-200 dark:border-gray-700">
+ <div class="relative ">
+       <ul>
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">
                     @foreach (var post in Model)
                     {
                         <li class="mb-0 ms-4  border-width-100">
@@ -117,9 +22,11 @@
 
                                 @post.PUBLISHED.ToString("MMMM dd, yyyy")
 
-                            </time>
+                            </time> 
+                            
+                        </li>
                         <li class="py-5" style="margin-left: 15px">
-                            <article class="full-width-article flex flex-col border rounded-lg p-4 space-y-2 xl:space-y-0">
+                            <article class=" flex flex-col border rounded-lg p-4 space-y-2 xl:space-y-0">
                                 <dl>
                                     <dt class="sr-only">Published on</dt>
                                     <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -204,9 +111,9 @@
                                     </div>
                             </article>
                         </li>
-                        </li>
+                        
                     }
-                </ol>
+            </ol>
                 <div class="pagination mx-auto">
 
                     <ul class="flex items-center -space-x-px h-8 text-sm">
@@ -242,19 +149,19 @@
                         </li>
                     </ul>
                 </div>
-                </ul>
+       </ul>
 
-        </div>
-
-    </div>
-</div>
  </div>
 
+    
+
+ 
 
 
 
 
-</html>
+
+
 <style>
     /* Định dạng khi không hover */
     .hover-title {
