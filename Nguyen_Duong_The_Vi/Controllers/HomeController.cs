@@ -176,6 +176,24 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(lst);
         }
+        public IActionResult Tags(int? page, int? id)
+
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+            }
+
+                       List<CategoryViewModel> categoryWithPostCountList = GetCategoryWithPostCount();
+            ViewBag.categoryWithPostCountList = categoryWithPostCountList;
+
+            return View();
+        }
 
         public IActionResult BaiDang(int? id)
         {
@@ -236,11 +254,12 @@ namespace Nguyen_Duong_The_Vi.Controllers
         {
             var result = (from category in _db.categories
                           join postCategory in _db.postCategories on category.IDCATEGORY equals postCategory.IDCATEGORY
-                          group postCategory by new { category.IDCATEGORY, category.TITLE } into grouped
+                          group new { category, postCategory } by new { category.IDCATEGORY, category.TITLE, category.CONTEXT } into grouped
                           select new CategoryViewModel
                           {
                               IDCATEGORY = grouped.Key.IDCATEGORY,
                               TITLECATEGORY = grouped.Key.TITLE,
+                              CONTEXT = grouped.Key.CONTEXT,
                               PostCount = grouped.Count()
                           })
                 .OrderByDescending(c => c.PostCount)
@@ -248,5 +267,6 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return result;
         }
+
     }
 }

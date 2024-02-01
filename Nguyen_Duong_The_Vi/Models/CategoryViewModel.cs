@@ -4,6 +4,7 @@
     {
         public int? IDCATEGORY { get; set; }
         public string? TITLECATEGORY { get; set; }
+        public string? CONTEXT { get; set; }
         public int? PostCount { get; set; }
     }
 }

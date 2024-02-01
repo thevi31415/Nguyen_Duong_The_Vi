@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = "User_Layout";
+}
+<!DOCTYPE html>
+<div class="py-16 sm:text-left">
+    <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">Tags </h1>
+</div>
+
+<div class="relative ">
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+        @foreach (var category in (List<CategoryViewModel>)ViewBag.categoryWithPostCountList)
+        {
+            string colorClass = "bg-pink-100 text-pink-800";
+
+            if (category.TITLECATEGORY.StartsWith("A", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("B", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("C", StringComparison.OrdinalIgnoreCase))
+            {
+                colorClass = "bg-blue-100 text-blue-800";
+            }
+            else if (category.TITLECATEGORY.StartsWith("D", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("E", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("F", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("G", StringComparison.OrdinalIgnoreCase))
+            {
+                colorClass = "bg-gray-100 text-gray-800";
+            }
+            else if (category.TITLECATEGORY.StartsWith("H", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("I", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("J", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("K", StringComparison.OrdinalIgnoreCase))
+            {
+                colorClass = "bg-red-100 text-red-800";
+            }
+            else if (
+            category.TITLECATEGORY.StartsWith("L", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("M", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("N", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("O", StringComparison.OrdinalIgnoreCase))
+            {
+                colorClass = "bg-green-100 text-green-800";
+            }
+            else if (category.TITLECATEGORY.StartsWith("P", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("Q", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("R", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("S", StringComparison.OrdinalIgnoreCase))
+
+            {
+                colorClass = "bg-yellow-100 text-yellow-800";
+            }
+            else if (
+            category.TITLECATEGORY.StartsWith("T", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("U", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("V", StringComparison.OrdinalIgnoreCase))
+
+            {
+                colorClass = "bg-indigo-100 text-indigo-800";
+            }
+            else if (category.TITLECATEGORY.StartsWith("W", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("X", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("Y", StringComparison.OrdinalIgnoreCase) ||
+            category.TITLECATEGORY.StartsWith("Z", StringComparison.OrdinalIgnoreCase))
+            {
+                colorClass = "bg-purple-100 text-purple-800";
+            }
+
+            <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+             
+                <a style="margin-top: 20px; margin-left: 5px; margin-right:5px; font-size: 25px" asp-controller="Home" asp-action="Tag" asp-route-id="@category.IDCATEGORY" asp-action-id class="@(colorClass) text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:@(colorClass.Replace("bg-", "dark:bg-")).dark:text-@(colorClass.Replace("bg-", "dark:text-"))" style="font-size:22px;">
+                    @category.TITLECATEGORY (@category.PostCount)
+                </a>
+                <a href="#">
+                    <h5 style="margin-top: 20px; margin-left: 5px; margin-right:5px" class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"> @category.PostCount bài đăng</h5>
+                </a>
+                <p style="margin-top: 20px; margin-left: 5px; margin-right:5px" class="mb-5 font-normal text-gray-500 dark:text-gray-400"> @category.CONTEXT</p>
+            </div>
+        }
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* Định dạng khi không hover */
+    .hover-title {
+        color: #1a202c; /* Màu mặc định, bạn có thể thay đổi theo nhu cầu */
+        transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu trong 0.3 giây */
+    }
+
+        /* Định dạng khi hover */
+        .hover-title:hover {
+            color: #e53e3e; /* Màu đỏ khi hover */
+        }
+</style>
+<style>
+    .full-width-article {
+        width: 100vh;
+    }
+
+    .search_bar {
+        width: 65vw; /* Thay đổi giá trị này theo nhu cầu của bạn */
+    }
+
+</style>
