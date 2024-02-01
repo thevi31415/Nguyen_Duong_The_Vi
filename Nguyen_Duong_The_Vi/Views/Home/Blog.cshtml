@@ -45,25 +45,78 @@
             <div class="px-6 py-4">
                 <h3 class="font-bold uppercase text-primary-500">All Posts</h3>
                 <ul>
-            
-                    <li class="my-3"><a class="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500" aria-label="View posts tagged multi-author" href="/tags/multi-author">multi-author (1)</a></li>
-
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-150 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default (10)</a></li>
 
 
-                    <li class="my-3"> <a class="bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">Dark</a></li>
 
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
 
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
+                    @foreach (var category in (List<CategoryViewModel>)ViewBag.categoryWithPostCountList)
+                    {
+                        string colorClass = "bg-pink-100 text-pink-800";
 
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
+                        if (category.TITLECATEGORY.StartsWith("A", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("B", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("C", StringComparison.OrdinalIgnoreCase))
+                        {
+                            colorClass = "bg-blue-100 text-blue-800";
+                        }
+                        else if (category.TITLECATEGORY.StartsWith("D", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("E", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("F", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("G", StringComparison.OrdinalIgnoreCase))
+                        {
+                            colorClass = "bg-gray-100 text-gray-800";
+                        }
+                        else if (category.TITLECATEGORY.StartsWith("H", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("I", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("J", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("K", StringComparison.OrdinalIgnoreCase) )
+                        {
+                            colorClass = "bg-red-100 text-red-800";
+                        }
+                        else if (
+                        category.TITLECATEGORY.StartsWith("L", StringComparison.OrdinalIgnoreCase)||
+                        category.TITLECATEGORY.StartsWith("M", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("N", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("O", StringComparison.OrdinalIgnoreCase))
+                        {
+                            colorClass = "bg-green-100 text-green-800";
+                        }
+                        else if(category.TITLECATEGORY.StartsWith("P", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("Q", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("R", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("S", StringComparison.OrdinalIgnoreCase))
+                       
+                        {
+                            colorClass = "bg-yellow-100 text-yellow-800";
+                        }
+                        else if (
+                        category.TITLECATEGORY.StartsWith("T", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("U", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("V", StringComparison.OrdinalIgnoreCase))
+                        
+                        {
+                            colorClass = "bg-indigo-100 text-indigo-800";
+                        }
+                        else if (category.TITLECATEGORY.StartsWith("W", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("X", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("Y", StringComparison.OrdinalIgnoreCase) ||
+                        category.TITLECATEGORY.StartsWith("Z", StringComparison.OrdinalIgnoreCase))
+                        {
+                            colorClass = "bg-purple-100 text-purple-800";
+                        }
 
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
+                        <li class="my-3">
+                            <a class="@(colorClass) text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:@(colorClass.Replace("bg-", "dark:bg-")).dark:text-@(colorClass.Replace("bg-", "dark:text-"))" style="font-size:22px;">
+                                @category.TITLECATEGORY (@category.PostCount)
+                            </a>
+                        </li>
+                    }
 
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
 
-                    <li class="my-3"> <a class="bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Default</a></li>
+
+                    
+
+
                 </ul>
             </div>
         </div>
@@ -166,41 +219,41 @@
                         </li>
                         </li>
                     }
-               </ol>
-            <div class="pagination mx-auto">
-               
-                        <ul class="flex items-center -space-x-px h-8 text-sm">
-                            <li>
-                                @if (Model.HasPreviousPage)
-                                {
-                                <a href="@Url.Action("Blog", new { page = Model.PageNumber - 1, searchString = ViewData["CurrentFilter"], searchBy = "TITLE"  })" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                        <span class="sr-only">Previous</span>
-                                        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                                        </svg>
-                                    </a>
-                                }
-                            </li>
+                </ol>
+                <div class="pagination mx-auto">
 
-                            @for (var i = 1; i <= Model.PageCount; i++)
+                    <ul class="flex items-center -space-x-px h-8 text-sm">
+                        <li>
+                            @if (Model.HasPreviousPage)
                             {
-                                <li>
-                                <a href="@Url.Action("Blog", new { page = i, searchString = ViewData["CurrentFilter"], searchBy = "TITLE"  })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">@i</a>
-                                </li>
+                                <a href="@Url.Action("Blog", new { page = Model.PageNumber - 1, searchString = ViewData["CurrentFilter"], searchBy = "TITLE"  })" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only">Previous</span>
+                                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                                    </svg>
+                                </a>
                             }
+                        </li>
 
+                        @for (var i = 1; i <= Model.PageCount; i++)
+                        {
                             <li>
-                                @if (Model.HasNextPage)
-                                {
-                                <a href="@Url.Action("Blog", new { page = Model.PageNumber + 1 , searchString = ViewData["CurrentFilter"], searchBy ="TITLE" })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                        <span class="sr-only">Next</span>
-                                        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                                        </svg>
-                                    </a>
-                                }
+                                <a href="@Url.Action("Blog", new { page = i, searchString = ViewData["CurrentFilter"], searchBy = "TITLE"  })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">@i</a>
                             </li>
-                        </ul>
+                        }
+
+                        <li>
+                            @if (Model.HasNextPage)
+                            {
+                                <a href="@Url.Action("Blog", new { page = Model.PageNumber + 1 , searchString = ViewData["CurrentFilter"], searchBy ="TITLE" })" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                    <span class="sr-only">Next</span>
+                                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                    </svg>
+                                </a>
+                            }
+                        </li>
+                    </ul>
             </ul>
 
         </div>
@@ -234,7 +287,5 @@
     .search_bar {
         width: 65vw; /* Thay đổi giá trị này theo nhu cầu của bạn */
     }
-
-   
 
 </style>

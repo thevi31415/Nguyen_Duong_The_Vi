@@ -118,6 +118,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             ViewData["CurrentFilter"] = searchString;
             ViewData["SearchBy"] = searchBy;
+
+
+
+            List<CategoryViewModel> categoryWithPostCountList = GetCategoryWithPostCount();
+            ViewBag.categoryWithPostCountList = categoryWithPostCountList;
+            
+
             return View(lst);
           
         }
@@ -169,6 +176,22 @@ namespace Nguyen_Duong_The_Vi.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public List<CategoryViewModel> GetCategoryWithPostCount()
+        {
+            var result = (from category in _db.categories
+                          join postCategory in _db.postCategories on category.IDCATEGORY equals postCategory.IDCATEGORY
+                          group postCategory by new { category.IDCATEGORY, category.TITLE } into grouped
+                          select new CategoryViewModel
+                          {
+                              IDCATEGORY = grouped.Key.IDCATEGORY,
+                              TITLECATEGORY = grouped.Key.TITLE,
+                              PostCount = grouped.Count()
+                          })
+                .OrderByDescending(c => c.PostCount)
+                .ToList();
+
+            return result;
         }
     }
 }
