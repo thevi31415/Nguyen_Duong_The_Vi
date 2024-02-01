@@ -236,6 +236,15 @@ namespace Nguyen_Duong_The_Vi.Controllers
             };
 
 
+            var previousPost = _db.posts
+                .OrderByDescending(p => p.PUBLISHED)
+                .FirstOrDefault(p => p.PUBLISHED < post.PUBLISHED);
+
+            var nextPost = _db.posts
+                .OrderBy(p => p.PUBLISHED)
+                .FirstOrDefault(p => p.PUBLISHED > post.PUBLISHED);
+            ViewBag.PreviousPost = previousPost;
+            ViewBag.NextPost = nextPost;
             ViewBag.PostCategories = postAndCategory;
             return View(post);
         }
