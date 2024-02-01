@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
@@ -128,6 +129,44 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(lst);
           
         }
+        public IActionResult Tag(int? id)
+
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+            }
+
+            int? targetCategoryID = id; 
+            List<Post> postlist = _db.posts.Include(p => p.PostCategories).ThenInclude(pc => pc.Category).ToList();
+            var postsAndCategories = (from pc in _db.postCategories
+                                      join p in _db.posts on pc.IDPOST equals p.ID
+                                      join c in _db.categories on pc.IDCATEGORY equals c.IDCATEGORY
+                                      where c.IDCATEGORY == targetCategoryID // Thêm điều kiện cho category cụ thể
+                                      group c by p.ID into groupedCategories
+                                      select new PostAndCategrory
+                                      {
+                                          IDPost = groupedCategories.Key,
+                                          Categories = groupedCategories.ToList(),
+                                      }).ToList();
+
+            ViewBag.PostsAndCategories = postsAndCategories;
+
+            var posts = postlist
+               .Where(p => p.PostCategories != null && p.PostCategories.Any(pc => pc.IDCATEGORY == targetCategoryID))
+               .OrderByDescending(p => p.PUBLISHED)
+               .ToList();
+         
+
+
+            return View(posts);
+        }
+
         public IActionResult BaiDang(int? id)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
@@ -172,6 +211,12 @@ namespace Nguyen_Duong_The_Vi.Controllers
             ViewBag.PostCategories = postAndCategory;
             return View(post);
         }
+
+      
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
