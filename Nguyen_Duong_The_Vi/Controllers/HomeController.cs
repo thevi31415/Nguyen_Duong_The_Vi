@@ -165,7 +165,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
                .Where(p => p.PostCategories != null && p.PostCategories.Any(pc => pc.IDCATEGORY == targetCategoryID))
                .OrderByDescending(p => p.PUBLISHED)
                .ToList();
-
+            Category category = _db.categories
+          .FirstOrDefault(c => c.IDCATEGORY == targetCategoryID);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            ViewBag.NameTags = category.TITLE;
             PagedList<Post> lst = new PagedList<Post>(posts, pageNumber, pageSize);
 
             return View(lst);

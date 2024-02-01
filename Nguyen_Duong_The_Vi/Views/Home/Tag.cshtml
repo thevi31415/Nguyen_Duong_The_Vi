@@ -22,7 +22,7 @@
 
 <div class="container mx-auto p-8" style="margin-left: 220px;">
     <div class="space-y-2 pb-8 pt-6 md:space-y-5">
-        <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Tag </h1>
+        <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Tag "@ViewBag.NameTags" </h1>
     </div>
 
 
@@ -181,7 +181,7 @@
                                                             }
                                                         }
 
-                                                    <a class="@categoryClass" href="/tags/@categoryTitle">
+                                                    <a class="@categoryClass" asp-controller="Home" asp-action="Tag" asp-route-id="@postCategory.IDCATEGORY">
                                                             @categoryTitle
                                                     </a>
 
