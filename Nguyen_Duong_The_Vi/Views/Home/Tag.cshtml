@@ -7,11 +7,12 @@
 <!DOCTYPE html>
 
 
-<div class="py-16 sm:text-left">
-    <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">Tag "@ViewBag.NameTags" </h1>
-</div>
+
 
  <div class="relative ">
+    <div class="py-5 sm:text-left">
+        <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">Tag "@ViewBag.NameTags" </h1>
+    </div>
        <ul>
             <ol class="relative border-s border-gray-200 dark:border-gray-700">
                     @foreach (var post in Model)
@@ -109,6 +110,7 @@
                                             </span>
                                         </div>
                                     </div>
+                                    </div>
                             </article>
                         </li>
                         
@@ -182,5 +184,9 @@
     .search_bar {
         width: 65vw; /* Thay đổi giá trị này theo nhu cầu của bạn */
     }
-
+    /* Thêm hover style cho article */
+    article:hover {
+        background-color: #fafbfd; /* Chọn một màu xám hoặc màu khác bạn thích */
+        transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu trong 0.3s */
+    }
 </style>
