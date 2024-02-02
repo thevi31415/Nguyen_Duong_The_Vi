@@ -107,8 +107,24 @@
     
             
               @Html.Raw(@Model.CONTEXT);
-               
-     
+
+        <div class="flex-grow">
+            <button type="button" class="flex-grow px-4 py-2 text-base font-medium text-black bg-white border-t border-b border-l rounded-l-md hover:bg-gray-100">
+                <i class="fa-solid fa-eye"></i> &nbsp;
+                Lượt xem
+            </button>
+            <button type="button" class="w-20 px-4 py-2 text-base font-medium text-black bg-white border hover:bg-gray-100">
+                @Model.VIEW
+            </button>
+            <button type="button" class="flex-grow px-4 py-2 text-base font-medium text-black bg-white border-t border-b border-l hover:bg-gray-100">
+                <i class="fa-solid fa-heart"></i> &nbsp;
+                Lượt thích
+            </button>
+            <button type="button" class="w-20 px-4 py-2 text-base font-medium text-black bg-white border rounded-r-md hover:bg-gray-100">
+                @Model.LIKE
+            </button>
+        </div>
+
        
     </article>
     <div class="grid grid-cols-1 gap-4 py-4 mx-auto max-w-7xl md:grid-cols-2 md:py-12">

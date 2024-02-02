@@ -227,7 +227,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
 
 
+            post.VIEW = (post.VIEW ?? 0) + 1;
 
+          
+            _db.Entry(post).State = EntityState.Modified;
+
+
+            _db.SaveChanges();
             List<Category> categories = _db.postCategories
                 .Where(pc => pc.IDPOST == post.ID)
                 .Select(pc => pc.Category)
