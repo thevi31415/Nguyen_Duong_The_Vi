@@ -21,7 +21,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
         public IActionResult QuanLyBaiDang()
         {
-            return View();
+            List<Post> listpost = _db.posts.ToList();
+            return View(listpost);
         }
 
         public IActionResult TaoBaiDang()
@@ -61,6 +62,21 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
 
             return View(obj);
+        }
+        public IActionResult XoaBaiDang(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var post = _db.posts.FirstOrDefault(c => c.ID == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            _db.posts.Remove(post);
+            _db.SaveChanges();
+            return RedirectToAction("QuanLyBaiDang");
         }
     }
 }
