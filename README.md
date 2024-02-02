@@ -31,6 +31,7 @@ The website interface is primarily built using Tailwind CSS:
     </picture>
   </a>
 </p>
+In the process of coding the project, I referenced and copied some interfaces and templates available on the Internet, making modifications as needed.
 
 ## Blog
 - Trang chủ:
