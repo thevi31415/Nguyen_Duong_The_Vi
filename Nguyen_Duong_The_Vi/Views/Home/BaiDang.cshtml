@@ -14,14 +14,7 @@
         <div class="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700 ">
             <header class="pt-8  xl:pb-6">
                 <div class="space-y-1 text-left">
-                    <dl class="space-y-10">
-                        <div>
-                            <dt class="sr-only">Published on</dt>
-                            <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                                <time datetime="2023-08-05T00:00:00.000Z"> @Model.PUBLISHED.ToString("MMMM dd, yyyy")</time>
-                            </dd>
-                        </div>
-                    </dl>
+                    
                     <div>
                         <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 font-segoe-ui underline-on-hover">
                             @Model.TITLE
@@ -91,7 +84,13 @@
                 </div>
             </header>
             <div class="flex justify-between items-center text-sm mb-4 sm:mb-6">
-
+             <p class="pb-0">
+               
+                <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <time datetime="2023-08-05T00:00:00.000Z">   @Model.PUBLISHED.ToString("MMMM dd, yyyy")</time>
+                </dd>
+                
+            </p>
 
                 <p class="ml-auto pb-0">
                     <a style="font-size: 35px" title="Share on X (formerly Twitter)" aria-label="Share on X (formerly Twitter)" class="text-current leading-none transition-colors duration-200 ease-in-out hover:text-twitter" target="_blank" rel="noreferrer noopener nofollow" href="https://twitter.com/intent/tweet?text=@Model.TITLE: @absoluteUrl"><i aria-hidden="true" class="fab fa-twitter-square text-5xl-rel sm:text-3xl-rel"></i></a>
