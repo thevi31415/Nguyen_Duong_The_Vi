@@ -1,8 +1,13 @@
 # Blog cá nhân
   ![MIT License](https://img.shields.io/github/license/dotnet/aspnetcore?color=%230b0&style=flat-square)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/thevi31415/Nguyen_Duong_The_Vi)
   ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/thevi31415/Nguyen_Duong_The_Vi)
+  ![GitHub repo file or directory count](https://img.shields.io/github/directory-file-count/thevi31415/Nguyen_Duong_The_Vi)
   ![GitHub contributors](https://img.shields.io/github/contributors/thevi31415/Nguyen_Duong_The_Vi)
   ![GitHub last commit](https://img.shields.io/github/last-commit/thevi31415/Nguyen_Duong_The_Vi)
+  ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCHolhpqtcjh-r4bICRRnqyA)
+
+
 
  
 ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
@@ -75,3 +80,4 @@ Copyright © 2024, [Nguyen Duong The Vi](https://github.com/thevi31415).
 - Bootstrap Documentation
 - https://github.com/timlrx/tailwind-nextjs-starter-blog
 - https://tailwindui.com/components
+- https://flowbite.com/docs/components/
