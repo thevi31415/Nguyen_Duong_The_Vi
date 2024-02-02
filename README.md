@@ -19,7 +19,7 @@
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ## Introduction
-This is my personal website, built with ASP.NET Core 6. The interface is constructed using Bootstrap and Tailwind CSS
+This is my personal website, built with ASP.NET Core 6. The interface is constructed using Bootstrap and Tailwind CSS. For the back-end, I utilize the C# programming language and Microsoft SQL Server for the database, following the Code First approach in database design
 
 The website interface is primarily built using Tailwind CSS:
 <p align="center">
