@@ -30,8 +30,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
+            List<Post> postlist = _db.posts
+    .Include(p => p.PostCategories)
+    .ThenInclude(pc => pc.Category)
+    .Take(4)
+    .ToList();
 
-            return View();
+            return View(postlist);
         }
 
         public IActionResult Privacy()

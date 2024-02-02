@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Post>
+@{
 
     Layout = "User_Layout";
 }
@@ -28,13 +29,85 @@
 </div>
 
 
-<div class="container mx-auto p-8">
-    <!-- Your main content elements -->
-    <!-- Add your main content here -->
+<div class="container p-4">
+    <div class="py-5 sm:text-left text-center">
+        <h1 class="text-center text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">Bài đăng mới nhất </h1>
+    </div>
+    <div class="container grid gap-x-16 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:w-37/50">
+    @foreach (var post in Model) 
+    {
+        <article class="post-item rounded-lg bg-white shadow-lg overflow-hidden">
+            <div class="py-4 pb-6 px-6">
+                <h2 class="text-ds-base pb-0">
+                        <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@post.ID" class="no-underline text-light-01 font-semibold">@post.TITLE</a>
+                </h2>
+                <p class="text-ds-sm font-semibold text-light-03 pt-1 pb-0">@post.PUBLISHED.ToString("MMM dd, yyyy")</p>
+                <div class="flex flex-wrap mt-3 mb-3">
+                        @if (post.PostCategories != null)
+                        {
+                            foreach (var postCategory in post.PostCategories)
+                            {
+                                var categoryTitle = postCategory.Category?.TITLE;
+                                var categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+
+                                if (!string.IsNullOrEmpty(categoryTitle))
+                                {
+                                    var firstChar = categoryTitle.ToUpper()[0];
+
+                                    if (firstChar >= 'A' && firstChar <= 'C')
+                                    {
+                                        categoryClass = "bg-blue-100 text-blue-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300";
+                                    }
+                                    else if (firstChar >= 'D' && firstChar <= 'G')
+                                    {
+                                        categoryClass = "bg-gray-100 text-gray-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300";
+                                    }
+                                    else if (firstChar >= 'H' && firstChar <= 'K')
+                                    {
+                                        categoryClass = "bg-red-100 text-red-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300";
+                                    }
+                                    else if (firstChar >= 'L' && firstChar <= 'O')
+                                    {
+                                        categoryClass = "bg-green-100 text-green-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300";
+                                    }
+                                    else if (firstChar >= 'P' && firstChar <= 'S')
+                                    {
+                                        categoryClass = "bg-yellow-100 text-yellow-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300";
+                                    }
+                                    else if (firstChar >= 'T' && firstChar <= 'V')
+                                    {
+                                        categoryClass = "bg-indigo-100 text-indigo-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-indigo-900 dark:text-indigo-300";
+                                    }
+                                    else if (firstChar >= 'W' && firstChar <= 'Z')
+                                    {
+                                        categoryClass = "bg-purple-100 text-purple-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300";
+                                    }
+                                    else
+                                    {
+                                        categoryClass = "bg-pink-100 text-pink-800 text-120 font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300";
+                                    }
+                                }
+
+                                <a asp-controller="Home" asp-action="Tag" asp-route-id="@postCategory.IDCATEGORY" class="@categoryClass">
+                                    @categoryTitle
+                                </a>
+
+                            }
+                        }
+                </div>
+                <p class="line-clamp-5 text-ds-sm pt-2 pb-0">@post.SUMMARY</p>
+            </div>
+        </article>
+    }
 </div>
 
 
 
+
+
+    
+    
+</div>
 
 </html>
 <style>
