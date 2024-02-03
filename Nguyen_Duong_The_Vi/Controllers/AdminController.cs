@@ -63,6 +63,40 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(obj);
         }
+
+
+
+        public IActionResult ChinhSuaBaiDang(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var post = _db.posts.FirstOrDefault(c => c.ID == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ChinhSuaBaiDang(Post obj)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                obj.PUBLISHED = DateTime.Now;
+                _db.posts.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            TempData["success"] = "Update thành công !";
+            return View(obj);
+
+        }
         public IActionResult XoaBaiDang(int? id)
         {
             if (id == null || id == 0)
