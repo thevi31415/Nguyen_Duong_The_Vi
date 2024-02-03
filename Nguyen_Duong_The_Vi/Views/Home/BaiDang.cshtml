@@ -103,11 +103,7 @@
             </div>
         </div>
             
-     
-    
-            
               @Html.Raw(@Model.CONTEXT);
-
         <div class="flex-grow">
             <button type="button" class="flex-grow px-4 py-2 text-base font-medium text-black bg-white border-t border-b border-l rounded-l-md hover:bg-gray-100">
                 <i class="fa-solid fa-eye"></i> &nbsp;
@@ -166,27 +162,10 @@
                 <div class="flex flex-col overflow-hidden"><span class="text-sm font-bold tracking-wide no-underline uppercase text-secondary dark:text-secondary-dark group-focus:text-link dark:group-focus:text-link-dark group-focus:text-opacity-100">Next</span><span class="text-lg break-words group-hover:underline"> @ViewBag.PreviousPost.TITLE </span></div>
             </a>
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-        
+    </div>
+    <div id="progress-bar-container" class="fixed top-0 left-0 w-full h-1 bg-gray-300">
+        <!-- Progress bar -->
+        <div id="progress-bar" class="h-full bg-blue-500"></div>
     </div>
 </section>
 <style>
@@ -206,6 +185,43 @@
     article {
         word-wrap: break-word;
     }
-
-    /* Các quy tắc CSS khác có thể được thêm vào theo nhu cầu của bạn */
 </style>
+
+
+<style>
+    #progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7px;
+        background-color: transparent;
+        z-index: 50;
+        margin-bottom:5px;
+        display: none;
+    }
+
+    #progress-bar {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(to right, #62CFF4, #2C67F2); /* Gradient blue background */
+    }
+</style>
+
+<!-- Add this script to your existing scripts or in a separate JS file -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var progressBarContainer = document.getElementById("progress-bar-container");
+        var progressBar = document.getElementById("progress-bar");
+
+        window.addEventListener("scroll", function () {
+            var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var scrollTop = window.scrollY;
+            var progress = (scrollTop / scrollHeight) * 100;
+
+            progressBar.style.width = progress + "%";
+        });
+
+        progressBarContainer.style.display = "block"; // Show the progress bar container
+    });
+</script>

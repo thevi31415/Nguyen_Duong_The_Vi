@@ -30,11 +30,15 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
+
+
             List<Post> postlist = _db.posts
     .Include(p => p.PostCategories)
     .ThenInclude(pc => pc.Category)
+    .OrderByDescending(p => p.PUBLISHED)  // Sắp xếp theo ngày Published mới nhất trước
     .Take(4)
     .ToList();
+
 
             return View(postlist);
         }
