@@ -2,6 +2,7 @@
 @{
 
     Layout = "User_Layout";
+    var thirdWord = ViewBag.ThongTin.ChaoMung as string;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +22,49 @@
 
     <div class="absolute inset-0 flex items-center justify-center">
         <div class="text-center text-white">
-            <h1 class="text-5xl font-bold ">@ViewBag.ThongTin.ChaoMung</h1>
+            <h1 class="text-5xl font-bold font-mono font-semibold">@ViewBag.ThongTin.ChaoMung</h1>
             <p class="text-lg mt-4">@ViewBag.ThongTin.MoTa</p>
             <!-- Add more content as needed -->
         </div>
     </div>
 </div>
 
+<div class="w-full h-full flex justify-center items-center  font-mono font-semibold">
+    <h1 id="typewriter" class="text-4xl font-bold"></h1>
+</div>
+
+<script>
+    let i = 0;
+    let j = 0;
+    let currentWord = "";
+    let isDeleting = false;
+
+    const words = @Html.Raw((thirdWord));
+
+    function type() {
+        currentWord = words[i];
+        if (isDeleting) {
+            document.getElementById("typewriter").textContent = currentWord.substring(0, j - 1);
+            j--;
+            if (j == 0) {
+                isDeleting = false;
+                i++;
+                if (i == words.length) {
+                    i = 0;
+                }
+            }
+        } else {
+            document.getElementById("typewriter").textContent = currentWord.substring(0, j + 1);
+            j++;
+            if (j == currentWord.length) {
+                isDeleting = true;
+            }
+        }
+        setTimeout(type, 100);
+    }
+
+    type();
+</script>
 
 <div class="container p-4">
     <div class="py-5 sm:text-left text-center">
