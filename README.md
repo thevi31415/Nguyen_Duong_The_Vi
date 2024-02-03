@@ -35,26 +35,26 @@ In the process of coding the project, I referenced and copied some interfaces an
 
 ## Blog
 - Home:
+  
+![A1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/fea437c1-cf1c-44f1-946b-f55136149adf)
 
-![H4](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/8f86ae63-a253-43a4-b260-32fff7661c47)
+![A2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/33d99359-42f5-46fe-9d5c-c7a7a3076ec1)
 
-![H5](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/eddf2afb-0151-40d7-b9ba-d0f3167bbd92)
 - Post display page:
 
-  ![H3](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/43a1506f-46aa-4372-94be-a3b0b5477356)
+![A3](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/bfabf657-07f7-4075-8f8b-eaa2abf91c85)
 
 - View article details::
 
-![H1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/9ddf8d81-77c7-41b8-ba37-225e4b7a9dfa)
+![A4](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/0e9b832f-5379-4c40-8148-2759626f1ddc)
 
-![H2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/50724c40-3e6c-4a03-82b4-ec840ace3ee4)
+![A5](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/daf89205-4302-4fd3-a33c-f3be198d1224)
 
 - Filter posts by Tags:
   
-![H6](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/9067027a-ab1d-4758-8817-0c7d2a989c05)
+![A6](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/b9765f1b-3b75-44ac-b3b1-3b4dc3f3db3e)
 
-![H7](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/8e3bc311-ee1c-4ddb-b5d8-5658bc675598)
-
+![A7](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/34c4ffb4-732d-4193-9755-4527fee920b9)
 
 ## Technologies Used
 - ASP.NET 6 MVC: The core framework for building web applications with Model-View-Controller architecture.
