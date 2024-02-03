@@ -1,4 +1,4 @@
-# Blog cá nhân
+# Personal blog
   ![MIT License](https://img.shields.io/github/license/dotnet/aspnetcore?color=%230b0&style=flat-square)
   ![GitHub repo size](https://img.shields.io/github/repo-size/thevi31415/Nguyen_Duong_The_Vi)
   ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/thevi31415/Nguyen_Duong_The_Vi)
@@ -19,7 +19,7 @@
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ## Introduction
-This is my personal website, built with ASP.NET Core 6. The interface is constructed using Bootstrap and Tailwind CSS
+This is my personal website, built with ASP.NET Core 6. The interface is constructed using Bootstrap and Tailwind CSS. For the back-end, I utilize the C# programming language and Microsoft SQL Server for the database, following the Code First approach in database design
 
 The website interface is primarily built using Tailwind CSS:
 <p align="center">
@@ -31,24 +31,25 @@ The website interface is primarily built using Tailwind CSS:
     </picture>
   </a>
 </p>
+In the process of coding the project, I referenced and copied some interfaces and templates available on the Internet, making modifications as needed.
 
 ## Blog
-- Trang chủ:
+- Home:
 
 ![H4](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/8f86ae63-a253-43a4-b260-32fff7661c47)
 
 ![H5](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/eddf2afb-0151-40d7-b9ba-d0f3167bbd92)
-- Bài đăng:
+- Post display page:
 
   ![H3](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/43a1506f-46aa-4372-94be-a3b0b5477356)
 
-- Xem bài đăng:
+- View article details::
 
 ![H1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/9ddf8d81-77c7-41b8-ba37-225e4b7a9dfa)
 
 ![H2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/50724c40-3e6c-4a03-82b4-ec840ace3ee4)
 
-- Lọc bài đăng theo Tag:
+- Filter posts by Tags:
   
 ![H6](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/9067027a-ab1d-4758-8817-0c7d2a989c05)
 
