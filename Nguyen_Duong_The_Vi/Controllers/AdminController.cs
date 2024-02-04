@@ -46,6 +46,21 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(obj);
          }
 
+        public IActionResult XoaTag(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var category = _db.categories.FirstOrDefault(c => c.IDCATEGORY== id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            _db.categories.Remove(category);
+            _db.SaveChanges();
+            return RedirectToAction("QuanLyTag");
+        }
         public IActionResult QuanLyBaiDang()
         {
             List<Post> listpost = _db.posts.ToList();
