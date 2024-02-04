@@ -42,7 +42,20 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(postlist);
         }
+        public IActionResult Contact()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
 
+            }
+            return View();
+        }
         public IActionResult Privacy()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
