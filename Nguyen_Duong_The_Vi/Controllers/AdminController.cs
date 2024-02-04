@@ -18,6 +18,33 @@ namespace Nguyen_Duong_The_Vi.Controllers
         {
             return View();
         }
+        public IActionResult QuanLyTag()
+        {
+            List<Category> listcategory = _db.categories.ToList();
+            return View(listcategory);
+        }
+        public IActionResult TaoTag()
+        {
+          
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult TaoTag(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                _db.categories.Add(obj);
+                _db.SaveChanges();
+
+               
+
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
+         }
 
         public IActionResult QuanLyBaiDang()
         {
