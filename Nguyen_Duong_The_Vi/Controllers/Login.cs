@@ -34,12 +34,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 }
 
             }
-
+            ViewBag.Title = "Đăng nhập";
             return View();
         }
         [HttpPost]
         public IActionResult Index(User user)
         {
+            ViewBag.Title = "Đăng nhập";
             string MaNguoiDung = HttpContext.Session.GetString("Username");
             string Code = HttpContext.Session.GetString("Code");
             string Role = HttpContext.Session.GetString("Role");

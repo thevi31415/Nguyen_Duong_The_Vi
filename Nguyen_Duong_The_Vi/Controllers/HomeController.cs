@@ -30,7 +30,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
-
+            ViewBag.Title = "TheVi";
 
             List<Post> postlist = _db.posts
     .Include(p => p.PostCategories)
@@ -69,6 +69,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
+            ViewBag.Title = "About";
             return View();
         }
         public IActionResult Blog(int? page, string searchString, string searchBy)
@@ -83,8 +84,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
-            
 
+            ViewBag.Title = "Blog";
 
             int pageSize = 6;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
@@ -151,6 +152,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
             }
 
+
             int pageSize = 6;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
 
@@ -181,6 +183,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 return NotFound();
             }
             ViewBag.NameTags = category.TITLE;
+            ViewBag.Title = "Tag " +  ViewBag.NameTags;
             PagedList<Post> lst = new PagedList<Post>(posts, pageNumber, pageSize);
 
             return View(lst);
@@ -197,7 +200,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 ViewBag.ThongTin = firstThongTin;
             }
-
+            ViewBag.Title = "Tags";
                        List<CategoryViewModel> categoryWithPostCountList = GetCategoryWithPostCount();
             ViewBag.categoryWithPostCountList = categoryWithPostCountList;
 
@@ -261,6 +264,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             ViewBag.PreviousPost = previousPost;
             ViewBag.NextPost = nextPost;
             ViewBag.PostCategories = postAndCategory;
+            ViewBag.Title = post.TITLE;
             return View(post);
         }
 
