@@ -1,0 +1,97 @@
+﻿@model List<User>
+
+@{
+
+    Layout = "Admin_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <!-- Include the Tailwind CSS CDN or link to your local file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+
+
+<div class="relative">
+    <div class="py-5 sm:text-left">
+        <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200"> Quản lý tài khoản</h1>
+    </div>
+
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <a asp-controller="Admin" asp-action="TaoBaiDang" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Tạo bài viết</a>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    User Code
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    User Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Number Of Visits
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last Visit
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        @user.Code
+                    </td>
+                    <td class="px-6 py-4">
+                        @user.UserName
+                    </td>
+                    <td class="px-6 py-4">
+                        @user.Email
+                    </td>
+                    <td class="px-6 py-4">
+                        @user.Role
+                    </td>
+                    <td class="px-6 py-4">
+                        @user.NumberOfVisits
+                    </td>
+                    <td class="px-6 py-4">
+                        @user.LastVisit?.ToString("dd/MM/yyyy")
+                    </td>
+                    <td class="px-6 py-4">
+                        <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@user.ID" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                        <a asp-controller="Admin" asp-action="ChinhSuaBaiDang" asp-route-id="@user.ID" class="font-medium text-yellow-600 dark:text-yellow-500 hover:underline mx-2">Edit</a>
+                        <a asp-controller="Admin" asp-action="XoaBaiDang" asp-route-id="@user.ID" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+  
+
+
+
+</div>
+
+
+
+</html>
+

@@ -13,6 +13,21 @@ namespace Nguyen_Duong_The_Vi.Controllers
         {
             _db = db;
         }
+        public IActionResult QuanLyTaiKhoan()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+           List<User> listuser = _db.users.ToList();
+            return View(listuser);
+        }
         [Authentication]
         public IActionResult Index()
         {

@@ -44,6 +44,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(postlist);
         }
+        
         public IActionResult Contact()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
