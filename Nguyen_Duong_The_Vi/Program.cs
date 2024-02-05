@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 
@@ -12,7 +14,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
     ));
 builder.Services.AddSession();
-
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 60;
+    config.IsDismissable = true;
+    config.Position = NotyfPosition.TopRight;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,7 +33,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseSession();
 app.UseStaticFiles();
-
+app.UseNotyf();
 app.UseRouting();
 
 app.UseAuthorization();

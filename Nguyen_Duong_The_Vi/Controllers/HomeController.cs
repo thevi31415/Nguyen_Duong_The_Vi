@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
@@ -12,10 +13,11 @@ namespace Nguyen_Duong_The_Vi.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _db;
-
-        public HomeController(ApplicationDbContext db)
+        private readonly INotyfService _notfy;
+        public HomeController(ApplicationDbContext db, INotyfService notfy)
         {
             _db = db;
+            _notfy = notfy;
         }
    
         public IActionResult Index()
@@ -74,7 +76,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 obj.NgayGui = DateTime.Now;
                 _db.contactalls.Add(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                _notfy.Success("Gửi thành công");
+              
             }
             Console.WriteLine("gjghk");
             return View();

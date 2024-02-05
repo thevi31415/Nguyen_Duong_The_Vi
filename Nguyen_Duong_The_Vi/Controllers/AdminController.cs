@@ -13,21 +13,24 @@ namespace Nguyen_Duong_The_Vi.Controllers
         {
             _db = db;
         }
-
+        [Authentication]
         public IActionResult Index()
         {
             return View();
         }
+        [Authentication]
         public IActionResult QuanLyTag()
         {
             List<Category> listcategory = _db.categories.ToList();
             return View(listcategory);
         }
+        [Authentication]
         public IActionResult TaoTag()
         {
           
             return View();
         }
+        [Authentication]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult TaoTag(Category obj)
@@ -45,7 +48,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(obj);
          }
-
+        [Authentication]
         public IActionResult XoaTag(int? id)
         {
             if (id == null || id == 0)
@@ -61,18 +64,20 @@ namespace Nguyen_Duong_The_Vi.Controllers
             _db.SaveChanges();
             return RedirectToAction("QuanLyTag");
         }
+        [Authentication]
         public IActionResult QuanLyBaiDang()
         {
             List<Post> listpost = _db.posts.ToList();
             return View(listpost);
         }
-
+        [Authentication]
         public IActionResult TaoBaiDang()
         {
             ViewBag.Categories = _db.categories.ToList();
             return View();
         }
         // POST
+        [Authentication]
         [HttpPost]
         [ValidateAntiForgeryToken]
     
@@ -107,7 +112,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
         }
 
 
-
+        [Authentication]
         public IActionResult ChinhSuaBaiDang(int? id)
         {
             if (id == null || id == 0)
@@ -122,7 +127,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(post);
         }
-
+        [Authentication]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult ChinhSuaBaiDang(Post obj)
@@ -139,6 +144,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(obj);
 
         }
+        [Authentication]
         public IActionResult XoaBaiDang(int? id)
         {
             if (id == null || id == 0)
