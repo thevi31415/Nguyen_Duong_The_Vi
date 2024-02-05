@@ -13,6 +13,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
         {
             _db = db;
         }
+        [Authentication]
         public IActionResult QuanLyTaiKhoan()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
@@ -28,6 +29,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
            List<User> listuser = _db.users.ToList();
             return View(listuser);
         }
+        [Authentication]
         public IActionResult TaoTaiKhoan()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
@@ -43,6 +45,36 @@ namespace Nguyen_Duong_The_Vi.Controllers
             
             return View();
         }
+        [Authentication]
+        public IActionResult XoaTaiKhoan(int? id)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var category = _db.users.FirstOrDefault(c => c.ID == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+
+
+            _db.users.Remove(category);
+            _db.SaveChanges();
+            return View("QuanLyTaiKhoan");
+        }
+        [Authentication]
         [HttpPost]
         public IActionResult TaoTaiKhoan(User user)
         {

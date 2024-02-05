@@ -74,9 +74,8 @@
                         @user.LastVisit?.ToString("dd/MM/yyyy")
                     </td>
                     <td class="px-6 py-4">
-                        <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@user.ID" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
-                        <a asp-controller="Admin" asp-action="ChinhSuaBaiDang" asp-route-id="@user.ID" class="font-medium text-yellow-600 dark:text-yellow-500 hover:underline mx-2">Edit</a>
-                        <a asp-controller="Admin" asp-action="XoaBaiDang" asp-route-id="@user.ID" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+
+                        <a asp-controller="Admin" asp-action="XoaTaiKhoan" asp-route-id="@user.ID" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                     </td>
                 </tr>
             }
