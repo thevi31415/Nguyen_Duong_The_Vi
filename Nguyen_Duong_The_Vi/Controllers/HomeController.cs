@@ -56,6 +56,34 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             return View();
         }
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Contact(Contact obj)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+          /*  if (ModelState.IsValid)
+            {
+                _db.contacts.Add(obj);
+                _db.SaveChanges();
+                Console.WriteLine("Them contact");
+                return RedirectToAction("Contact");
+            }*/
+            Console.WriteLine("Them contact");
+            TempData["success"] = "Tạo thành công !";
+            return View();
+
+        }
+
         public IActionResult Privacy()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();

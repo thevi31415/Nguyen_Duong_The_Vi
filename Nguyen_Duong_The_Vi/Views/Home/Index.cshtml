@@ -84,9 +84,12 @@
                         </svg>
                         <i class="fa-regular fa-star " style="color: #74C0FC;"></i>
                     </button>
-                <h2 class="text-ds-base pb-0">
-                        <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@post.ID" class="no-underline" style=" font-size: 22px"><strong>@post.TITLE </strong></a>
-                </h2>
+                    <h2 class="text-ds-base pb-0">
+                        <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@post.ID" class="no-underline hover:border-b hover:border-ds-base" style="font-size: 22px">
+                            <strong>@post.TITLE</strong>
+                        </a>
+                    </h2>
+
                 <p class="text-ds-sm font-semibold text-light-03 pt-1 pb-0">@post.PUBLISHED.ToString("MMM dd, yyyy")</p>
                 <div class="flex flex-wrap mt-3 mb-3">
                         @if (post.PostCategories != null)

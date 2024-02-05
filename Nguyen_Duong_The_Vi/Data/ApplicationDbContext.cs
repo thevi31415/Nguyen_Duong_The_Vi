@@ -16,5 +16,7 @@ namespace Nguyen_Duong_The_Vi.Data
         public DbSet<Category> categories { get; set; }
         public DbSet<PostCategory> postCategories { get; set; }
         public DbSet<User> users { get; set; }
+
+        public DbSet<Contact> contacts { get; set; }
     }
 }
