@@ -56,10 +56,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             return View();
         }
-        //POST
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Contact(Contact obj)
+        public IActionResult Contact(ContactAll obj)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
             if (firstThongTin == null)
@@ -71,17 +69,15 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
-          /*  if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _db.contacts.Add(obj);
+                obj.NgayGui = DateTime.Now;
+                _db.contactalls.Add(obj);
                 _db.SaveChanges();
-                Console.WriteLine("Them contact");
-                return RedirectToAction("Contact");
-            }*/
-            Console.WriteLine("Them contact");
-            TempData["success"] = "Tạo thành công !";
+                return RedirectToAction("Index");
+            }
+            Console.WriteLine("gjghk");
             return View();
-
         }
 
         public IActionResult Privacy()

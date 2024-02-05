@@ -18,5 +18,6 @@ namespace Nguyen_Duong_The_Vi.Data
         public DbSet<User> users { get; set; }
 
         public DbSet<Contact> contacts { get; set; }
+        public DbSet<ContactAll> contactalls { get; set; }
     }
 }
