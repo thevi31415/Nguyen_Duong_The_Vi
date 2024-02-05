@@ -19,7 +19,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             if (firstThongTin == null)
             {
                 return NotFound();
-            }
+            }        
             else
             {
                 ViewBag.ThongTin = firstThongTin;
@@ -27,6 +27,42 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
            List<User> listuser = _db.users.ToList();
             return View(listuser);
+        }
+        public IActionResult TaoTaiKhoan()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            
+            return View();
+        }
+        [HttpPost]
+        public IActionResult TaoTaiKhoan(User user)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            if (ModelState.IsValid)
+            {
+                _db.users.Add(user);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
         [Authentication]
         public IActionResult Index()
