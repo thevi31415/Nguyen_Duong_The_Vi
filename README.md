@@ -19,6 +19,8 @@
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ## Introduction
+- Link: http://nguyenduongthevi.somee.com/
+  
 This is my personal website, built with ASP.NET Core 6. The interface is constructed using Bootstrap and Tailwind CSS. For the back-end, I utilize the C# programming language and Microsoft SQL Server for the database, following the Code First approach in database design
 
 The website interface is primarily built using Tailwind CSS:
@@ -36,25 +38,25 @@ In the process of coding the project, I referenced and copied some interfaces an
 ## Blog
 - Home:
   
-![A1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/fea437c1-cf1c-44f1-946b-f55136149adf)
+![H1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/37f78887-c51a-454f-ae6b-a4f7997e37c4)
 
-![A2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/33d99359-42f5-46fe-9d5c-c7a7a3076ec1)
+![H2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/f03274ea-5605-4201-a4de-1334e0a4e1d6)
 
 - Post display page:
 
-![A3](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/bfabf657-07f7-4075-8f8b-eaa2abf91c85)
+![H3](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/5a0998a6-46a1-4f7d-a828-41dfc8cb6078)
 
 - View article details::
 
-![A4](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/0e9b832f-5379-4c40-8148-2759626f1ddc)
+![H4](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/acd650fa-141f-43cf-9c84-55357f312ba8)
 
-![A5](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/daf89205-4302-4fd3-a33c-f3be198d1224)
+![H5](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/c9a170e8-9dc2-4510-bf87-19eaf46e42f1)
 
 - Filter posts by Tags:
   
-![A6](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/b9765f1b-3b75-44ac-b3b1-3b4dc3f3db3e)
+![H6](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/2d68ad7f-d284-42ef-a2bd-c728b3b5ebc3)
 
-![A7](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/34c4ffb4-732d-4193-9755-4527fee920b9)
+![H7](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/7597e573-1c8d-4003-924d-69d02a594061)
 
 ## Technologies Used
 - ASP.NET 6 MVC: The core framework for building web applications with Model-View-Controller architecture.
