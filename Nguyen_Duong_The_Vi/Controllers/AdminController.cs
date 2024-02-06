@@ -245,7 +245,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return RedirectToAction("QuanLyBaiDang");
         }
 
-
+        [Authentication]
         public IActionResult QuanLyThongTin()
         {
            
@@ -258,7 +258,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             return View(thongtin);
         }
-
+        [Authentication]
         public IActionResult CapNhatThongTin(int? id)
         {
 
