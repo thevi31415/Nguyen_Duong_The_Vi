@@ -1,0 +1,113 @@
+﻿@model ThongTin
+@{
+
+    Layout = "Admin_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <!-- Include the Tailwind CSS CDN or link to your local file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+
+
+
+
+<h1 class="text-2xl font-bold mb-4">Cập nhật thông tin</h1>
+
+
+<div class="container mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">
+    <h1 class="text-4xl font-bold mb-4">Update Information</h1>
+
+    <form method="post" asp-action="CapNhatThongTin" asp-controller="Admin">
+        <input type="hidden" asp-for="ID" />
+
+        <div class="mb-4">
+            <label for="TieuDe" class="block text-gray-700 font-bold">Title:</label>
+            <input type="text" asp-for="TieuDe"    id="TieuDe" name="TieuDe" class="form-input mt-1 block w-full" value="@Model.TieuDe" />
+        </div>
+
+        <div class="mb-4">
+            <label for="ChaoMung" class="block text-gray-700 font-bold">Welcome Message:</label>
+            <input type="text" asp-for="ChaoMung" id="ChaoMung" name="ChaoMung" class="form-input mt-1 block w-full" value="@Model.ChaoMung" />
+        </div>
+
+        <div class="mb-4">
+            <label for="MoTa" class="block text-gray-700 font-bold">Description:</label>
+            <textarea id="MoTa" asp-for="MoTa" name="MoTa" class="form-textarea mt-1 block w-full">@Model.MoTa</textarea>
+        </div>
+
+        <div class="mb-4">
+            <label for="CongViec" class="block text-gray-700 font-bold">Job:</label>
+            <input type="text" asp-for="CongViec" id="CongViec" name="CongViec" class="form-input mt-1 block w-full" value="@Model.CongViec" />
+        </div>
+
+        <div class="mb-4">
+            <label for="TruongHoc" class="block text-gray-700 font-bold">School:</label>
+            <input type="text" asp-for="TruongHoc" id="TruongHoc" name="TruongHoc" class="form-input mt-1 block w-full" value="@Model.TruongHoc" />
+        </div>
+
+        <div class="mb-4">
+            <label for="MoTaAbout" class="block text-gray-700 font-bold">About Me Description:</label>
+            <textarea id="MoTaAbout" asp-for="MoTaAbout" name="MoTaAbout" class="form-textarea mt-1 block w-full">@Model.MoTaAbout</textarea>
+        </div>
+
+        <div class="mb-4">
+            <label for="Email" class="block text-gray-700 font-bold">Email:</label>
+            <input type="text" asp-for="Email" id="Email" name="Email" class="form-input mt-1 block w-full" value="@Model.Email" />
+        </div>
+
+        <div class="mb-4">
+            <label for="SDT" class="block text-gray-700 font-bold">Phone:</label>
+            <input type="text" asp-for="SDT" id="SDT" name="SDT" class="form-input mt-1 block w-full" value="@Model.SDT" />
+        </div>
+
+        <div class="mb-4">
+            <label for="Github" class="block text-gray-700 font-bold">Github:</label>
+            <input type="text" asp-for="Github" id="Github" name="Github" class="form-input mt-1 block w-full" value="@Model.Github" />
+        </div>
+
+        <div class="mb-4">
+            <label for="Facebook" class="block text-gray-700 font-bold">Facebook:</label>
+            <input type="text" asp-for="Facebook" id="Facebook" name="Facebook" class="form-input mt-1 block w-full" value="@Model.Facebook" />
+        </div>
+
+        <div class="mb-4">
+            <label for="Twitter" class="block text-gray-700 font-bold">Twitter:</label>
+            <input type="text" asp-for="Twitter" id="Twitter" name="Twitter" class="form-input mt-1 block w-full" value="@Model.Twitter" />
+        </div>
+
+        <div class="mb-4">
+            <label for="Discord" class="block text-gray-700 font-bold">Discord:</label>
+            <input type="text" asp-for="Discord" id="Discord" name="Discord" class="form-input mt-1 block w-full" value="@Model.Discord" />
+        </div>
+
+        <div class="mb-4">
+            <label for="Linkedin" class="block text-gray-700 font-bold">Linkedin:</label>
+            <input type="text" asp-for="Linkedin" id="Linkedin" name="Linkedin" class="form-input mt-1 block w-full" value="@Model.Linkedin" />
+        </div>
+
+        <div class="mb-4">
+            <label for="QuyenRiengTu" class="block text-gray-700 font-bold">Privacy Policy:</label>
+            <textarea id="QuyenRiengTu" asp-for="QuyenRiengTu" name="QuyenRiengTu" class="form-textarea mt-1 block w-full">@Model.QuyenRiengTu</textarea>
+        </div>
+
+        <div class="mb-4">
+            <label for="DieuKhoan" class="block text-gray-700 font-bold">Terms of Service:</label>
+            <textarea id="DieuKhoan" asp-for="DieuKhoan" name="DieuKhoan" class="form-textarea mt-1 block w-full">@Model.DieuKhoan</textarea>
+        </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Save Changes
+        </button>
+    </form>
+</div>
+
+
+
+</html>
+

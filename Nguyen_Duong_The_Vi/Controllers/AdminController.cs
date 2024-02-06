@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Nguyen_Duong_The_Vi.Controllers
 {
@@ -243,5 +244,53 @@ namespace Nguyen_Duong_The_Vi.Controllers
             _db.SaveChanges();
             return RedirectToAction("QuanLyBaiDang");
         }
+
+
+        public IActionResult QuanLyThongTin()
+        {
+           
+
+
+            var thongtin = _db.thongTins.FirstOrDefault();
+            if (thongtin == null)
+            {
+                return NotFound();
+            }
+            return View(thongtin);
+        }
+
+        public IActionResult CapNhatThongTin(int? id)
+        {
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var category = _db.thongTins.FirstOrDefault(c => c.ID == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return View(category);
+
+           
+        }
+        [HttpPost]
+        public IActionResult CapNhatThongTin(ThongTin obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.thongTins.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            TempData["success"] = "Update thành công !";
+            return View(obj);
+       
+
+
+        }
+
     }
 }

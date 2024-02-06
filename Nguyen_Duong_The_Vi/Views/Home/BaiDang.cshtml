@@ -17,7 +17,7 @@
                     
                     <div>
                         <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 font-segoe-ui underline-on-hover">
-                            @Model.TITLE
+                            <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@Model.ID"> @Model.TITLE </a>
                         </h1>
 
                         <p class="text-lg font-bold leading-6 text-gray-700 dark:text-gray-300 mt-6 mb-6">

@@ -1,0 +1,74 @@
+﻿@model ThongTin
+@{
+
+    Layout = "Admin_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <!-- Include the Tailwind CSS CDN or link to your local file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+
+
+
+
+<h1 class="text-2xl font-bold mb-4">Quản Lý Thông Tin</h1>
+
+
+<div class="container mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">
+    <h1 class="text-4xl font-bold mb-4">@Model.TieuDe</h1>
+
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <p class="text-gray-700">@Model.ChaoMung</p>
+            <p class="text-gray-700">@Model.MoTa</p>
+        </div>
+        <div>
+            <p class="text-gray-700"><span class="font-semibold">Công Việc:</span> @Model.CongViec</p>
+            <p class="text-gray-700"><span class="font-semibold">Trường Học:</span> @Model.TruongHoc</p>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">About Me</h2>
+        <p class="text-gray-700">@Model.MoTaAbout</p>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
+        <p class="text-gray-700"><span class="font-semibold">Email:</span> @Model.Email</p>
+        <p class="text-gray-700"><span class="font-semibold">Phone:</span> @Model.SDT</p>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Social Media</h2>
+        <ul class="list-none">
+            <li class="text-gray-700"><span class="font-semibold">Github:</span> @Model.Github</li>
+            <li class="text-gray-700"><span class="font-semibold">Facebook:</span> @Model.Facebook</li>
+            <li class="text-gray-700"><span class="font-semibold">Twitter:</span> @Model.Twitter</li>
+            <li class="text-gray-700"><span class="font-semibold">Discord:</span> @Model.Discord</li>
+            <li class="text-gray-700"><span class="font-semibold">Linkedin:</span> @Model.Linkedin</li>
+        </ul>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Privacy and Terms</h2>
+        <p class="text-gray-700"><span class="font-semibold">Privacy Policy:</span> @Model.QuyenRiengTu</p>
+        <p class="text-gray-700"><span class="font-semibold">Terms of Service:</span> @Model.DieuKhoan</p>
+    </div>
+    <div class="mt-8">
+        <a asp-controller="Admin" asp-action="CapNhatThongTin" asp-route-id ="@Model.ID"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Update Information
+        </a>
+    </div>
+</div>
+
+
+
+</html>
+
