@@ -84,10 +84,13 @@
             </header>
             <div class="flex justify-between items-center text-sm mb-4 sm:mb-6">
              <p class="pb-0">
-               
+
                 <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time datetime="2023-08-05T00:00:00.000Z">   @Model.PUBLISHED.ToString("MMMM dd, yyyy")</time>
+                    <time datetime="@Model.PUBLISHED.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")">
+                            @Model.PUBLISHED.ToString("MMMM dd, yyyy HH:mm:ss")
+                    </time>
                 </dd>
+
                 
             </p>
 
