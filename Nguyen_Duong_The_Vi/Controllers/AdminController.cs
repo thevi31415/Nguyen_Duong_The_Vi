@@ -68,12 +68,9 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 return NotFound();
             }
-
-
-
             _db.users.Remove(category);
             _db.SaveChanges();
-            return View("QuanLyTaiKhoan");
+          return  RedirectToAction("QuanLyTaiKhoan");
         }
         [Authentication]
         public IActionResult QuanLyBinhLuan()
@@ -317,8 +314,9 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View(category);
 
-           
+
         }
+        [Authentication]
         [HttpPost]
         public IActionResult CapNhatThongTin(ThongTin obj)
         {
