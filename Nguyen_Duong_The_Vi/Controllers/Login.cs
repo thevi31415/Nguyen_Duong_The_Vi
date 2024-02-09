@@ -60,6 +60,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                         users.LastVisit = DateTime.Now;
                         users.NumberOfVisits++;
                         Console.WriteLine(": " + users.Role);
+                        HttpContext.Session.SetString("ID", users.ID.ToString());
                         HttpContext.Session.SetString("Role", users.Role.ToString());
                         HttpContext.Session.SetString("Code", users.Code.ToString());
                         HttpContext.Session.SetString("Username", users.UserName.ToString());

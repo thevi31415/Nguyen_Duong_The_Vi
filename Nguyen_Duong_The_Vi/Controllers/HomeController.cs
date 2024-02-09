@@ -341,10 +341,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
                   .ToList();
 
               return Json(updatedComments);*/
+      
+            string username = HttpContext.Session.GetString("Username");
             var comment = new Comment();
             comment.IDBAIVIET = IDBAIVIET;
             comment.COMMENT = COMMENT;
             comment.NGAYBINHLUAN = DateTime.Now;
+            comment.TENUSER = username;
             _db.comments.Add(comment);
             _db.SaveChanges();
 
