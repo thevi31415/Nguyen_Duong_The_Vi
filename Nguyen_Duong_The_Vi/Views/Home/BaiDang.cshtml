@@ -178,21 +178,71 @@
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (20)</h2>
             </div>
-            <form class="mb-6">
+            <form class="mb-6" id="commentForm" method="post" asp-action="TaoBinhLuan">
+                <input type="hidden" name="IDBAIVIET" id="IDBAIVIET" value="@Model.ID" />
                 <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                     <label for="comment" class="sr-only">Your comment</label>
-                    <textarea id="comment" rows="6"
-                              class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
-                              placeholder="Write a comment..." required></textarea>
+                    <textarea id="comment" name="COMMENT" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Write a comment..." required></textarea>
                 </div>
-                <button type="submit"
-                        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-blue-600">
+                <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-blue-600">
                     Post comment
                 </button>
-
             </form>
-          
-            
+            <script>
+                document.getElementById("commentForm").addEventListener("submit", function (event) {
+                    event.preventDefault(); // Chặn sự kiện submit mặc định
+
+                    var form = event.target;
+                    var formData = new FormData(form);
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", form.action);
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            // Nếu yêu cầu thành công, cập nhật danh sách bình luận
+                            var commentList = document.getElementById("commentList");
+                            commentList.innerHTML = xhr.responseText;
+
+                            // Xóa nội dung trường comment sau khi thêm bình luận thành công
+                            document.getElementById("comment").value = "";
+                        } else {
+                            // Xử lý lỗi nếu có
+                        }
+                    };
+                    xhr.send(formData);
+                });
+            </script>
+
+            <div id="commentList">
+
+@foreach (var comment in   ViewBag.CommentList)
+{
+    <article class="p-6 mb-3 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+        <footer class="flex justify-between items-center mb-2">
+            <div class="flex items-center">
+                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                    <img class="mr-2 w-6 h-6 rounded-full"
+                         src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+                         alt="@comment.TENUSER">@comment.TENUSER
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    <time pubdate datetime="@comment.NGAYBINHLUAN?.ToString("yyyy-MM-dd")"
+                          title="@comment.NGAYBINHLUAN?.ToString("MMMM dd, yyyy")">@comment.NGAYBINHLUAN?.ToString("MMM. dd, yyyy")</time>
+                </p>
+            </div>
+            <button id="dropdownComment@comment.ID" data-dropdown-toggle="dropdownComment@comment.ID"
+                    class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    type="button">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                </svg>
+                <span class="sr-only">Comment settings</span>
+            </button>
+        </footer>
+        <p class="text-gray-500 dark:text-gray-400">@comment.COMMENT</p>
+    </article>
+}
+</div>
             <article class="p-6 mb-3 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                 <footer class="flex justify-between items-center mb-2">
                     <div class="flex items-center">
@@ -237,6 +287,17 @@
                 <p class="text-gray-500 dark:text-gray-400">The article covers the essentials, challenges, myths and stages the UX designer should consider while creating the design strategy.</p>
                 
             </article>
+
+
+
+
+
+
+
+
+
+
+
             <article class="p-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                 <footer class="flex justify-between items-center mb-2">
                     <div class="flex items-center">
@@ -331,7 +392,11 @@
         background: linear-gradient(to right, #62CFF4, #2C67F2); /* Gradient blue background */
     }
 </style>
-
+@section scripts {
+    <script>
+        document.getElementsByName("IDBAIVIET")[0].value = "@Model.ID";
+    </script>
+}
 <!-- Add this script to your existing scripts or in a separate JS file -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -348,4 +413,7 @@
 
         progressBarContainer.style.display = "block"; // Show the progress bar container
     });
+   
+     
+
 </script>

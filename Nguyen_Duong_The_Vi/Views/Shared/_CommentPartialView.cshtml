@@ -1,0 +1,9 @@
+﻿@model List<Comment>
+
+@foreach (var comment in Model)
+{
+    <div class="comment">
+        <p><strong>@comment.TENUSER:</strong> @comment.COMMENT</p>
+        <small>@comment.NGAYBINHLUAN</small>
+    </div>
+}

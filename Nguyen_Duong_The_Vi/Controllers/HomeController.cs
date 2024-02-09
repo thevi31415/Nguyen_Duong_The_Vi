@@ -4,7 +4,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
+
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+
 using X.PagedList;
 
 namespace Nguyen_Duong_The_Vi.Controllers
@@ -306,11 +309,52 @@ namespace Nguyen_Duong_The_Vi.Controllers
             ViewBag.NextPost = nextPost;
             ViewBag.PostCategories = postAndCategory;
             ViewBag.Title = post.TITLE;
+
+
+            var comment = _db.comments
+            .Where(c => c.IDBAIVIET == id).OrderByDescending(c => c.NGAYBINHLUAN)
+            .ToList();
+
+            ViewBag.CommentList= comment;
             return View(post);
         }
 
-      
 
+        [HttpPost]
+        public IActionResult TaoBinhLuan(int IDBAIVIET, string COMMENT)
+
+        {
+
+            /*  var comment = new Comment
+              {
+                  IDBAIVIET = IDBAIVIET,
+                  COMMENT = COMMENT,
+                  NGAYBINHLUAN = DateTime.Now
+              };
+
+              _db.comments.Add(comment);
+              _db.SaveChanges();
+
+              // Load lại danh sách bình luận và trả về JSON
+              var updatedComments = _db.comments
+                  .Where(c => c.IDBAIVIET == IDBAIVIET)
+                  .ToList();
+
+              return Json(updatedComments);*/
+            var comment = new Comment();
+            comment.IDBAIVIET = IDBAIVIET;
+            comment.COMMENT = COMMENT;
+            comment.NGAYBINHLUAN = DateTime.Now;
+            _db.comments.Add(comment);
+            _db.SaveChanges();
+
+            var updatedCommentList = _db.comments.Where(c => c.IDBAIVIET == IDBAIVIET)
+                                                 .OrderByDescending(c => c.NGAYBINHLUAN)
+                                                 .ToList();
+
+
+            return PartialView("_CommentListPartial", updatedCommentList);
+        }
 
 
 
