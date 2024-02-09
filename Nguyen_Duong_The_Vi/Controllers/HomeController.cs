@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 using X.PagedList;
-
+/*Copyright (c) 2024 Nguyen Duong The Vi*/
 namespace Nguyen_Duong_The_Vi.Controllers
 {
     public class HomeController : Controller

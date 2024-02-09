@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-
+/*Copyright (c) 2024 Nguyen Duong The Vi*/
 namespace Nguyen_Duong_The_Vi.Models
 {
     public class Authentication : ActionFilterAttribute

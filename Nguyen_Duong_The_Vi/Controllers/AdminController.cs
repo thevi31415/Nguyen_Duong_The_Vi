@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
 using System.Reflection.Metadata.Ecma335;
-
+/*Copyright (c) 2024 Nguyen Duong The Vi*/
 namespace Nguyen_Duong_The_Vi.Controllers
 {
     public class AdminController : Controller

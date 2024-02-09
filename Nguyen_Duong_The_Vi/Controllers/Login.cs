@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
-
+/*Copyright (c) 2024 Nguyen Duong The Vi*/
 namespace Nguyen_Duong_The_Vi.Controllers
 {
     public class Login : Controller
