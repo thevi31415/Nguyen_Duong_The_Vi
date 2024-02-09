@@ -250,6 +250,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             return View();
         }
+      
 
         public IActionResult BaiDang(int? id)
         {
@@ -319,28 +320,11 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(post);
         }
 
-
+        [Authentication]
         [HttpPost]
         public IActionResult TaoBinhLuan(int IDBAIVIET, string COMMENT)
 
         {
-
-            /*  var comment = new Comment
-              {
-                  IDBAIVIET = IDBAIVIET,
-                  COMMENT = COMMENT,
-                  NGAYBINHLUAN = DateTime.Now
-              };
-
-              _db.comments.Add(comment);
-              _db.SaveChanges();
-
-              // Load lại danh sách bình luận và trả về JSON
-              var updatedComments = _db.comments
-                  .Where(c => c.IDBAIVIET == IDBAIVIET)
-                  .ToList();
-
-              return Json(updatedComments);*/
       
             string username = HttpContext.Session.GetString("Username");
             var comment = new Comment();

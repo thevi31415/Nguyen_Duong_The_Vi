@@ -76,6 +76,49 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View("QuanLyTaiKhoan");
         }
         [Authentication]
+        public IActionResult QuanLyBinhLuan()
+
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+            }
+            List<Comment> listcommern = _db.comments.OrderByDescending(c => c.NGAYBINHLUAN).ToList();
+
+            return View(listcommern);
+        }
+        [Authentication]
+        public IActionResult XoaBinhLuan(int? id)
+
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+            }
+
+
+            var category = _db.comments.FirstOrDefault(c => c.ID == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+
+            _db.comments.Remove(category);
+            _db.SaveChanges();
+            return RedirectToAction("QuanLyBinhLuan");
+        }
+        [Authentication]
         [HttpPost]
         public IActionResult TaoTaiKhoan(User user)
         {
