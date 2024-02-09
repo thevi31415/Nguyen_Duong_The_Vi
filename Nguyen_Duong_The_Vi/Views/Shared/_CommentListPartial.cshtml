@@ -5,14 +5,27 @@
     <article class="p-6 mb-3 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
         <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
+                @{
+                    char firstChar = char.ToUpper(@comment.TENUSER[0]);
+                    string imgSrc;
+
+                    if (firstChar >= 'A' && firstChar <= 'Z')
+                    {
+                        int imgIndex = firstChar - 'A' + 1;
+                        imgSrc = $"{imgIndex:D3}.png";
+                    }
+                    else
+                    {
+                        imgSrc = "default.png";
+                    }
+                }
                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                    <img class="mr-2 w-6 h-6 rounded-full"
-                         src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-                         alt="@comment.TENUSER">@comment.TENUSER
+                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 60px; height: 60px;">@comment.TENUSER
                 </p>
+
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                    <time pubdate datetime="@comment.NGAYBINHLUAN?.ToString("yyyy-MM-dd")"
-                          title="@comment.NGAYBINHLUAN?.ToString("MMMM dd, yyyy")">@comment.NGAYBINHLUAN?.ToString("MMM. dd, yyyy")</time>
+                    <time pubdate datetime="@comment.NGAYBINHLUAN?.ToString("yyyy-MM-dd HH:mm:ss")"
+                          title="@comment.NGAYBINHLUAN?.ToString("MMMM dd, yyyy HH:mm:ss")">@comment.NGAYBINHLUAN?.ToString("MMM. dd, yyyy HH:mm:ss")</time>
                 </p>
             </div>
             <button id="dropdownComment@comment.ID" data-dropdown-toggle="dropdownComment@comment.ID"

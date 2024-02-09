@@ -14,7 +14,7 @@
         <div class="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700 ">
             <header class="pt-8  xl:pb-6">
                 <div class="space-y-1 text-left">
-                    
+
                     <div>
                         <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14 font-segoe-ui underline-on-hover">
                             <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@Model.ID"> @Model.TITLE </a>
@@ -23,10 +23,10 @@
                         <p class="text-lg font-bold leading-6 text-gray-700 dark:text-gray-300 mt-6 mb-6">
                             By <span class="text-red-500 hover:bg-red-500 hover:text-white">@Model.AUTHOR</span>
                         </p>
-           
+
                         <!-- Categories -->
                         <div class="flex  space-x-2">
-                            
+
                             @if (@ViewBag.PostCategories != null)
                             {
                                 foreach (var postCategory in ViewBag.PostCategories.Categories)
@@ -83,7 +83,7 @@
                 </div>
             </header>
             <div class="flex justify-between items-center text-sm mb-4 sm:mb-6">
-             <p class="pb-0">
+                <p class="pb-0">
 
                 <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                     <time datetime="@Model.PUBLISHED.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")">
@@ -91,8 +91,8 @@
                     </time>
                 </dd>
 
-                
-            </p>
+
+                </p>
 
                 <p class="ml-auto pb-0">
                     <a style="font-size: 35px" title="Share on X (formerly Twitter)" aria-label="Share on X (formerly Twitter)" class="text-current leading-none transition-colors duration-200 ease-in-out hover:text-twitter" target="_blank" rel="noreferrer noopener nofollow" href="https://twitter.com/intent/tweet?text=@Model.TITLE: @absoluteUrl"><i aria-hidden="true" class="fab fa-twitter-square text-5xl-rel sm:text-3xl-rel"></i></a>
@@ -100,12 +100,12 @@
                     <a style="font-size: 35px" title="Share on Telegram" aria-label="Share on Telegram" class="text-current leading-none transition-colors duration-200 ease-in-out hover:text-telegram" target="_blank" rel="noreferrer noopener nofollow" href="https://t.me/share/url?url=@absoluteUrl&amp;text=@Model.TITLE"><i aria-hidden="true" class="fab fa-telegram text-5xl-rel sm:text-3xl-rel ml-3 sm:ml-1"></i></a>
                     <a style="font-size: 35px" title="Share on LinkedIn" aria-label="Share on LinkedIn" class="text-current leading-none transition-colors duration-200 ease-in-out hover:text-linkedin" target="_blank" rel="noreferrer noopener nofollow" href="https://www.linkedin.com/sharing/share-offsite/?url=@absoluteUrl"><i aria-hidden="true" class="fab fa-linkedin text-5xl-rel sm:text-3xl-rel ml-3 sm:ml-1"></i></a>
                 </p>
-                
+
 
             </div>
         </div>
-            
-              @Html.Raw(@Model.CONTEXT);
+
+        @Html.Raw(@Model.CONTEXT);
         <div class="flex items-center justify-center">
             <img src="~/images/thanks.gif" alt="logo" class="w-40">
         </div>
@@ -126,11 +126,11 @@
             </button>
         </div>
 
-       
+
     </article>
     <div class="grid grid-cols-1 gap-4 py-4 mx-auto max-w-7xl md:grid-cols-2 md:py-12">
-         
-        @if (@ViewBag.NextPost!= null)
+
+        @if (@ViewBag.NextPost != null)
         {
             <a asp-controller="Home" asp-action="BaiDang" asp-route-id="@ViewBag.NextPost.ID" class="hover:text-blue-500 hover:bg-gray-50 rounded-full overflow-hidden flex gap-x-4 md:gap-x-6 items-center w-full md:min-w-80 md:w-fit md:max-w-md px-4 md:px-5 py-6 border-2 border-transparent text-base leading-base text-link dark:text-link-dark rounded-lg group focus:text-link dark:focus:text-link-dark focus:bg-highlight focus:border-link dark:focus:bg-highlight-dark dark:focus:border-link-dark focus:border-opacity-100 focus:border-2 focus:ring-1 focus:ring-offset-4 focus:ring-blue-40 active:ring-0 active:ring-offset-0 hover:bg-gray-5 dark:hover:bg-gray-80">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="duration-100 ease-in transition rotate-90 rtl:-rotate-90 inline text-tertiary dark:text-tertiary-dark group-focus:text-link dark:group-focus:text-link-dark" style="min-width: 20px; min-height: 20px;">
@@ -215,37 +215,56 @@
                 });
             </script>
 
- <div id="commentList">
+            <div id="commentList">
 
-@foreach (var comment in   ViewBag.CommentList)
-{
-    <article class="p-6 mb-3 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-        <footer class="flex justify-between items-center mb-2">
-            <div class="flex items-center">
-                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                    <img class="mr-2 w-6 h-6 rounded-full"
-                         src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-                         alt="@comment.TENUSER">@comment.TENUSER
-                </p>
+                @foreach (var comment in ViewBag.CommentList)
+                {
+                    <article class="p-6 mb-3 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+                        <footer class="flex justify-between items-center mb-2">
+                            <div class="flex items-center">
+                               @*  <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                                    <img class="mr-2 w-6 h-6 rounded-full"
+                                         src="~/images/{{ '@comment.TENUSER'[0].upper() | ord | subtract: 64 | string | prepend: '00' }}.png"
+                                         alt="@comment.TENUSER">@comment.TENUSER
+                                </p>  *@
+                                @{
+                                    char firstChar = char.ToUpper(@comment.TENUSER[0]);
+                                    string imgSrc;
+
+                                    if (firstChar >= 'A' && firstChar <= 'Z')
+                                    {
+                                        int imgIndex = firstChar - 'A' + 1;
+                                        imgSrc = $"{imgIndex:D3}.png";
+                                    }
+                                    else
+                                    {
+                                        imgSrc = "default.png";
+                                    }
+                                }
+                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 60px; height: 60px;">@comment.TENUSER
+                                </p>
+
+
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
                                     <time pubdate datetime="@comment.NGAYBINHLUAN?.ToString("yyyy-MM-dd HH:mm:ss")"
                                           title="@comment.NGAYBINHLUAN?.ToString("MMMM dd, yyyy HH:mm:ss")">@comment.NGAYBINHLUAN?.ToString("MMM. dd, yyyy HH:mm:ss")</time>
                                 </p>
+                            </div>
+                            <button id="dropdownComment@comment.ID" data-dropdown-toggle="dropdownComment@comment.ID"
+                                    class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                    type="button">
+                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                                </svg>
+                                <span class="sr-only">Comment settings</span>
+                            </button>
+                        </footer>
+                        <p class="text-gray-500 dark:text-gray-400">@comment.COMMENT</p>
+                    </article>
+                }
             </div>
-            <button id="dropdownComment@comment.ID" data-dropdown-toggle="dropdownComment@comment.ID"
-                    class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    type="button">
-                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                    <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                </svg>
-                <span class="sr-only">Comment settings</span>
-            </button>
-        </footer>
-        <p class="text-gray-500 dark:text-gray-400">@comment.COMMENT</p>
-    </article>
-}
-</div>
-           
+
         </div>
     </section>
 </section>
@@ -279,7 +298,7 @@
         height: 5px;
         background-color: transparent;
         z-index: 50;
-        margin-bottom:5px;
+        margin-bottom: 5px;
         display: none;
     }
 
@@ -310,7 +329,7 @@
 
         progressBarContainer.style.display = "block"; // Show the progress bar container
     });
-   
-     
+
+
 
 </script>
