@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nguyen_Duong_The_Vi.Data;
 
@@ -11,9 +12,10 @@ using Nguyen_Duong_The_Vi.Data;
 namespace Nguyen_Duong_The_Vi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240209050936_init222")]
+    partial class init222
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,37 +41,6 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.HasKey("IDCATEGORY");
 
                     b.ToTable("categories");
-                });
-
-            modelBuilder.Entity("Nguyen_Duong_The_Vi.Models.Comment", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("COMMENT")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("IDBAIVIET")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IDUSER")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LIKE")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("NGAYBINHLUAN")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TENUSER")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("comments");
                 });
 
             modelBuilder.Entity("Nguyen_Duong_The_Vi.Models.Contact", b =>
