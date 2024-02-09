@@ -51,6 +51,9 @@ In the process of coding the project, I referenced and copied some interfaces an
 ![H4](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/acd650fa-141f-43cf-9c84-55357f312ba8)
 
 ![H5](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/c9a170e8-9dc2-4510-bf87-19eaf46e42f1)
+- Comment below the article:
+  
+ ![Comment](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/522b8794-3f03-4948-b734-f196a8ea9de9)
 
 - Filter posts by Tags:
   
