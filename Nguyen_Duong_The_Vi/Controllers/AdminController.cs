@@ -211,7 +211,15 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 obj.LIKE = 0;
                 obj.VIEW = 0;
-                obj.PUBLISHED = DateTime.Now;
+                // Chọn múi giờ của Việt Nam
+                TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+                // Lấy thời gian hiện tại theo múi giờ của Việt Nam
+                DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
+
+                // Gán giá trị cho NGAYBINHLUAN
+
+                obj.PUBLISHED = nowInVietnam;
                 _db.posts.Add(obj);
                 _db.SaveChanges();
 
