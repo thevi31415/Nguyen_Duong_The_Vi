@@ -330,7 +330,15 @@ namespace Nguyen_Duong_The_Vi.Controllers
             var comment = new Comment();
             comment.IDBAIVIET = IDBAIVIET;
             comment.COMMENT = COMMENT;
-            comment.NGAYBINHLUAN = DateTime.Now;
+            // Chọn múi giờ của Việt Nam
+            TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+            // Lấy thời gian hiện tại theo múi giờ của Việt Nam
+            DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
+
+            // Gán giá trị cho NGAYBINHLUAN
+            comment.NGAYBINHLUAN = nowInVietnam;
+
             comment.TENUSER = username;
             _db.comments.Add(comment);
             _db.SaveChanges();
