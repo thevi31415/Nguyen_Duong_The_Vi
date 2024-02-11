@@ -128,7 +128,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                     _db.users.Update(existingUser);
                     _db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("User", "Home", new { id = int.Parse(ID) });
                 }
                 else
                 {

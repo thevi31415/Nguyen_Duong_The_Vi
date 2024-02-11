@@ -31,6 +31,84 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(listuser);
         }
         [Authentication]
+        public IActionResult PhanQuyen()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            List<User> listuser = _db.users.ToList();
+            return View(listuser);
+        }
+        [Authentication]
+        public IActionResult ChinhSuaPhanQuyen(int? id)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+
+            var user = _db.users.FirstOrDefault(c => c.ID == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(user);
+        }
+        [Authentication]
+        [HttpPost]
+        public IActionResult ChinhSuaPhanQuyen(User user)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+
+            var userex = _db.users.FirstOrDefault(c => c.ID == user.ID);
+            if (userex == null)
+            {
+                return NotFound();
+            }
+            userex.Status = user.Status;
+            userex.Role = user.Role;
+
+            _db.users.Update(userex);
+            _db.SaveChanges();
+
+            var comments = _db.comments.Where(c => c.IDUSER == userex.ID).ToList();
+
+            foreach (var comment in comments)
+            {
+                comment.XACMINH = userex.Status;
+                comment.Role = userex.Role;
+            }
+
+            _db.SaveChanges();
+
+
+            return RedirectToAction("PhanQuyen");
+        }
+        [Authentication]
         public IActionResult TaoTaiKhoan()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
