@@ -12,7 +12,7 @@ using Nguyen_Duong_The_Vi.Data;
 namespace Nguyen_Duong_The_Vi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240211101335_init")]
+    [Migration("20240211160426_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -279,6 +279,9 @@ namespace Nguyen_Duong_The_Vi.Migrations
 
                     b.Property<string>("Linkedln")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NumberOfComment")
+                        .HasColumnType("int");
 
                     b.Property<int?>("NumberOfPosts")
                         .HasColumnType("int");

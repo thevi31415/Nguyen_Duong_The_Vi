@@ -144,6 +144,7 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     Point = table.Column<int>(type: "int", nullable: true),
                     NumberOfVisits = table.Column<int>(type: "int", nullable: true),
                     NumberOfPosts = table.Column<int>(type: "int", nullable: true),
+                    NumberOfComment = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: true),
                     LastVisit = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },

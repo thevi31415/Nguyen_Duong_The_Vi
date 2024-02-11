@@ -23,6 +23,7 @@ namespace Nguyen_Duong_The_Vi.Models
         public int? Point {  get; set; }
         public int? NumberOfVisits { get; set; }
         public int? NumberOfPosts { get; set; }
+        public int? NumberOfComment { get; set; }
         public int? Status { get; set; }
         public DateTime? LastVisit { get; set; }
 
