@@ -131,6 +131,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             if (ModelState.IsValid)
             {
+                user.NumberOfPosts = 0;
+                user.NumberOfVisits = 0;
                 _db.users.Add(user);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
