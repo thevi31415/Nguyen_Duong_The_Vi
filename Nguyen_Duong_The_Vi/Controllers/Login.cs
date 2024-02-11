@@ -73,6 +73,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                         HttpContext.Session.SetString("Code", users.Code.ToString());
                         HttpContext.Session.SetString("Username", users.UserName.ToString());
                         HttpContext.Session.SetString("Password", users.Password.ToString());
+                        HttpContext.Session.SetString("Status", users.Status.ToString());
                         _db.SaveChanges();
                         if (HttpContext.Session.GetString("Role") == "Admin")
                         {

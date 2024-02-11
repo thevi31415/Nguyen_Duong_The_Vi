@@ -70,6 +70,9 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.Property<string>("TENUSER")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("XACMINH")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("comments");

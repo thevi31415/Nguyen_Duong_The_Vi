@@ -12,7 +12,7 @@ using Nguyen_Duong_The_Vi.Data;
 namespace Nguyen_Duong_The_Vi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240211080603_init")]
+    [Migration("20240211101335_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,9 @@ namespace Nguyen_Duong_The_Vi.Migrations
 
                     b.Property<string>("TENUSER")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("XACMINH")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 

@@ -267,9 +267,34 @@
                                         imgSrc = "default.png";
                                     }
                                 }
-                                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 50px; height: 50px;"><a asp-action="User" asp-controller="Home" asp-route-id="@comment.IDUSER">@comment.TENUSER</a>
+                                <p class="inline-flex items-center text-sm text-gray-900 dark:text-white font-semibold">
+                                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 50px; height: 50px;"><a asp-action="User" asp-controller="Home" asp-route-id="@comment.IDUSER">
+
+                                        @if(comment.Role == "Admin")
+                                        {
+                                            <span class="text-red-500 font-bold" style="margin-right: 5px">@comment.TENUSER</span>
+                                        }
+                                        else
+                                        {
+                                          
+                                            <span style="margin-right: 5px">@comment.TENUSER</span>
+                                        }
+
+
+                                     
+                                        
+                                    
+                                    
+                                    
+                                    </a>
+                                     
+                                
                                 </p>
+                                @if(comment.XACMINH == 1)
+                                {
+                                    <svg style="margin-right: 5px; margin-right: 5px" class="icon" class="hover:scale-130 transition-transform" fill="#0A5DE9" width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#0A5DE9" transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)"><title> Tài khoản đã xác minh</title><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"><path d="M19.965 8.521C19.988 8.347 20 8.173 20 8c0-2.379-2.143-4.288-4.521-3.965C14.786 2.802 13.466 2 12 2s-2.786.802-3.479 2.035C6.138 3.712 4 5.621 4 8c0 .173.012.347.035.521C2.802 9.215 2 10.535 2 12s.802 2.785 2.035 3.479A3.976 3.976 0 0 0 4 16c0 2.379 2.138 4.283 4.521 3.965C9.214 21.198 10.534 22 12 22s2.786-.802 3.479-2.035C17.857 20.283 20 18.379 20 16c0-.173-.012-.347-.035-.521C21.198 14.785 22 13.465 22 12s-.802-2.785-2.035-3.479zm-9.01 7.895-3.667-3.714 1.424-1.404 2.257 2.286 4.327-4.294 1.408 1.42-5.749 5.706z"></path></g></svg>
+
+                                }
                                 @if (comment.Role == "Admin")
                                 {
                                     <p style="">

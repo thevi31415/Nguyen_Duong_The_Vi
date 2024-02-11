@@ -2,6 +2,8 @@
 @{
 
     Layout = "User_Layout";
+    var MaNguoiDung = Context.Session.GetString("Username");
+    var Id = Context.Session.GetString("ID");
 }
 <!DOCTYPE html>
 <html>
@@ -113,8 +115,38 @@
 
 
                                     <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Chỉnh sửa</a>
-                                        <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Sao chép</a>
+                                        @if(MaNguoiDung!=null && Id != null)
+                                        {
+                                            if (Model.UserName == MaNguoiDung && Model.ID == int.Parse(Id))
+                                            {
+                                                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Chỉnh sửa</a>
+                                            }
+                                        }
+
+
+                                        <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded" onclick="copyLink()">Sao chép</a>
+
+                                        <script>
+                                            function copyLink() {
+                                                // Lấy đường link hiện tại
+                                                var currentLink = window.location.href;
+
+                                                // Tạo một phần tử input tạm thời để sao chép đường link
+                                                var tempInput = document.createElement('input');
+                                                tempInput.value = currentLink;
+                                                document.body.appendChild(tempInput);
+
+                                                // Sao chép đường link từ phần tử input tạm thời
+                                                tempInput.select();
+                                                document.execCommand('copy');
+
+                                                // Xóa phần tử input tạm thời
+                                                document.body.removeChild(tempInput);
+
+                                                // Hiển thị thông báo đã sao chép thành công
+                                                alert('Đường link đã được sao chép thành công!');
+                                            }
+                                        </script>
                                     </div>
                                 </div>
                             </div>

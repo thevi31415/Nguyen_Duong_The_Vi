@@ -31,6 +31,7 @@ namespace Nguyen_Duong_The_Vi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IDBAIVIET = table.Column<int>(type: "int", nullable: true),
                     IDUSER = table.Column<int>(type: "int", nullable: true),
+                    XACMINH = table.Column<int>(type: "int", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LIKE = table.Column<int>(type: "int", nullable: true),
                     TENUSER = table.Column<string>(type: "nvarchar(max)", nullable: true),

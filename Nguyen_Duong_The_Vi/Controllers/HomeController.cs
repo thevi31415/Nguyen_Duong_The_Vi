@@ -356,6 +356,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             string code = HttpContext.Session.GetString("Code");
             string role = HttpContext.Session.GetString("Role");
             string id = HttpContext.Session.GetString("ID");
+            string status = HttpContext.Session.GetString("Status");
             if (username != null && code!=null && role!=null)
             {
                 Console.WriteLine("TaoBinhTuan");
@@ -364,6 +365,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 comment.COMMENT = COMMENT;
                 comment.Role = role;
                 comment.IDUSER = int.Parse(id);
+                comment.XACMINH = int.Parse(status);
                 // Chọn múi giờ của Việt Nam
                 TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
 
