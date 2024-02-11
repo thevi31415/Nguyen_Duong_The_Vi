@@ -22,7 +22,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
             string MaNguoiDung = HttpContext.Session.GetString("Username");
             string Code = HttpContext.Session.GetString("Code");
             string Role = HttpContext.Session.GetString("Role");
-            if (MaNguoiDung == null || Code == null || Role == null)
+            string ID = HttpContext.Session.GetString("ID");
+            if (MaNguoiDung == null || Code == null || Role == null || ID == null)
             {
                 return View("Index");
             }
@@ -36,7 +37,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("User", "Home", new { id = int.Parse(ID) });
                     }
                   
 

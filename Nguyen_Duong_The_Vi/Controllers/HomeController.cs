@@ -43,6 +43,23 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 return NotFound();
             }
+            string ID = HttpContext.Session.GetString("ID");
+            if (ID == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                if (id != int.Parse(ID))
+                {
+                    return NotFound();
+                }
+            }
+       
+
+
+
+
             var user = _db.users.FirstOrDefault(c => c.ID == id);
             if (user == null)
             {
@@ -68,6 +85,27 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 ViewBag.ThongTin = firstThongTin;
 
+            }
+            string ID = HttpContext.Session.GetString("ID");
+            if (ID == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var existingUser = _db.users.FirstOrDefault(u => u.ID == user.ID);
+                if(existingUser == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    if (existingUser.ID != int.Parse(ID))
+                    {
+                        return NotFound();
+                    }
+                }
+             
             }
             Console.WriteLine("Update tài khoảnxxx");
             if (ModelState.IsValid)
