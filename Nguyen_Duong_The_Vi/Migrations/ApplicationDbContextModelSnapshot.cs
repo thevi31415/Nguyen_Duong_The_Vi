@@ -64,6 +64,9 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.Property<DateTime?>("NGAYBINHLUAN")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TENUSER")
                         .HasColumnType("nvarchar(max)");
 

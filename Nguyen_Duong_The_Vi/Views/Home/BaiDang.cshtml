@@ -265,14 +265,21 @@
                                     }
                                 }
                                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 60px; height: 60px;">@comment.TENUSER
+                                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 50px; height: 50px;">@comment.TENUSER
                                 </p>
+                                @if (comment.Role == "Admin")
+                                {
+                                    <p style="">
+                                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">Admin</span>
 
+                                    </p>
+                                }
 
                                 <p class="text-sm text-gray-600 dark:text-gray-400">
                                     <time pubdate datetime="@comment.NGAYBINHLUAN?.ToString("yyyy-MM-dd HH:mm:ss")"
                                           title="@comment.NGAYBINHLUAN?.ToString("MMMM dd, yyyy HH:mm:ss")">@comment.NGAYBINHLUAN?.ToString("MMM. dd, yyyy HH:mm:ss")</time>
                                 </p>
+                               
                             </div>
                             <button id="dropdownComment@comment.ID" data-dropdown-toggle="dropdownComment@comment.ID"
                                     class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

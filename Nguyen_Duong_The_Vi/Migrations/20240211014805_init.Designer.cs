@@ -12,8 +12,8 @@ using Nguyen_Duong_The_Vi.Data;
 namespace Nguyen_Duong_The_Vi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240202114434_init5")]
-    partial class init5
+    [Migration("20240211014805_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,87 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.HasKey("IDCATEGORY");
 
                     b.ToTable("categories");
+                });
+
+            modelBuilder.Entity("Nguyen_Duong_The_Vi.Models.Comment", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("COMMENT")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IDBAIVIET")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IDUSER")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LIKE")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("NGAYBINHLUAN")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TENUSER")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("comments");
+                });
+
+            modelBuilder.Entity("Nguyen_Duong_The_Vi.Models.Contact", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("NgayGui")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TieuDe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("contacts");
+                });
+
+            modelBuilder.Entity("Nguyen_Duong_The_Vi.Models.ContactAll", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("NgayGui")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NoiDung")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TieuDe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("contactalls");
                 });
 
             modelBuilder.Entity("Nguyen_Duong_The_Vi.Models.Post", b =>

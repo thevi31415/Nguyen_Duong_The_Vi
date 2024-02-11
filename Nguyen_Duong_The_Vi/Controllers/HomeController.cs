@@ -336,6 +336,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 var comment = new Comment();
                 comment.IDBAIVIET = IDBAIVIET;
                 comment.COMMENT = COMMENT;
+                comment.Role = role;
                 // Chọn múi giờ của Việt Nam
                 TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
 
