@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Nguyen_Duong_The_Vi.Data;
 using Nguyen_Duong_The_Vi.Models;
+using Microsoft.AspNetCore.Http;
 /*Copyright (c) 2024 Nguyen Duong The Vi*/
 namespace Nguyen_Duong_The_Vi.Controllers
 {
@@ -74,6 +75,10 @@ namespace Nguyen_Duong_The_Vi.Controllers
                         HttpContext.Session.SetString("Username", users.UserName.ToString());
                         HttpContext.Session.SetString("Password", users.Password.ToString());
                         HttpContext.Session.SetString("Status", users.Status.ToString());
+                   /*     HttpContext.Session.SetInt32("NumberOfPosts", (int)users.NumberOfPosts);*/
+
+
+
                         _db.SaveChanges();
                         if (HttpContext.Session.GetString("Role") == "Admin")
                         {

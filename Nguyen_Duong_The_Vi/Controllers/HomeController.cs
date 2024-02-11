@@ -22,7 +22,86 @@ namespace Nguyen_Duong_The_Vi.Controllers
             _db = db;
             _notfy = notfy;
         }
-   
+
+
+
+        public IActionResult ChinhSuaTaiKhoan(int? id)
+        {
+          
+
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var user = _db.users.FirstOrDefault(c => c.ID == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Title = "TheVi";
+            return View(user);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult ChinhSuaTaiKhoan(User user)
+        {
+
+
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            Console.WriteLine("Update tài khoảnxxx");
+            if (ModelState.IsValid)
+            {
+                // You may need to fetch the existing user from the database and update only the properties you want to update
+                var existingUser = _db.users.FirstOrDefault(u => u.ID == user.ID);
+                Console.WriteLine("User: " + existingUser.UserName);
+                if (existingUser != null)
+                {
+                    existingUser.Job = user.Job;
+                    existingUser.Address = user.Address;
+                    existingUser.Organization = user.Organization;
+                    existingUser.Linkedln = user.Linkedln;
+                    existingUser.Youtube = user.Youtube;
+                    existingUser.Facebook = user.Facebook;
+                    existingUser.Instagram = user.Instagram;
+                    existingUser.Twitter = user.Twitter;
+                    existingUser.About = user.About;
+                    Console.WriteLine("User: " + existingUser.UserName);
+                    _db.users.Update(existingUser);
+                    _db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+                
+               
+
+            }
+            return View(user);
+        }
         public IActionResult Index()
         {
             Console.WriteLine("Index Home");

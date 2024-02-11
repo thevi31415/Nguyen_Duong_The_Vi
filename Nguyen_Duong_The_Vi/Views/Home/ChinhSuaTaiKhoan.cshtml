@@ -1,0 +1,118 @@
+﻿@model User
+@{
+
+    Layout = "User_Layout";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nguyen Duong The Vi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <title>First Portfolio Bootstrap 5 Theme</title>
+</head>
+
+
+
+
+<div class="relative">
+    <div class="space-y-2 pb-8 pt-6 md:space-y-5">
+        <div class="py-5 sm:text-left">
+            <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">Chỉnh sửa tài khoản update</h1>
+        </div>
+        <div class="bg-white border border-4 rounded-lg shadow relative m-10">
+
+            <div class="flex items-start justify-between p-5 border-b rounded-t">
+                <div class="flex flex-col">
+                    <h3 class="text-xl font-semibold">
+                        Tên : <span class="font-bold text-black">nguyenduongthevi</span>
+                    </h3>
+                    @if(Model.Status == 1)
+                    {
+                        <h3 class="text-xl font-semibold mt-2">
+                            Trạng thái:  <span class="text-green-500">Đã xác minh</span> <span class="italic">(Vui lòng liên hệ QTV để xác minh tài khoản)</span>
+                        </h3>
+                    }
+                    else
+                    {
+                    <h3 class="text-xl font-semibold mt-2">
+                        Trạng thái:  <span class="text-gray-500">Chưa xác minh</span> <span class="italic">(Vui lòng liên hệ QTV để xác minh tài khoản)</span>
+                    </h3>
+                    }
+                    
+                    
+                </div>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <form asp-action="ChinhSuaTaiKhoan"  method="post">
+                    <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Job">Công việc</label>
+                            <input asp-for ="Job" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Sinh viên.....”" value="@Model.Job" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Address">Nơi ở</label>
+                            <input asp-for="Address"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Address" placeholder="1" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                             <label asp-for="Organization">Tổ chức</label>
+                            <input asp-for="Organization"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Organization" placeholder="Electronics" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Linkedln" class="text-sm font-medium text-gray-900 block mb-2">Linked</label>
+                            <input asp-for="Linkedln" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Linkedln" placeholder="Apple" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Youtube" class="text-sm font-medium text-gray-900 block mb-2">Youtube</label>
+                            <input asp-for="Youtube"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Youtube" placeholder="$2300" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Facebook" class="text-sm font-medium text-gray-900 block mb-2">Facebook</label>
+                            <input asp-for="Facebook" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Facebook" placeholder="Black" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Instagram" class="text-sm font-medium text-gray-900 block mb-2">Iintargram</label>
+                            <input asp-for="Instagram"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Job" placeholder="Black" required="">
+                        </div>
+                        <div class="col-span-6 sm:col-span-3" class="form-group">
+                            <label asp-for="Twitter" class="text-sm font-medium text-gray-900 block mb-2">Twitter</label>
+                            <input asp-for="Twitter"  class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" value="@Model.Twitter" placeholder="Black" required="">
+                        </div>
+                        
+                        <div class="col-span-full">
+                            <label asp-for="About">Gioiw thiẹu</label>
+                            <input asp-for="About"  rows="6" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" value="@Model.About"></input>
+                        </div>
+                    </div>
+                   @*  @Html.HiddenFor(model => model.ID)
+                    @Html.HiddenFor(model => model.Code)
+                    @Html.HiddenFor(model => model.UserName)
+                    @Html.HiddenFor(model => model.Email)
+                    @Html.HiddenFor(model => model.Password)
+                    @Html.HiddenFor(model => model.Role)
+                    @Html.HiddenFor(model => model.Point)
+                    @Html.HiddenFor(model => model.NumberOfVisits)
+                    @Html.HiddenFor(model => model.NumberOfPosts)
+                    @Html.HiddenFor(model => model.Status)
+                    @Html.HiddenFor(model => model.LastVisit) *@
+                    <div class="p-6 border-t border-gray-200 rounded-b">
+                        <button class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Save all</button>
+                    </div>
+
+                </form>
+            </div>
+
+        
+        </div>
+    </div>
+
+</div>
+
+
+
+</html>
