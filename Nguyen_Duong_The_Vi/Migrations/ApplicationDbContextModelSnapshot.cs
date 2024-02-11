@@ -245,14 +245,32 @@ namespace Nguyen_Duong_The_Vi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Facebook")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instagram")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Job")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("LastVisit")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Linkedln")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("NumberOfPosts")
                         .HasColumnType("int");
@@ -260,8 +278,14 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.Property<int?>("NumberOfVisits")
                         .HasColumnType("int");
 
+                    b.Property<string>("Organization")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Point")
+                        .HasColumnType("int");
 
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
@@ -269,7 +293,13 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.Property<int?>("Status")
                         .HasColumnType("int");
 
+                    b.Property<string>("Twitter")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Youtube")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
