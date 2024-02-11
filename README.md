@@ -62,7 +62,7 @@ In the process of coding the project, I referenced and copied some interfaces an
 
  - View the personal information of a user account:
 
-![H14](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/4c0eeaab-3fb5-4c69-8baa-8d9b037dd08b)
+![H15](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/a99db699-2dcc-4e1d-99c9-182aa3a16204)
 
 - Filter posts by Tags:
   
