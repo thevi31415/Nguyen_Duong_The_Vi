@@ -119,7 +119,8 @@
                                         {
                                             if (Model.UserName == MaNguoiDung && Model.ID == int.Parse(Id))
                                             {
-                                                <a asp-action="ChinhSuaTaiKhoan" asp-action="Home" asp-route-id ="@Model.ID"  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Chỉnh sửa</a>
+                                                <a asp-action="ChinhSuaTaiKhoan" asp-controller="Home" asp-route-id ="@Model.ID"  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Chỉnh sửa</a>
+                                                <a asp-action="DangXuat" asp-controller="Login" class="bg-red-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Đăng xuất</a>
                                             }
                                         }
 
