@@ -60,6 +60,10 @@ In the process of coding the project, I referenced and copied some interfaces an
   
  ![Comment](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/522b8794-3f03-4948-b734-f196a8ea9de9)
 
+ - View the personal information of a user account:
+
+![H14](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/4c0eeaab-3fb5-4c69-8baa-8d9b037dd08b)
+
 - Filter posts by Tags:
   
 ![H6](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/2d68ad7f-d284-42ef-a2bd-c728b3b5ebc3)
