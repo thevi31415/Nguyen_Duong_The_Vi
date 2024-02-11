@@ -21,15 +21,23 @@ namespace Nguyen_Duong_The_Vi.Controllers
             string MaNguoiDung = HttpContext.Session.GetString("Username");
             string Code = HttpContext.Session.GetString("Code");
             string Role = HttpContext.Session.GetString("Role");
-            if (MaNguoiDung == null || Code == null || Role == null || Role != "Admin")
+            if (MaNguoiDung == null || Code == null || Role == null)
             {
                 return View("Index");
             }
             else
             {
-                if (MaNguoiDung != null && Code != null && Role != null && Role == "Admin")
+                if (MaNguoiDung != null && Code != null && Role != null)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    if (Role == "Admin")
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                  
 
                 }
 
@@ -46,7 +54,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             string Role = HttpContext.Session.GetString("Role");
             Console.WriteLine(MaNguoiDung + " " + Code + " " + Role);    
 
-            if(MaNguoiDung ==null || Code == null || Role == null || Role !="Admin")
+            if(MaNguoiDung ==null || Code == null || Role == null)
             {
 
                 if (user != null && user.UserName != null && user.Password != null)
@@ -66,20 +74,40 @@ namespace Nguyen_Duong_The_Vi.Controllers
                         HttpContext.Session.SetString("Username", users.UserName.ToString());
                         HttpContext.Session.SetString("Password", users.Password.ToString());
                         _db.SaveChanges();
-                        return RedirectToAction("Index", "Admin");
+                        if (HttpContext.Session.GetString("Role") == "Admin")
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                      
                     }
                     else
                     {
                         return View();
                     }
                 }
+                else
+                {
+                    return View();
+                }
 
             }
             else
             {
-                if (MaNguoiDung != null && Code != null && Role != null && Role =="Admin")
+                if (MaNguoiDung != null && Code != null && Role != null )
                 {
-                    return RedirectToAction("Index", "Admin");
+                    if (Role == "Admin")
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                  
 
                 }
 

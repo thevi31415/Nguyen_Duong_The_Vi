@@ -25,6 +25,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
    
         public IActionResult Index()
         {
+            Console.WriteLine("Index Home");
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
             if (firstThongTin == null)
             {
@@ -320,35 +321,41 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(post);
         }
 
-        [Authentication]
+   
         [HttpPost]
         public IActionResult TaoBinhLuan(int IDBAIVIET, string COMMENT)
 
         {
       
             string username = HttpContext.Session.GetString("Username");
-            var comment = new Comment();
-            comment.IDBAIVIET = IDBAIVIET;
-            comment.COMMENT = COMMENT;
-            // Chọn múi giờ của Việt Nam
-            TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+            string code = HttpContext.Session.GetString("Code");
+            string role = HttpContext.Session.GetString("Role");
+            if (username != null && code!=null && role!=null)
+            {
+                Console.WriteLine("TaoBinhTuan");
+                var comment = new Comment();
+                comment.IDBAIVIET = IDBAIVIET;
+                comment.COMMENT = COMMENT;
+                // Chọn múi giờ của Việt Nam
+                TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
 
-            // Lấy thời gian hiện tại theo múi giờ của Việt Nam
-            DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
+                DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
 
-            // Gán giá trị cho NGAYBINHLUAN
-            comment.NGAYBINHLUAN = nowInVietnam;
+                comment.NGAYBINHLUAN = nowInVietnam;
 
-            comment.TENUSER = username;
-            _db.comments.Add(comment);
-            _db.SaveChanges();
+                comment.TENUSER = username;
+                _db.comments.Add(comment);
+                _db.SaveChanges();
 
-            var updatedCommentList = _db.comments.Where(c => c.IDBAIVIET == IDBAIVIET)
-                                                 .OrderByDescending(c => c.NGAYBINHLUAN)
-                                                 .ToList();
+                var updatedCommentList = _db.comments.Where(c => c.IDBAIVIET == IDBAIVIET)
+                                                     .OrderByDescending(c => c.NGAYBINHLUAN)
+                                                     .ToList();
 
 
-            return PartialView("_CommentListPartial", updatedCommentList);
+                return PartialView("_CommentListPartial", updatedCommentList);
+            }
+            return RedirectToAction("Index", "Login");
+          
         }
 
 
