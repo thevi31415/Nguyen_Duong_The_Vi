@@ -20,7 +20,7 @@
                     }
                 }
                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 50px; height: 50px;">@comment.TENUSER
+                    <img class="mr-2 rounded-full" src="~/images/@imgSrc" alt="@comment.TENUSER" style="width: 50px; height: 50px;"><a asp-action="User" asp-controller="Home" asp-route-id="@comment.IDUSER">@comment.TENUSER</a>
                 </p>
                 @if (comment.Role == "Admin")
                 {

@@ -218,7 +218,12 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
 
                 // Gán giá trị cho NGAYBINHLUAN
-
+                string id = HttpContext.Session.GetString("ID");
+                if(id == null)
+                {
+                    return NotFound();
+                }
+                obj.IDTAUTHOR = int.Parse(id);
                 obj.PUBLISHED = nowInVietnam;
                 _db.posts.Add(obj);
                 _db.SaveChanges();

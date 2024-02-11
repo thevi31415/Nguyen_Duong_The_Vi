@@ -80,6 +80,7 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     VIEW = table.Column<int>(type: "int", nullable: true),
+                    IDTAUTHOR = table.Column<int>(type: "int", nullable: true),
                     LIKE = table.Column<int>(type: "int", nullable: true),
                     AUTHOR = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SUMMARY = table.Column<string>(type: "nvarchar(max)", nullable: true),

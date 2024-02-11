@@ -12,7 +12,7 @@ using Nguyen_Duong_The_Vi.Data;
 namespace Nguyen_Duong_The_Vi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240211033608_init")]
+    [Migration("20240211080603_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,6 +137,9 @@ namespace Nguyen_Duong_The_Vi.Migrations
 
                     b.Property<string>("CONTEXT")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IDTAUTHOR")
+                        .HasColumnType("int");
 
                     b.Property<int?>("LIKE")
                         .HasColumnType("int");

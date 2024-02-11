@@ -9,6 +9,7 @@ namespace Nguyen_Duong_The_Vi.Models
 
         public int? VIEW { get; set; }
 
+        public int? IDTAUTHOR {  get; set; }
         public int? LIKE { get; set; }
         public string? AUTHOR { get; set; }
 

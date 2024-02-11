@@ -136,6 +136,9 @@ namespace Nguyen_Duong_The_Vi.Migrations
                     b.Property<string>("CONTEXT")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("IDTAUTHOR")
+                        .HasColumnType("int");
+
                     b.Property<int?>("LIKE")
                         .HasColumnType("int");
 
