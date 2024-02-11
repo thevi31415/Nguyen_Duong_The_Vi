@@ -1,4 +1,5 @@
-﻿@{
+﻿@model User
+@{
 
     Layout = "User_Layout";
 }
@@ -8,6 +9,9 @@
     <meta charset="utf-8">
     <title>Nguyen Duong The Vi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Option 1: Include in HTML -->
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -21,51 +25,109 @@
 <div class="relative">
     <div class="space-y-2 pb-8 pt-6 md:space-y-5">
         <div class="py-5 sm:text-left">
-            <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">About</h1>
+            <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">User          <i class="bi bi-building-fill"></i> </h1>
         </div>
         <div class="items-start space-y-2">
             <div class="">
                 <div class="container mx-auto py-8">
-                    <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
-                        <div class="col-span-4 sm:col-span-3">
-                            <div class="bg-white shadow rounded-lg p-6">
-                                <div class="flex flex-col items-center">
-                                    <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                    <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4 w-auto">
+                        <div class="col-span-4 sm:col-span-3 w-auto">
+                            <div class="bg-white shadow rounded-lg p-6 w-auto">
+                                <div class="flex flex-col items-center w-auto">
+                                    @{
+                                        char firstChar = char.ToUpper(@Model.UserName[0]);
+                                        string imgSrc;
 
-                                    </img>
-                                    <h1 class="text-xl font-bold">John Doe</h1>
-                                    <p class="text-gray-700">Software Developer</p>
+                                        if (firstChar >= 'A' && firstChar <= 'Z')
+                                        {
+                                            int imgIndex = firstChar - 'A' + 1;
+                                            imgSrc = $"{imgIndex:D3}.png";
+                                        }
+                                        else
+                                        {
+                                            imgSrc = "default.png";
+                                        }
+                                    }
+
+                                   @if (Model.Status == 1)
+                                    {
+                                        <img src="~/images/@imgSrc" class="p-1 rounded-full ring-4 ring-blue-500 dark:ring-blue-300" style="width: 140px; height: 140px; margin-bottom:10px">
+
+                                        <svg class="icon" class="hover:scale-130 transition-transform" fill="#0A5DE9" width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#0A5DE9" transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)"><title> Tài khoản đã xác minh</title><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"><path d="M19.965 8.521C19.988 8.347 20 8.173 20 8c0-2.379-2.143-4.288-4.521-3.965C14.786 2.802 13.466 2 12 2s-2.786.802-3.479 2.035C6.138 3.712 4 5.621 4 8c0 .173.012.347.035.521C2.802 9.215 2 10.535 2 12s.802 2.785 2.035 3.479A3.976 3.976 0 0 0 4 16c0 2.379 2.138 4.283 4.521 3.965C9.214 21.198 10.534 22 12 22s2.786-.802 3.479-2.035C17.857 20.283 20 18.379 20 16c0-.173-.012-.347-.035-.521C21.198 14.785 22 13.465 22 12s-.802-2.785-2.035-3.479zm-9.01 7.895-3.667-3.714 1.424-1.404 2.257 2.286 4.327-4.294 1.408 1.42-5.749 5.706z"></path></g></svg>
+
+                                        if (Model.Role == "Admin")
+                                        {
+                                            <h1 class="text-2xl font-extrabold text-red-500">@Model.UserName</h1>
+                                            <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-500 text-white"> Admin </span>
+                                        }
+                                        else
+                                        {
+
+                                            <h1 class="text-2xl font-extrabold">@Model.UserName</h1>
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/@imgSrc" class="p-1 rounded-full" style="width: 140px; height: 140px">
+
+
+                                        if (Model.Role == "Admin")
+                                        {
+                                            <h1 class="text-2xl font-extrabold text-red-500">@Model.UserName</h1>
+                                            <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-500 text-white"> Admin </span>
+                                        }
+                                        else
+                                        {
+                                            <h1 class="text-2xl font-extrabold">@Model.UserName</h1>
+                                        }
+
+                                    } 
+                                    <p class="text-gray-700 flex items-center justify-end">
+
+                                        @Model.Job
+                                      </p>
+                                    <p class="text-gray-700 flex items-center justify-end">
+                                        <svg  style = "margin-right: 5px"   xmlns="http://www.w3.org/2000/svg" fill="#000000" width="20px" height="20px" viewBox="0 0 24 24">
+                                            <path d="M7.25 12a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM6.5 9.25a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5a.75.75 0 01-.75-.75zM7.25 5a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM10 12.75a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5a.75.75 0 01-.75-.75zm.75-4.25a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zM10 5.75a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5a.75.75 0 01-.75-.75zM14.25 12a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5zm-.75-2.75a.75.75 0 01.75-.75h.5a.75.75 0 010 1.5h-.5a.75.75 0 01-.75-.75zM14.25 5a.75.75 0 000 1.5h.5a.75.75 0 000-1.5h-.5z" />
+                                            <path fill-rule="evenodd" d="M3 20a2 2 0 002 2h3.75a.75.75 0 00.75-.75V19h3v2.25c0 .414.336.75.75.75H17c.092 0 .183-.006.272-.018a.758.758 0 00.166.018H21.5a2 2 0 002-2v-7.625a2 2 0 00-.8-1.6l-1-.75a.75.75 0 10-.9 1.2l1 .75a.5.5 0 01.2.4V20a.5.5 0 01-.5.5h-2.563c.041-.16.063-.327.063-.5V3a2 2 0 00-2-2H5a2 2 0 00-2 2v17zm2 .5a.5.5 0 01-.5-.5V3a.5.5 0 01.5-.5h12a.5.5 0 01.5.5v17a.5.5 0 01-.5.5h-3v-2.25a.75.75 0 00-.75-.75h-4.5a.75.75 0 00-.75.75v2.25H5z" />
+                                        </svg>
+                                        <span>@Model.Organization</span>
+                                    </p>
+
+                                    <p class="text-gray-700 flex items-center justify-end">
+                                        <svg style="margin-right: 5px" class="octicon octicon-location" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m12.596 11.596-3.535 3.536a1.5 1.5 0 0 1-2.122 0l-3.535-3.536a6.5 6.5 0 1 1 9.192-9.193 6.5 6.5 0 0 1 0 9.193Zm-1.06-8.132v-.001a5 5 0 1 0-7.072 7.072L8 14.07l3.536-3.534a5 5 0 0 0 0-7.072ZM8 9a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 9Z"></path></svg>
+
+                                        <span>@Model.Address</span>
+                                    </p>
+
+
+
+
+
+
+
+                                  
+
+
+
                                     <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
-                                        <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
+                                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Chỉnh sửa tài khỏan</a>
+                                        <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Sao chép link</a>
                                     </div>
-                                </div>
-                                <hr class="my-6 border-t border-gray-300">
-                                <div class="flex flex-col">
-                                    <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">Skills</span>
-                                    <ul>
-                                        <li class="mb-2">JavaScript</li>
-                                        <li class="mb-2">React</li>
-                                        <li class="mb-2">Node.js</li>
-                                        <li class="mb-2">HTML/CSS</li>
-                                        <li class="mb-2">Tailwind Css</li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-span-4 sm:col-span-9">
                             <div class="bg-white shadow rounded-lg p-6">
-                                <h2 class="text-xl font-bold mb-4">About Me</h2>
+                                <h2 class="text-xl font-bold mb-4">Giới thiệu</h2>
                                 <p class="text-gray-700">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est
-                                    vitae tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                    suscipit. Nunc finibus vel ante id euismod. Vestibulum ante ipsum primis in faucibus orci luctus
-                                    et ultrices posuere cubilia Curae; Aliquam erat volutpat. Nulla vulputate pharetra tellus, in
-                                    luctus risus rhoncus id.
+                                  @Model.About
                                 </p>
 
                                 <h3 class="font-semibold text-center mt-3 -mb-2">
-                                    Find me on
+                                    Liên hệ
                                 </h3>
                                 <div class="flex justify-center items-center gap-6 my-6">
                                     <a class="text-gray-700 hover:text-orange-600" aria-label="Visit TrendyMinds LinkedIn" href=""
@@ -111,49 +173,24 @@
                                 </div>
 
 
-                                <h2 class="text-xl font-bold mt-6 mb-4">Experience</h2>
+                                <h2 class="text-xl font-bold mt-6 mb-4">Hoạt động</h2>
                                 <div class="mb-6">
                                     <div class="flex justify-between flex-wrap gap-2 w-full">
-                                        <span class="text-gray-700 font-bold">Web Developer</span>
-                                        <p>
-                                            <span class="text-gray-700 mr-2">at ABC Company</span>
-                                            <span class="text-gray-700">2017 - 2019</span>
-                                        </p>
+                                        <span class="text-gray-700 font-bold">Số lần truy cập:    @Model.NumberOfVisits </span>
+                                     
+                                         
+                                       
                                     </div>
-                                    <p class="mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                        tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                        suscipit.
-                                    </p>
+                                 
                                 </div>
                                 <div class="mb-6">
                                     <div class="flex justify-between flex-wrap gap-2 w-full">
-                                        <span class="text-gray-700 font-bold">Web Developer</span>
-                                        <p>
-                                            <span class="text-gray-700 mr-2">at ABC Company</span>
-                                            <span class="text-gray-700">2017 - 2019</span>
-                                        </p>
+                                        <span class="text-gray-700 font-bold">Lần cuối truy cập:  @Model.LastVisit </span>
+                                        
                                     </div>
-                                    <p class="mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                        tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                        suscipit.
-                                    </p>
+                                   
                                 </div>
-                                <div class="mb-6">
-                                    <div class="flex justify-between flex-wrap gap-2 w-full">
-                                        <span class="text-gray-700 font-bold">Web Developer</span>
-                                        <p>
-                                            <span class="text-gray-700 mr-2">at ABC Company</span>
-                                            <span class="text-gray-700">2017 - 2019</span>
-                                        </p>
-                                    </div>
-                                    <p class="mt-2">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                                        tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                                        suscipit.
-                                    </p>
-                                </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -167,3 +204,12 @@
 
 
 </html>
+<style>
+    .icon {
+        transition: transform 0.3s;
+    }
+
+        .icon:hover {
+            transform: scale(1.5);
+        }
+</style>

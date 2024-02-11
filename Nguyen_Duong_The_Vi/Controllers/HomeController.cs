@@ -61,8 +61,18 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
-           
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            User user = _db.users
+                     .Where(t => t.ID == id)
+                     .FirstOrDefault();
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
         public IActionResult Contact()
         {
@@ -345,6 +355,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
             string username = HttpContext.Session.GetString("Username");
             string code = HttpContext.Session.GetString("Code");
             string role = HttpContext.Session.GetString("Role");
+            string id = HttpContext.Session.GetString("ID");
             if (username != null && code!=null && role!=null)
             {
                 Console.WriteLine("TaoBinhTuan");
@@ -352,6 +363,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 comment.IDBAIVIET = IDBAIVIET;
                 comment.COMMENT = COMMENT;
                 comment.Role = role;
+                comment.IDUSER = int.Parse(id);
                 // Chọn múi giờ của Việt Nam
                 TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
 
