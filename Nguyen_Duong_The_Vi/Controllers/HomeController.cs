@@ -497,7 +497,21 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 var updatedCommentList = _db.comments.Where(c => c.IDBAIVIET == IDBAIVIET)
                                                      .OrderByDescending(c => c.NGAYBINHLUAN)
                                                      .ToList();
+                User user = _db.users.Find(int.Parse(id));
+                if (user == null)
+                {
+                    return NotFound();
+                }
 
+                if (user.NumberOfComment == null)
+                {
+                    user.NumberOfComment = 0; 
+                }
+                user.NumberOfComment += 1;
+
+                _db.users.Update(user);
+
+                _db.SaveChanges();
 
                 return PartialView("_CommentListPartial", updatedCommentList);
             }

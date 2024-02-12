@@ -47,6 +47,36 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View(listuser);
         }
         [Authentication]
+        public IActionResult TinhDiem()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            // Lấy tất cả người dùng từ cơ sở dữ liệu
+            List<User> users = _db.users.ToList();
+
+            // Tính điểm cho từng người dùng và cập nhật vào cơ sở dữ liệu
+            foreach (var user in users)
+            {
+                int points = (user.NumberOfPosts ?? 0) * 10 + (user.NumberOfComment ?? 0) * 1;
+                user.Point = points;
+
+                // Cập nhật lại người dùng trong cơ sở dữ liệu
+                _db.users.Update(user);
+            }
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            _db.SaveChanges();
+            return RedirectToAction("QuanLyTaiKhoan");
+        }
+        [Authentication]
         public IActionResult ChinhSuaPhanQuyen(int? id)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
@@ -210,6 +240,8 @@ namespace Nguyen_Duong_The_Vi.Controllers
             if (ModelState.IsValid)
             {
                 user.NumberOfPosts = 0;
+                user.NumberOfComment = 0;
+                user.Point = 0;
                 user.NumberOfVisits = 0;
                 _db.users.Add(user);
                 _db.SaveChanges();
@@ -321,7 +353,33 @@ namespace Nguyen_Duong_The_Vi.Controllers
                     }
                     _db.SaveChanges();
                 }
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                // Lấy người dùng từ cơ sở dữ liệu dựa trên ID
+                User user = _db.users.Find(int.Parse(id));
 
+                // Nếu người dùng không tồn tại, xử lý theo ý của bạn (ví dụ: trả về lỗi 404)
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                // Kiểm tra xem NumberOfPosts có phải là null hay không
+                if (user.NumberOfPosts == null)
+                {
+                    user.NumberOfPosts = 0; // Nếu là null, gán bằng 0 trước khi cộng thêm 1
+                }
+
+                // Cộng thêm 1 vào NumberOfPosts
+                user.NumberOfPosts += 1;
+
+                // Cập nhật lại người dùng trong cơ sở dữ liệu
+                _db.users.Update(user);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -375,6 +433,50 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             _db.posts.Remove(post);
             _db.SaveChanges();
+
+
+
+
+
+
+            // Lấy tất cả các comment dựa trên IDBAIVIET
+            List<Comment> commentsToDelete = _db.comments.Where(c => c.IDBAIVIET == id).ToList();
+
+            // Lấy tất cả các IDUSER của các comment sẽ bị xóa
+            List<int?> userIdsToDelete = commentsToDelete.Select(c => c.IDUSER).ToList();
+
+            // Xóa tất cả các comment
+            _db.comments.RemoveRange(commentsToDelete);
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            _db.SaveChanges();
+
+            // Giảm giá trị NumberOfComment của các người dùng tương ứng
+            foreach (var userId in userIdsToDelete)
+            {
+                if (userId.HasValue)
+                {
+                    User user = _db.users.Find(userId.Value);
+                    if (user != null && user.NumberOfComment != null && user.NumberOfComment > 0)
+                    {
+                        user.NumberOfComment -= 1;
+                        _db.users.Update(user);
+                    }
+                }
+            }
+
+            _db.SaveChanges();
+
+
+
+
+
+
+
+
+
+
+
             return RedirectToAction("QuanLyBaiDang");
         }
 
