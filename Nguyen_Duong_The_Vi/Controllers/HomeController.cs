@@ -163,6 +163,23 @@ namespace Nguyen_Duong_The_Vi.Controllers
     .ToList();
 
 
+            var top5Admins = _db.users
+            .Where(u => u.Role == "Admin")
+            .OrderByDescending(u => u.Point)
+            .Take(5)
+            .ToList();
+
+            ViewBag.Top5Admins = top5Admins;
+
+
+
+            var top5Users = _db.users
+          .OrderByDescending(u => u.Point)
+          .Take(5)
+          .ToList();
+
+
+            ViewBag.Top5User = top5Users;
             return View(postlist);
         }
 

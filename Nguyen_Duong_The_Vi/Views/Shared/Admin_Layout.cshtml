@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var ID = Context.Session.GetString("ID");
+    int id = int.Parse(ID);
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +20,7 @@
             <div class="flex items-center justify-between">
                 <div class="text-white font-bold text-xl">Admin Panel Blog</div>
                 <ul class="flex space-x-4">
+                    <li><a asp-controller="Home" asp-action="User" asp-route-id ="@id" class="text-white">Tài khoản</a></li>
                     <li><a asp-controller="Admin" asp-action="QuanLyBaiDang" class="text-white">Quản lý bài đăng</a></li>
                     <li><a asp-controller="Admin" asp-action="PhanQuyen" class="text-white">Quản lý phân quyền</a></li>
                     <li><a asp-controller="Admin" asp-action="QuanLyBinhLuan" class="text-white">Quản lý bình luận</a></li>

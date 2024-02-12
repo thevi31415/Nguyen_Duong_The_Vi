@@ -471,6 +471,22 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
 
 
+             // Find the user by ID
+            var user1 = _db.users.Find(post.IDTAUTHOR);
+
+            if (user1 != null && user1.NumberOfPosts > 0)
+            {
+                // Decrease the NumberOfPosts for the user
+               user1.NumberOfPosts--;
+
+                // Save changes to the database
+                _db.SaveChanges();
+            }
+
+
+
+
+
 
 
 
