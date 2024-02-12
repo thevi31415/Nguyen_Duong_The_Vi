@@ -38,7 +38,7 @@ In the process of coding the project, I referenced and copied some interfaces an
 ## Blog
 - Home:
   
-![H1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/37f78887-c51a-454f-ae6b-a4f7997e37c4)
+![H34](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/f49ee5a5-3d2b-4bee-86fb-e96f2d493af9)
 
 ![T2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/58ab483f-437f-4983-accd-bacac7afc614)
 
