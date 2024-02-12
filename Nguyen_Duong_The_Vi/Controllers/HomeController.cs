@@ -202,10 +202,12 @@ namespace Nguyen_Duong_The_Vi.Controllers
             User user = _db.users
                      .Where(t => t.ID == id)
                      .FirstOrDefault();
+
             if (user == null)
             {
                 return NotFound();
             }
+            ViewBag.Title = user.UserName;
             return View(user);
         }
         public IActionResult Contact()
