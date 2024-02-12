@@ -40,7 +40,7 @@ In the process of coding the project, I referenced and copied some interfaces an
   
 ![H1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/37f78887-c51a-454f-ae6b-a4f7997e37c4)
 
-![H2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/f03274ea-5605-4201-a4de-1334e0a4e1d6)
+![T2](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/58ab483f-437f-4983-accd-bacac7afc614)
 
 - Post display page:
 
@@ -58,7 +58,7 @@ In the process of coding the project, I referenced and copied some interfaces an
 
 - Comment below the article:
   
- ![Comment](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/522b8794-3f03-4948-b734-f196a8ea9de9)
+![T1](https://github.com/thevi31415/Nguyen_Duong_The_Vi/assets/92256900/f09663b5-7525-4469-a3f0-a6ceab2f6a22)
 
  - View the personal information of a user account:
 
