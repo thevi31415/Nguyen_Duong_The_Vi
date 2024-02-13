@@ -23,6 +23,49 @@ namespace Nguyen_Duong_The_Vi.Controllers
             _notfy = notfy;
         }
 
+        public IActionResult BaiDangDuyet(int? id)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var post = _db.postTemps
+         .Include(p => p.PostCategories)
+         .FirstOrDefault(c => c.ID == id);
+
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+            /*List<Category> categories = _db.postCategoryTemps
+                .Where(pc => pc.IDPOSTTEMP == post.ID)
+                .Select(pc => pc.Category)
+                .ToList();*/
+            var categories = (from postCategory in _db.postCategoryTemps
+                              join category in _db.categories on postCategory.IDCATEGORY equals category.IDCATEGORY
+                              where postCategory.IDPOSTTEMP == id
+                              select category).ToList();
+
+            PostAndCategrory postAndCategory = new PostAndCategrory
+            {
+                IDPost = post.ID,
+                Categories = categories
+            };
+            ViewBag.PostCategories = postAndCategory;
+            return View(post);
+        }
+
 
 
         public IActionResult DangBai()

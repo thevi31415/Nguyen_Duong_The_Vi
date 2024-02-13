@@ -58,7 +58,7 @@
                 </td>
              
                 <td class="px-6 py-4 whitespace-nowrap">
-                    <a href="@Url.Action("View", new { id = post.ID })" class="text-blue-600 hover:underline">Xem</a> |
+                    <a asp-action="BaiDangDuyet" asp-controller="Home" asp-route-id ="@post.ID"       class="text-blue-600 hover:underline">Xem</a> |
                     <a  asp-action="DuyetDuyetBaiViet"   asp-route-id ="@post.ID"       class="text-green-600 hover:underline">Duyệt</a> |
                     <a asp-action="XoaDuyetBaiViet" asp-controller ="Admin" asp-route-id ="@post.ID" class="text-red-600 hover:underline">Xóa</a>
                 </td>
