@@ -25,6 +25,37 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
 
 
+        public IActionResult DangBai()
+        {
+
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+
+            ViewBag.Title = "TheVi";
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public IActionResult ChinhSuaTaiKhoan(int? id)
         {
           
