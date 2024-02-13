@@ -67,7 +67,11 @@ namespace Nguyen_Duong_The_Vi.Controllers
                     var users = _db.users.FirstOrDefault(u => u.UserName == username && u.Password == password);
                     if (users != null)
                     {
-                        users.LastVisit = DateTime.Now;
+                        // Chọn múi giờ của Việt Nam
+                        TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+                        DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
+                        users.LastVisit = nowInVietnam;
                         users.NumberOfVisits++;
                         Console.WriteLine(": " + users.Role);
                         HttpContext.Session.SetString("ID", users.ID.ToString());

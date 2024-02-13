@@ -206,7 +206,17 @@
                
 
             </div>
-            <form class="mb-6" id="commentForm" method="post" asp-action="TaoBinhLuan">
+          @*   <form class="mb-6" id="commentForm" method="post" asp-action="TaoBinhLuan">
+                <input type="hidden" name="IDBAIVIET" id="IDBAIVIET" value="@Model.ID" />
+                <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                    <label for="comment" class="sr-only">Your comment</label>
+                    <textarea id="comment" name="COMMENT" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Write a comment..." required></textarea>
+                </div>
+                <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-blue-600">
+                    Post comment
+                </button>
+            </form> *@
+            <form class="mb-6" id="commentForm" method="post" asp-action="TaoBinhLuan" onsubmit="convertLinks()">
                 <input type="hidden" name="IDBAIVIET" id="IDBAIVIET" value="@Model.ID" />
                 <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                     <label for="comment" class="sr-only">Your comment</label>
@@ -216,6 +226,27 @@
                     Post comment
                 </button>
             </form>
+
+            <script>
+                function convertLinks() {
+                    // Lấy nội dung từ textarea
+                    var commentContent = document.getElementById('comment').value;
+
+                    // Tìm và chuyển đổi các liên kết trong nội dung
+                    var convertedContent = commentContent.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="link">$1</a>');
+
+                    // Cập nhật nội dung của textarea với các liên kết đã được chuyển đổi
+                    document.getElementById('comment').value = convertedContent;
+                }
+            </script>
+
+            <style>
+                .link {
+                    color: blue; /* Màu xanh cho đường liên kết */
+                    text-decoration: underline; /* Gạch chân cho đường liên kết */
+                }
+            </style>
+
             <script>
                 document.getElementById("commentForm").addEventListener("submit", function (event) {
                     event.preventDefault(); // Chặn sự kiện submit mặc định
@@ -319,7 +350,9 @@
                                 <span class="sr-only">Comment settings</span>
                             </button>
                         </footer>
-                        <p class="text-gray-500 dark:text-gray-400">@comment.COMMENT</p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            @Html.Raw(comment.COMMENT)
+                           </p>
                     </article>
                 }
             </div>

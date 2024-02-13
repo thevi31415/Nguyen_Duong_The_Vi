@@ -410,8 +410,18 @@ namespace Nguyen_Duong_The_Vi.Controllers
             
             if (ModelState.IsValid)
             {
-                obj.PUBLISHED = DateTime.Now;
-                _db.posts.Update(obj);
+                // Chọn múi giờ của Việt Nam
+                TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+                // Lấy thời gian hiện tại theo múi giờ của Việt Nam
+                DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
+                var post = _db.posts.Find(obj.ID);
+                post.CONTEXT = obj.CONTEXT;
+                post.TITLE = obj.TITLE;
+                post.SUMMARY = obj.SUMMARY;
+                post.PUBLISHED = nowInVietnam;
+                obj.PUBLISHED = nowInVietnam;
+                _db.posts.Update(post);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
