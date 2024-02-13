@@ -43,7 +43,23 @@ namespace Nguyen_Duong_The_Vi.Controllers
             return View();
         }
 
+        public IActionResult TaoBaiViet()
+        {
 
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            ViewBag.Categories = _db.categories.ToList();
+            ViewBag.Title = "TheVi";
+            return View();
+        }
 
 
 
