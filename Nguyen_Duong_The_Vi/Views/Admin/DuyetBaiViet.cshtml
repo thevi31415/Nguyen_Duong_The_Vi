@@ -1,0 +1,74 @@
+﻿@model List<PostTemp>
+@{
+
+    Layout = "Admin_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management</title>
+    <!-- Include the Tailwind CSS CDN or link to your local file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+
+
+
+
+
+<h1 class="text-2xl font-bold mb-4">Duyet bai viet</h1>
+
+
+<table class="min-w-full divide-y divide-gray-200">
+    <thead>
+        <tr>
+            
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Published Date</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Summary</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Context</th>
+
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+        </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+        @foreach (var post in Model)
+        {
+            <tr>
+   
+                <td class="px-6 py-4 whitespace-nowrap">@post.TITLE</td>
+                <td class="px-6 py-4 whitespace-nowrap">@post.PUBLISHED.ToString("yyyy-MM-dd")</td>
+                <td class="px-6 py-4 whitespace-nowrap">@post.AUTHOR</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    @{
+                        if (!string.IsNullOrEmpty(post.SUMMARY))
+                        {
+                            string truncatedSummary = post.SUMMARY.Length > 20 ? $"{post.SUMMARY.Substring(0, 20)}..." : post.SUMMARY;
+                            @truncatedSummary
+                        }
+                    }
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    @{
+                        string truncatedContext = post.CONTEXT.Length > 20 ? $"{post.CONTEXT.Substring(0, 20)}..." : post.CONTEXT;
+                    }
+                    @truncatedContext
+                </td>
+             
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <a href="@Url.Action("View", new { id = post.ID })" class="text-blue-600 hover:underline">Xem</a> |
+                    <a  asp-action="DuyetDuyetBaiViet"   asp-route-id ="@post.ID"       class="text-green-600 hover:underline">Duyệt</a> |
+                    <a asp-action="XoaDuyetBaiViet" asp-controller ="Admin" asp-route-id ="@post.ID" class="text-red-600 hover:underline">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+</html>
+

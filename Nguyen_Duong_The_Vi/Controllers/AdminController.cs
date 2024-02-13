@@ -15,6 +15,145 @@ namespace Nguyen_Duong_The_Vi.Controllers
             _db = db;
         }
         [Authentication]
+        public IActionResult DuyetBaiViet()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            var baiviet = _db.postTemps.OrderByDescending(post => post.PUBLISHED).ToList();
+
+            return View(baiviet);
+        }
+        [Authentication]
+        public IActionResult DuyetDuyetBaiViet(int? id)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var posttemp = _db.postTemps.Find(id);
+            Post post = new Post();
+
+            post.TITLE = posttemp.TITLE;
+            post.AUTHOR = posttemp.AUTHOR;
+            post.SUMMARY = posttemp.SUMMARY;
+            post.IDTAUTHOR = posttemp.IDTAUTHOR;
+            post.VIEW = 0;
+            post.LIKE = 0;
+            post.PUBLISHED = posttemp.PUBLISHED;    
+            post.CONTEXT = posttemp.CONTEXT;
+
+            _db.posts.Add(post);
+            _db.SaveChanges();
+
+            var lastId = _db.posts.Max(e => (int?)e.ID) ?? 0;
+            var posttempcategory = _db.postCategoryTemps
+            .Where(pc => pc.IDPOSTTEMP == posttemp.ID);
+
+            foreach (var category in posttempcategory)
+            {
+                PostCategory pc = new PostCategory();
+                pc.IDPOST = lastId;
+                pc.IDCATEGORY = category.IDCATEGORY;
+                _db.postCategories.Add(pc);
+           
+            }
+            _db.SaveChanges();
+            var newEntity = new PostCategoryTemp { IDPOSTTEMP = posttemp.ID, /* Các thuộc tính khác */ };
+            _db.postCategoryTemps.Add(newEntity);
+            _db.SaveChanges();
+
+
+
+            User user = _db.users.Find((posttemp.IDTAUTHOR));
+
+            // Nếu người dùng không tồn tại, xử lý theo ý của bạn (ví dụ: trả về lỗi 404)
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Kiểm tra xem NumberOfPosts có phải là null hay không
+            if (user.NumberOfPosts == null)
+            {
+                user.NumberOfPosts = 0; // Nếu là null, gán bằng 0 trước khi cộng thêm 1
+            }
+
+            // Cộng thêm 1 vào NumberOfPosts
+            user.NumberOfPosts += 1;
+
+            // Cập nhật lại người dùng trong cơ sở dữ liệu
+            _db.users.Update(user);
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            _db.SaveChanges();
+
+
+
+            _db.postTemps.Remove(posttemp);
+            _db.SaveChanges();
+            /*    public int ID { get; set; }
+
+         public int? VIEW { get; set; }
+
+         public int? IDTAUTHOR { get; set; }
+         public int? LIKE { get; set; }
+         public string? AUTHOR { get; set; }
+
+         public string? SUMMARY { get; set; }
+
+         public string? TITLE { get; set; }
+
+         public DateTime PUBLISHED { get; set; }
+
+         public string? CONTEXT { get; set; }
+ */
+            return View("Index");
+        }
+        [Authentication]
+        public IActionResult XoaDuyetBaiViet(int? id)
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
+
+            }
+            var bv = _db.postTemps.FirstOrDefault(c => c.ID == id);
+            if (bv == null)
+            {
+                return NotFound();
+            }
+            _db.postTemps.Remove(bv);
+            _db.SaveChanges();
+            return RedirectToAction("DuyetBaiViet");
+
+            
+        }
+        [Authentication]
         public IActionResult QuanLyTaiKhoan()
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
