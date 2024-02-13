@@ -38,7 +38,10 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
-
+            string id = HttpContext.Session.GetString("ID");
+            ViewBag.Categories = _db.categories.ToList();
+            var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
+            ViewBag.PostTemplist = postTemplist;
             ViewBag.Title = "TheVi";
             return View();
         }
@@ -56,13 +59,94 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 ViewBag.ThongTin = firstThongTin;
 
             }
+            string id = HttpContext.Session.GetString("ID");
             ViewBag.Categories = _db.categories.ToList();
+            var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
+
+            // Gán kết quả vào ViewBag
+            ViewBag.PostTemplist = postTemplist;
             ViewBag.Title = "TheVi";
+            Console.WriteLine("ID: " +id);
             return View();
         }
 
 
+        // POST
+  
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
+        public IActionResult TaoBaiViet(PostTemp obj, IFormCollection form)
+        {
+            if (ModelState.IsValid)
+            {
+                obj.LIKE = 0;
+                obj.VIEW = 0;
+                // Chọn múi giờ của Việt Nam
+                TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+
+                // Lấy thời gian hiện tại theo múi giờ của Việt Nam
+                DateTime nowInVietnam = TimeZoneInfo.ConvertTime(DateTime.Now, vnTimeZone);
+
+                // Gán giá trị cho NGAYBINHLUAN
+                string id = HttpContext.Session.GetString("ID");
+                string name = HttpContext.Session.GetString("Username");
+                Console.WriteLine("Name: " + name);
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                obj.IDTAUTHOR = int.Parse(id);
+                obj.PUBLISHED = nowInVietnam;
+                obj.AUTHOR = name;
+                _db.postTemps.Add(obj);
+                _db.SaveChanges();
+
+                int[] selectedCategories = form["PostCategories"].Select(int.Parse).ToArray();
+
+                if (selectedCategories != null)
+                {
+                    foreach (int categoryID in selectedCategories)
+                    {
+                        PostCategoryTemp postCategorytem = new PostCategoryTemp();
+                        postCategorytem.IDPOSTTEMP=obj.ID;
+                        postCategorytem.IDCATEGORY = categoryID;
+                        _db.postCategoryTemps.Add(postCategorytem);
+                    }
+                    _db.SaveChanges();
+                }
+                if (id == null)
+                {
+                    return NotFound();
+                }
+              /*  // Lấy người dùng từ cơ sở dữ liệu dựa trên ID
+                User user = _db.users.Find(int.Parse(id));
+
+                // Nếu người dùng không tồn tại, xử lý theo ý của bạn (ví dụ: trả về lỗi 404)
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                // Kiểm tra xem NumberOfPosts có phải là null hay không
+                if (user.NumberOfPosts == null)
+                {
+                    user.NumberOfPosts = 0; // Nếu là null, gán bằng 0 trước khi cộng thêm 1
+                }
+
+                // Cộng thêm 1 vào NumberOfPosts
+                user.NumberOfPosts += 1;
+
+                // Cập nhật lại người dùng trong cơ sở dữ liệu
+                _db.users.Update(user);
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _db.SaveChanges();*/
+                return RedirectToAction("DangBai");
+            }
+            return View(obj);
+           
+        }
 
 
 

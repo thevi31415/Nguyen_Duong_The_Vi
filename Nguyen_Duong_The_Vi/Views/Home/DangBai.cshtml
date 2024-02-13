@@ -1,6 +1,7 @@
 ﻿@{
 
     Layout = "User_Layout";
+    var postTemplist = ViewBag.PostTemplist as List<PostTemp>;
 }
 <!DOCTYPE html>
 <html>
@@ -50,7 +51,47 @@
                 Bài viết đăng đợi duyệt
             </span>
         </div>
-        
+       
+
+
+        @if (postTemplist != null && postTemplist.Any())
+        {
+           
+                    @foreach (var post in postTemplist)
+                    {
+                <ul>
+                    <a href="/blog/ecmascript-built-in-constants-and-functions-about-mathematics">
+                    <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
+                        <span class="font-bold">@post.TITLE</span>
+                        <div class="flex justify-between items-center">
+                            <time class="text-sm text-slate-400 mt-2">@post.PUBLISHED</time>
+                            <span class="flex text-sm text-slate-400 mt-2">
+                                <span>@post.SUMMARY</span>
+
+                                <div class="flex items-center">
+                                    <a class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" style="margin-right: 10px">
+                                        <span class="mr-2">Edit</span>
+                                    </a>
+
+                                    <a class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                                        <span class="mr-2">Delete</span>
+                                        
+                                    </a>
+                                </div>
+                            </span>
+                        </div>
+                    </li>
+                    </a>
+                </ul>
+
+
+                    }
+              
+        }
+        else
+        {
+            <p>No posts found.</p>
+        }
         <ul>
             <a href="/blog/ecmascript-built-in-constants-and-functions-about-mathematics">
             <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">

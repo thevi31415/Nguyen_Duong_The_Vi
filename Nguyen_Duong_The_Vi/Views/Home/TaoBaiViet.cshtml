@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PostTemp
+@{
 
     Layout = "User_Layout";
 }
@@ -34,20 +35,20 @@
             </div>
         </div>
         <div class="p-6 space-y-6">
-            <form asp-action="ChinhSuaTaiKhoan" method="post">
+            <form asp-action="TaoBaiViet" method="post">
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-full" class="form-group">
                         <label >Tiêu đề</label>
-                        <input class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Sinh viên.....”" required="">
+                        <input asp-for ="TITLE" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Sinh viên.....”" required="">
                     </div>
                     <div class="col-span-full" class="form-group">
                         <label >Tóm tắt</label>
-                        <input class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="1" required="">
+                        <input asp-for ="SUMMARY" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="1" required="">
                     </div>
 
                     <div class="col-span-full" class="form-group">
                         <label>Tags (Nhấn Ctrl để chọn nhiều Tag) </label>
-                        <select asp-items="@(new SelectList(ViewBag.Categories, "IDCATEGORY", "TITLE"))" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" multiple></select>
+                        <select asp-for="PostCategories" asp-items="@(new SelectList(ViewBag.Categories, "IDCATEGORY", "TITLE"))" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" multiple></select>
                     </div>
                    
                    
@@ -55,7 +56,7 @@
                     <div class="col-span-full">
                         <label >Nội dung</label>
                        
-                        <textarea  rows="6" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" name="CONTEXT" id="CONTEXT"></textarea>
+                        <textarea  asp-for ="CONTEXT" rows="6" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" name="CONTEXT" id="CONTEXT"></textarea>
                     </div>
                 </div>
                
