@@ -2,6 +2,10 @@
 
     Layout = "User_Layout";
     var postTemplist = ViewBag.PostTemplist as List<PostTemp>;
+    var TenNguoiDung = Context.Session.GetString("Username");
+    var Code = Context.Session.GetString("Code");
+    var Role = Context.Session.GetString("Role");
+    var ID = Context.Session.GetString("ID");
 }
 <!DOCTYPE html>
 <html>
@@ -25,85 +29,124 @@
             <h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200 bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">Post</h1>
         </div>
 
-        <h1 class="mb-4  font-bold leading-none tracking-tight text-gray-900  dark:text-white" style="font-size: 40px; margin-bottom: 10px">
-            Hãy viết bài viết của mình nhé ! Chúng tôi rất hoan nghênh những <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">ý tưởng của bạn </span>  !
-        </h1>
 
-        <div role="alert" style="margin: 20px">
-            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Chú ý
-            </div>
-            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-                <p>
-                    Người dùng vẫn được phép đăng bài viết trên blog của chúng tôi. Tuy nhiên, bài đăng của bạn phải được duyệt bởi Admin trước khi xuất hiện chính thức trên Blog. Những bài chưa được duyệt chỉ một mình bạn xem được và những người khác sẽ không nhìn thấy!. Vì vậy đừng có đăng mấy bài tào lao bí đao nhé =))). Xin cảm ơn.
-                </p>
-            </div>
-        </div>
-        <a  asp-action="TaoBaiViet" asp-controller ="Home" style="margin: 10px"class="py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-teal-600">Tạo bài viết</a>
-        <!-- Alert Warning -->
-        <div class="bg-orange-200 px-6 py-4 mx-2 my-4  rounded-md text-lg flex items-center max-w-lg">
-            <svg viewBox="0 0 24 24" class="text-yellow-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
-                <path fill="currentColor"
-                      d="M23.119,20,13.772,2.15h0a2,2,0,0,0-3.543,0L.881,20a2,2,0,0,0,1.772,2.928H21.347A2,2,0,0,0,23.119,20ZM11,8.423a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Zm1.05,11.51h-.028a1.528,1.528,0,0,1-1.522-1.47,1.476,1.476,0,0,1,1.448-1.53h.028A1.527,1.527,0,0,1,13.5,18.4,1.475,1.475,0,0,1,12.05,19.933Z">
-                </path>
-            </svg>
-            <span class="text-yellow-800">
-                Bài viết đăng đợi duyệt
-            </span>
-        </div>
-       
-
-
-        @if (postTemplist != null && postTemplist.Any())
+        @if( ID!=null && Code!=null && Role!=null && TenNguoiDung != null)
         {
-           
-                    @foreach (var post in postTemplist)
-                    {
-                <ul>
-                    <a asp-action="BaiDangDuyet" asp-controller="Home" asp-route-id="@post.ID">
-                    <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
-                        <span class="font-bold">@post.TITLE</span>
-                        <div class="flex justify-between items-center">
-                            <time class="text-sm text-slate-400 mt-2">@post.PUBLISHED</time>
-                            <span class="flex text-sm text-slate-400 mt-2">
-                                <span>@post.SUMMARY</span>
-
-                                <div class="flex items-center">
-                                    <a class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" style="margin-right: 10px">
-                                        <span class="mr-2">Edit</span>
-                                    </a>
-
-                                    <a asp-action="XoaDuyetBaiViet" asp-controller ="Admin" asp-route-id="@post.ID" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-                                        <span class="mr-2">Delete</span>
-                                        
-                                    </a>
-                                   
-                                </div>
-                            </span>
-                        </div>
-                    </li>
-                    </a>
-                </ul>
 
 
-                    }
-              
+            <h1 class="mb-4  font-bold leading-none tracking-tight text-gray-900  dark:text-white" style="font-size: 40px; margin-bottom: 10px">
+                Hãy viết bài viết của mình nhé ! Chúng tôi rất hoan nghênh những <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">ý tưởng của bạn </span>  !
+            </h1>
+
+            <div role="alert" style="margin: 20px">
+                <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                    Chú ý
+                </div>
+                <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                    <p>
+                        Người dùng vẫn được phép đăng bài viết trên blog của chúng tôi. Tuy nhiên, bài đăng của bạn phải được duyệt bởi Admin trước khi xuất hiện chính thức trên Blog. Những bài chưa được duyệt chỉ một mình bạn xem được và những người khác sẽ không nhìn thấy!. Vì vậy đừng có đăng mấy bài tào lao bí đao nhé =))). Xin cảm ơn.
+                    </p>
+                </div>
+            </div>
+            <a asp-action="TaoBaiViet" asp-controller="Home" style="margin: 10px" class="py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-teal-600">Tạo bài viết</a>
+            <!-- Alert Warning -->
+            <div class="bg-orange-200 px-6 py-4 mx-2 my-4  rounded-md text-lg flex items-center max-w-lg">
+                <svg viewBox="0 0 24 24" class="text-yellow-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
+                    <path fill="currentColor"
+                          d="M23.119,20,13.772,2.15h0a2,2,0,0,0-3.543,0L.881,20a2,2,0,0,0,1.772,2.928H21.347A2,2,0,0,0,23.119,20ZM11,8.423a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Zm1.05,11.51h-.028a1.528,1.528,0,0,1-1.522-1.47,1.476,1.476,0,0,1,1.448-1.53h.028A1.527,1.527,0,0,1,13.5,18.4,1.475,1.475,0,0,1,12.05,19.933Z">
+                    </path>
+                </svg>
+                <span class="text-yellow-800">
+                    Bài viết đăng đợi duyệt
+                </span>
+            </div>
+
+
+
+            @if (postTemplist != null && postTemplist.Any())
+            {
+
+                @foreach (var post in postTemplist)
+                {
+                    <ul>
+                        <a asp-action="BaiDangDuyet" asp-controller="Home" asp-route-id="@post.ID">
+                        <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
+                            <span class="font-bold">@post.TITLE</span>
+                            <div class="flex justify-between items-center">
+                                <time class="text-sm text-slate-400 mt-2">@post.PUBLISHED</time>
+                                <span class="flex text-sm text-slate-400 mt-2">
+                                    <span>@post.SUMMARY</span>
+
+                                    <div class="flex items-center">
+                                        <a class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" style="margin-right: 10px">
+                                            <span class="mr-2">Edit</span>
+                                        </a>
+
+                                        <a asp-action="XoaDuyetBaiViet" asp-controller="Admin" asp-route-id="@post.ID" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                                            <span class="mr-2">Delete</span>
+
+                                        </a>
+
+                                    </div>
+                                </span>
+                            </div>
+                        </li>
+                        </a>
+                    </ul>
+
+
+                }
+
+            }
+            else
+            {
+                <p>Không có bài viết nào !</p>
+            }
+
+            <!-- Alert Success -->
+            <div class="bg-green-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center w-full  max-w-lg">
+                <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
+                    <path fill="currentColor"
+                    d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                    </path>
+                </svg>
+                <span class="text-green-800">Bài viết đã đăng thành công </span>
+            </div>
         }
         else
         {
-            <p>Không có bài viết nào !</p>
-        }
-        
-        <!-- Alert Success -->
-        <div class="bg-green-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center w-full  max-w-lg">
-            <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
-                <path fill="currentColor"
-                      d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
-                </path>
-            </svg>
-            <span class="text-green-800">Bài viết đã đăng thành công </span>
-        </div>
+            <div class="w-full md:w-1/3 mx-auto">
+                <div class="flex flex-col p-5 rounded-lg shadow bg-white">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="inline-block p-4 bg-yellow-50 rounded-full">
+                            <svg class="w-12 h-12 fill-current text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" /></svg>
+                        </div>
+                        <h2 class="mt-2 font-semibold text-gray-800">Vui lòng đăng nhập</h2>
+                        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Chỉ những người dùng đã đăng nhập mới được viết bài trên Blog. Nếu bạn chưa có tài khoản vui lòng liên hệ Admin để được cấp tài khoản !</p>
+                    </div>
 
+                    <div class="flex items-center mt-3">
+                        <a class="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+                            Cancel
+                        </a>
+
+                        <a asp-action="Index" asp-controller ="Login" class=" flex-1 px-4 py-2 ml-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded-md">
+                            Agree
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+        
+
+        
+       
+
+
+        
        
     </div>
 

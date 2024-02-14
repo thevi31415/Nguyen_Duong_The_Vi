@@ -111,9 +111,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             }
             string id = HttpContext.Session.GetString("ID");
-            ViewBag.Categories = _db.categories.ToList();
-            var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
-            ViewBag.PostTemplist = postTemplist;
+            if (id != null)
+            {
+                ViewBag.Categories = _db.categories.ToList();
+                var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
+                ViewBag.PostTemplist = postTemplist;
+            }
+         
             ViewBag.Title = "TheVi";
             return View();
         }
