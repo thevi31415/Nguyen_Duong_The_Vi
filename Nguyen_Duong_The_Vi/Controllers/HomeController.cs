@@ -133,7 +133,11 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 ViewBag.Categories = _db.categories.ToList();
                 var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
-                var postlist = _db.posts.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
+                var postlist = _db.posts
+        .Where(p => p.IDTAUTHOR == int.Parse(id))
+        .OrderByDescending(p => p.PUBLISHED)
+        .ToList();
+
 
                 ViewBag.PostTemplist = postTemplist;
                 ViewBag.Postlist = postlist;
@@ -157,6 +161,10 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
             }
             string id = HttpContext.Session.GetString("ID");
+            if (id == null)
+            {
+                return NotFound();
+            }
             ViewBag.Categories = _db.categories.ToList();
             var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
 
