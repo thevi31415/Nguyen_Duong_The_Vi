@@ -2,6 +2,7 @@
 
     Layout = "User_Layout";
     var postTemplist = ViewBag.PostTemplist as List<PostTemp>;
+    var postList = ViewBag.Postlist as List<Post>;
     var TenNguoiDung = Context.Session.GetString("Username");
     var Code = Context.Session.GetString("Code");
     var Role = Context.Session.GetString("Role");
@@ -13,6 +14,8 @@
     <meta charset="utf-8">
     <title>Nguyen Duong The Vi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -65,34 +68,48 @@
                 </div>
             </div>
 
-            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            @if (ViewBag.UserAddedSuccessfully == true)
+            {
+
+              
+
+                <!-- Alert Success -->
+                <div class="bg-green-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center w-full max-w-lg alert-banner" style="display: none; margin-bottom: 30px">
+                    <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
+                        <path fill="currentColor"
+                              d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                        </path>
+                    </svg>
+                    <span class="text-green-800">Đã tạo bài viết thành công ! Hãy đợi được duyệt</span>
+                </div>
+
+            }
+
             <script>
                 $(document).ready(function () {
-                    // Slide down to show the banner
-                    $('#confirmationBanner').slideDown('slow', function () {
-                        // Slide up to hide the banner after 3 seconds
-                        setTimeout(function () {
-                            $('#confirmationBanner').slideUp('slow');
-                        }, 3000); // 3000 milliseconds = 3 seconds
-                    });
+                    // Hiển thị banner
+                    $(".alert-banner").fadeIn();
+
+                    // Ẩn banner sau 3 giây
+                    setTimeout(function () {
+                        $(".alert-banner").fadeOut();
+                    }, 3000);
                 });
             </script>
 
-            <a asp-action="TaoBaiViet" asp-controller="Home" style="margin-top: 10px; padding: 10px" class="rounded-lg text-sm font-medium text-white bg-teal-600">Tạo bài viết</a>
-           
-            <!-- Alert Warning -->
-            <div class="bg-orange-200 px-6 py-4 mx-2 my-4  rounded-md text-lg flex items-center max-w-lg">
-                <svg viewBox="0 0 24 24" class="text-yellow-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
-                    <path fill="currentColor"
-                          d="M23.119,20,13.772,2.15h0a2,2,0,0,0-3.543,0L.881,20a2,2,0,0,0,1.772,2.928H21.347A2,2,0,0,0,23.119,20ZM11,8.423a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Zm1.05,11.51h-.028a1.528,1.528,0,0,1-1.522-1.47,1.476,1.476,0,0,1,1.448-1.53h.028A1.527,1.527,0,0,1,13.5,18.4,1.475,1.475,0,0,1,12.05,19.933Z">
-                    </path>
-                </svg>
-                <span class="text-yellow-800">
-                    Bài viết đăng đợi duyệt
-                </span>
+            <div class="text-center">
+                
+                <a asp-action="TaoBaiViet" asp-controller="Home" style="margin-top: 10px; padding: 10px" class="rounded-lg text-sm font-medium text-white bg-teal-600">
+                    
+
+                    
+                    
+                    Tạo bài viết</a>
             </div>
 
-
+            <h1 class="text-2xl md:text-3xl pl-2 my-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-200">
+                Bài viết đợi duyệt
+            </h1>
 
             @if (postTemplist != null && postTemplist.Any())
             {
@@ -109,10 +126,7 @@
                                     <span>@post.SUMMARY</span>
 
                                     <div class="flex items-center">
-                                        <a class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" style="margin-right: 10px">
-                                            <span class="mr-2">Edit</span>
-                                        </a>
-
+                                      
                                         <a asp-action="XoaDuyetBaiViet" asp-controller="Admin" asp-route-id="@post.ID" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                                             <span class="mr-2">Delete</span>
 
@@ -134,15 +148,39 @@
                 <p>Không có bài viết nào !</p>
             }
 
-            <!-- Alert Success -->
-            <div class="bg-green-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center w-full  max-w-lg">
-                <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
-                    <path fill="currentColor"
-                    d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
-                    </path>
-                </svg>
-                <span class="text-green-800">Bài viết đã đăng thành công </span>
-            </div>
+            <h1 class="text-2xl md:text-3xl pl-2 my-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-200">
+                Bài viết đã đăng
+            </h1>
+            @if (postList != null && postList.Any())
+            {
+
+                @foreach (var post in postList)
+                {
+                    <ul>
+                        <a asp-action="BaiDang" asp-controller="Home" asp-route-id="@post.ID">
+                        <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
+                            <span class="font-bold">@post.TITLE</span>
+                            <div class="flex justify-between items-center">
+                                <time class="text-sm text-slate-400 mt-2">@post.PUBLISHED</time>
+                                <span class="flex text-sm text-slate-400 mt-2">
+                                    <span>@post.SUMMARY</span>
+
+                                    
+                                </span>
+                            </div>
+                        </li>
+                        </a>
+                    </ul>
+
+
+                }
+
+            }
+            else
+            {
+                <p>Không có bài viết nào !</p>
+            }
+          
         }
         else
         {
