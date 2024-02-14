@@ -142,6 +142,31 @@ namespace Nguyen_Duong_The_Vi.Controllers
     
         public IActionResult XoaDuyetBaiViet(int? id)
         {
+
+
+            string username = HttpContext.Session.GetString("Username");
+            string code = HttpContext.Session.GetString("Code");
+            string role = HttpContext.Session.GetString("Role");
+            string ID= HttpContext.Session.GetString("ID");
+            string status = HttpContext.Session.GetString("Status");
+
+            var posttemp = _db.postTemps.Find(id);
+            if(posttemp == null)
+            {
+                return NotFound();
+            }
+            if (role != "Admin")
+            {
+                if (int.Parse(ID) != posttemp.IDTAUTHOR)
+                {
+                    return NotFound();
+                }
+            }
+            if(username==null || code ==null || role ==null || ID == null)
+            {
+                return NotFound();
+            }
+
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
             if (firstThongTin == null)
             {
@@ -159,9 +184,13 @@ namespace Nguyen_Duong_The_Vi.Controllers
             }
             _db.postTemps.Remove(bv);
             _db.SaveChanges();
-            return RedirectToAction("DuyetBaiViet");
+            if (role == "Admin")
+            {
+                return RedirectToAction("DuyetBaiViet");
+            }
+            return RedirectToAction("DangBai", "Home");
 
-            
+
         }
         [Authentication]
         public IActionResult QuanLyTaiKhoan()

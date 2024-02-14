@@ -39,6 +39,35 @@ namespace Nguyen_Duong_The_Vi.Controllers
             {
                 return NotFound();
             }
+
+
+            string username = HttpContext.Session.GetString("Username");
+            string code = HttpContext.Session.GetString("Code");
+            string role = HttpContext.Session.GetString("Role");
+            string ID = HttpContext.Session.GetString("ID");
+            string status = HttpContext.Session.GetString("Status");
+            if (ID == null)
+            {
+                return NotFound();
+            }
+            if (role != "Admin")
+            {
+                var posttemp = _db.postTemps.Find(id);
+                if (posttemp==null)
+                {
+                    return NotFound();
+                }
+                if (int.Parse(ID) != posttemp.IDTAUTHOR)
+                {
+                    return NotFound();
+                }
+            }
+
+
+
+
+
+
             var post = _db.postTemps
          .Include(p => p.PostCategories)
          .FirstOrDefault(c => c.ID == id);
