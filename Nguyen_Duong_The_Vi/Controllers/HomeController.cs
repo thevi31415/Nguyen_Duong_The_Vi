@@ -22,7 +22,25 @@ namespace Nguyen_Duong_The_Vi.Controllers
             _db = db;
             _notfy = notfy;
         }
+        public IActionResult TatCaUser()
+        {
+            ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
+            if (firstThongTin == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ViewBag.ThongTin = firstThongTin;
 
+            }
+          
+            var AllUsers = _db.users
+       .OrderByDescending(u => u.Point)
+       .ToList();
+
+            return View(AllUsers);
+        }
         public IActionResult BaiDangDuyet(int? id)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
@@ -117,7 +135,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
                 var postTemplist = _db.postTemps.Where(p => p.IDTAUTHOR == int.Parse(id)).ToList();
                 ViewBag.PostTemplist = postTemplist;
             }
-         
+            ViewBag.UserAddedSuccessfully = true;
             ViewBag.Title = "TheVi";
             return View();
         }
@@ -385,8 +403,21 @@ namespace Nguyen_Duong_The_Vi.Controllers
           .Take(5)
           .ToList();
 
-
+            var random5Users = _db.users
+    .OrderBy(u => Guid.NewGuid())
+    .Take(5)
+    .ToList();
+            int sum = _db.users.ToList().Count;
+            int sl = sum;
+            sl = sl - 5;
+            if(sl <0)
+            {
+                sl = 0;
+            }
             ViewBag.Top5User = top5Users;
+            ViewBag.RandomUser = random5Users;
+            ViewBag.Sum = sum;
+            ViewBag.SL = sl;
             return View(postlist);
         }
 

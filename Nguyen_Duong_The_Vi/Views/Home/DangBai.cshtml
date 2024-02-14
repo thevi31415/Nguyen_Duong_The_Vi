@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
+ 
     <title>First Portfolio Bootstrap 5 Theme</title>
 </head>
 
@@ -37,7 +38,7 @@
             <h1 class="mb-4  font-bold leading-none tracking-tight text-gray-900  dark:text-white" style="font-size: 40px; margin-bottom: 10px">
                 Hãy viết bài viết của mình nhé ! Chúng tôi rất hoan nghênh những <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">ý tưởng của bạn </span>  !
             </h1>
-
+         
             <div role="alert" style="margin: 20px">
                 <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                     Chú ý
@@ -48,6 +49,24 @@
                     </p>
                 </div>
             </div>
+            <div id="confirmationBanner" class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg" style="display: none;">
+                <p class="text-lg font-semibold">Order Status: Confirmed</p>
+                <p>Your order has been successfully confirmed and is now being processed.</p>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    // Slide down to show the banner
+                    $('#confirmationBanner').slideDown('slow', function () {
+                        // Slide up to hide the banner after 3 seconds
+                        setTimeout(function () {
+                            $('#confirmationBanner').slideUp('slow');
+                        }, 3000); // 3000 milliseconds = 3 seconds
+                    });
+                });
+            </script>
+
             <a asp-action="TaoBaiViet" asp-controller="Home" style="margin: 10px" class="py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-teal-600">Tạo bài viết</a>
             <!-- Alert Warning -->
             <div class="bg-orange-200 px-6 py-4 mx-2 my-4  rounded-md text-lg flex items-center max-w-lg">
