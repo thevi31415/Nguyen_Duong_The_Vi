@@ -60,7 +60,7 @@
                     @foreach (var post in postTemplist)
                     {
                 <ul>
-                    <a href="/blog/ecmascript-built-in-constants-and-functions-about-mathematics">
+                    <a asp-action="BaiDangDuyet" asp-controller="Home" asp-route-id="@post.ID">
                     <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
                         <span class="font-bold">@post.TITLE</span>
                         <div class="flex justify-between items-center">
@@ -73,13 +73,11 @@
                                         <span class="mr-2">Edit</span>
                                     </a>
 
-                                    <a class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                                    <a asp-action="XoaDuyetBaiViet" asp-controller ="Admin" asp-route-id="@post.ID" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                                         <span class="mr-2">Delete</span>
                                         
                                     </a>
-                                    <a asp-action="BaiDangDuyet" asp-controller="Home"  asp-route-id ="@post.ID"   class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded" style="margin-right: 10px">
-                                        <span class="mr-2">Edit</span>
-                                    </a>
+                                   
                                 </div>
                             </span>
                         </div>
@@ -93,27 +91,9 @@
         }
         else
         {
-            <p>No posts found.</p>
+            <p>Không có bài viết nào !</p>
         }
-        <ul>
-            <a href="/blog/ecmascript-built-in-constants-and-functions-about-mathematics">
-            <li class="flex flex-col w-full bg-white dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
-                <span class="font-bold">ECMAScript Built-in Constants and Functions About Mathematics</span>
-                <div class="flex justify-between">
-                    <time class="text-sm text-slate-400 mt-2">Feb 08, 2024</time><span class="flex text-sm text-slate-400 mt-2">
-                        <a class="flex items-center justify-end bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-                            <span class="mr-2">Delete</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </a>
-
-                    </span>
-                </div>
-            </li>
-            </a>
-            
-        </ul>
+        
         <!-- Alert Success -->
         <div class="bg-green-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center w-full  max-w-lg">
             <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">

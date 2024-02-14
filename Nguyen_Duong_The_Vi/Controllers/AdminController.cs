@@ -84,6 +84,16 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
 
 
+            var postCategoryTempsToDelete =_db.postCategoryTemps
+           .Where(pct => pct.IDPOSTTEMP == posttemp.ID);
+
+            if (postCategoryTempsToDelete.Any())
+            {
+                _db.postCategoryTemps.RemoveRange(postCategoryTempsToDelete);
+                _db.SaveChanges();
+            }
+
+
             User user = _db.users.Find((posttemp.IDTAUTHOR));
 
             // Nếu người dùng không tồn tại, xử lý theo ý của bạn (ví dụ: trả về lỗi 404)
@@ -129,7 +139,7 @@ namespace Nguyen_Duong_The_Vi.Controllers
  */
             return View("Index");
         }
-        [Authentication]
+    
         public IActionResult XoaDuyetBaiViet(int? id)
         {
             ThongTin firstThongTin = _db.thongTins.FirstOrDefault();
