@@ -44,16 +44,20 @@
                 <span class="font-bold self-center text-2xl  whitespace-nowrap dark:text-white bg-gradient-to-br from-sky-500 to-cyan-400 bg-clip-text text-transparent">@ViewBag.ThongTin.TieuDe</span>
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <a asp-controller="Register" asp-action="Index" class="text-white bg-gradient-to-br from-sky-500 to-cyan-400
+                @if(MaNguoiDung ==null || Code==null || Role == null)
+                {
+                    <a asp-controller="Register" asp-action="Index" class="text-white bg-gradient-to-br from-sky-500 to-cyan-400
           hover:from-sky-600 hover:to-cyan-500
           focus:ring-4 focus:outline-none focus:ring-blue-300
           font-medium rounded-lg text-sm px-4 py-2 text-center
           dark:from-blue-600 dark:to-blue-700
           dark:hover:from-blue-700 dark:hover:to-blue-800
           dark:focus:ring-blue-800" style="display: flex; justify-content: center; align-items: center; margin-right:10px">
-                    Register
+                        Register
 
-                </a>
+                    </a>
+                }
+               
                 <a asp-controller="Login" asp-action="Index" class="text-white bg-gradient-to-br from-sky-500 to-cyan-400
           hover:from-sky-600 hover:to-cyan-500
           focus:ring-4 focus:outline-none focus:ring-blue-300

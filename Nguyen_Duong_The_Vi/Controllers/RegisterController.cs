@@ -39,7 +39,18 @@ namespace Nguyen_Duong_The_Vi.Controllers
 
                     ViewBag.CheckUser = false;
 
-                    
+                    if(emailExists == true && userExists == false) {
+
+                        ViewBag.Info = "Đăng ký không thành công ! Email đã có người sử dụng !";
+
+
+                    }else if(emailExists == false && userExists == true)
+                    {
+                        ViewBag.Info = "Đăng ký không thành công ! Tên đăng nhập đã có người sử dụng !";
+                    }else if (emailExists == true && userExists == true)
+                    {
+                        ViewBag.Info = "Đăng ký không thành công ! Tên đăng nhập  và email đã có người sử dụng !";
+                    }
 
                 }
                 else

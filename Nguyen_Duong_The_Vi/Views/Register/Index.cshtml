@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Nguyen Duong The Vi</title>
+    <title>TheVi | Đăng ký</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,8 +29,8 @@
             </div>
             <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
                 <div class="text-center mb-10">
-                    <h1 class="font-bold text-3xl text-gray-900">REGISTER</h1>
-                    <p>Enter your information to register</p>
+                    <h1 class="font-bold text-3xl text-gray-900">ĐĂNG KÝ</h1>
+                    <p>Hãy đăng kí một tài khoản cho mình nhé !</p>
                 </div>
                 @if(ViewBag.CheckUser != null)
                 {
@@ -65,7 +65,7 @@
                                           clip-rule="evenodd" />
                                 </svg>
                             </span>
-                            Đăng ký không thành công ! Tên đăng nhập hoặc Email đã có người sử dụng !
+                          @ViewBag.Info
                         </div>
                     }
                 }
@@ -82,7 +82,7 @@
                                 <label for="username" class="text-xs font-semibold px-1">Tên đăng nhập<span class="text-red-500">*</span></label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                    <input  asp-for="UserName" type="text" id="UserName" name="username" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="thevi31415" required maxlength="16">
+                                    <input  asp-for="UserName" type="text" id="UserName" name="username" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="user.." required maxlength="16">
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                 <label for="email" class="text-xs font-semibold px-1">Email<span class="text-red-500">*</span></label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                    <input asp-for ="Email" type="email" id="Email" name="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="thevi123@gmail.com" required>
+                                    <input asp-for ="Email" type="email" id="Email" name="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="user@gmail.com" required>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                 <button type="submit" class="block w-full max-w-xs mx-auto bg-gradient-to-br from-sky-500 to-cyan-400 hover:from-sky-600 hover:to-cyan-500 focus:from-sky-600 focus:to-cyan-500 text-white rounded-lg px-3 py-3 font-semibold">ĐĂNG KÝ NGAY</button>
                             </div>
                         </div>
-                        <p class="text-sm text-center text-gray-600 mb-5">Bạn thật sự đã có tài khoản, vui lòng <a href="dang-nhap" class="text-indigo-500">đăng nhập</a>?</p>
+                        <p class="text-sm text-center text-gray-600 mb-5">Bạn thật sự đã có tài khoản, vui lòng <a asp-controller="Login" asp-action="Index"   class="text-indigo-500">đăng nhập</a>?</p>
 
                     </form>
 
@@ -129,13 +129,6 @@
     </div>
 </div>
 
-<!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
-<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-    <div>
-        <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
-            <img class="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"/>
-        </a>
-    </div>
-</div>
+
 
 </html>
