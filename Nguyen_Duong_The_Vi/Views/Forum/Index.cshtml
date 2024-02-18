@@ -1,0 +1,401 @@
+﻿@{
+
+    Layout = "User_Layout";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Nguyen Duong The Vi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <title>First Portfolio Bootstrap 5 Theme</title>
+</head>
+<style>
+    #banner {
+        padding: 1em;
+        background: #e4defa;
+        color: var(--primary);
+        z-index: 2;
+        margin-bottom: 1em;
+        max-height: 20vh;
+        overflow: auto;
+    }
+
+        #banner .floated-buttons {
+            float: right;
+            display: flex;
+        }
+
+    .desktop-view #banner .floated-buttons .btn.close {
+        margin-left: 0.25em;
+    }
+
+    #banner .floated-buttons > .btn {
+        padding-top: 0em;
+        padding-bottom: 0em;
+        color: var(--primary-high);
+    }
+
+    .btn-flat.close, .close.json-editor-btn-collapse {
+        padding: 0;
+        background: rgba(0,0,0,0);
+        font-size: var(--font-up-3);
+    }
+</style>
+<div class="relative">
+
+    <div id="main-outlet">
+        <!---->
+        <div class="container" id="main-container">
+            <div id="ember8" class="ember-view"></div>
+            <div id="ember9" class="controls ember-view">
+                <!---->
+            </div>
+            <div id="ember10" class="ember-view">
+                <!---->
+            </div>
+            <div class="global-notice">
+                <!---->
+            </div>
+            <!---->
+        </div>
+        <div class="container">
+            <div id="ember12" class="ember-view">
+                <div class="row">
+                    <div id="banner">
+                        <div class="floated-buttons">
+                            <!---->
+                            <button class="btn btn-flat close btn no-text btn-icon" title="Dismiss this banner" type="button">
+                                <svg class="fa d-icon d-icon-times svg-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                                    <use href="#times"></use>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="banner-content">
+                            <p>
+                                Stop by for Open Office Hours Mon - Friday 6AM CST and 12:30 PM CST<br>
+                                Do you have a burning question? Or would like to hang out. Stop on by on Discord: <a href="https://discord.gg/strapi" class="inline-onebox">Strapi Community</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="ember231" class="ember-view">
+                <!---->
+            </div>
+        </div>
+        <span>
+            <!---->
+        </span>
+        <div class="list-controls">
+            <!---->
+            <div class="container">
+                <div id="ember232" class="navigation-container ember-view">
+                    <ol id="ember234" class="category-breadcrumb ember-view">
+                        <!---->
+                        <li>
+                            <details id="ember235" class="select-kit single-select combobox combo-box category-drop bullet ember-view">
+                                <summary aria-label="Filter by: all categories" name="Filter by: all categories" data-name="all categories" data-value="" tabindex="0" role="listbox" id="ember235-header" class="select-kit-header single-select-header combo-box-header category-drop-header ember-view">
+                                    <div class="select-kit-header-wrapper">
+                                        <div title="all categories" data-name="all categories" class="select-kit-selected-name selected-name choice">
+                                            <!---->
+                                            <!---->
+                                            <span class="name">
+                                                all categories
+                                            </span>
+                                            <!---->
+                                        </div>
+                                        <svg class="fa d-icon d-icon-caret-right svg-icon caret-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                                            <use href="#caret-right"></use>
+                                        </svg>
+                                    </div>
+                                </summary>
+                                <div id="ember235-body" class="select-kit-body ember-view" style="position: relative;">
+                                    <!---->
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details id="ember237" class="select-kit single-select combobox combo-box tag-drop bullet tag_all ember-view">
+                                <summary aria-label="Filter by: all tags" name="Filter by: all tags" data-name="all tags" data-value="" tabindex="0" role="listbox" id="ember237-header" class="select-kit-header single-select-header combo-box-header tag-drop-header ember-view">
+                                    <div class="select-kit-header-wrapper">
+                                        <div title="all tags" data-name="all tags" class="select-kit-selected-name selected-name choice">
+                                            <!---->
+                                            <!---->
+                                            <span class="name">
+                                                all tags
+                                            </span>
+                                            <!---->
+                                        </div>
+                                        <svg class="fa d-icon d-icon-caret-right svg-icon caret-icon svg-string" xmlns="http://www.w3.org/2000/svg">
+                                            <use href="#caret-right"></use>
+                                        </svg>
+                                    </div>
+                                </summary>
+                                <div id="ember237-body" class="select-kit-body ember-view" style="position: relative;">
+                                    <!---->
+                                </div>
+                            </details>
+                        </li>
+                        <!---->
+                    </ol>
+                    <ul id="navigation-bar" class="nav nav-pills ember-view">
+                        <li title="all topics grouped by category" id="ember239" class="nav-item_categories categories ember-view">
+                            <a href="/categories" class="">
+                                <!---->  Categories
+                            </a>
+                        </li>
+                        <li title="topics with recent posts" id="ember240" class="nav-item_latest active latest ember-view">
+                            <a href="/latest" class="active">
+                                <!---->  Latest
+                            </a>
+                        </li>
+                        <li title="the most active topics in the last year, month, week or day" id="ember241" class="nav-item_top top ember-view">
+                            <a href="/top" class="">
+                                <!---->  Top
+                            </a>
+                        </li>
+                        <!---->
+                    </ul>
+                    <div class="navigation-controls">
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                        <!---->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ember24" class="loading-container ember-view">  </div>
+        <span>
+            <!---->
+        </span>
+        <div class="container list-container ">
+            <div class="row">
+                <div class="full-width">
+                    <div id="header-list-area">
+                        <!---->
+                        <!---->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="full-width">
+                    <!---->
+                    <div id="list-area">
+                        <!---->
+                        <!---->
+                        <div class="row dismiss-container-top">
+                            <!----><!---->
+                        </div>
+                        <!---->
+                        <div id="ember244" class="contents ember-view">
+                            <!---->
+                            <span>
+                                <!---->
+                            </span>
+                            <table id="ember245" class="topic-list ember-view">
+                                <thead class="topic-list-header">
+                                    <tr>
+                                        <th data-sort-order="default" class="default topic-list-data" scope="col"><span>Topic</span></th>
+                                        <th data-sort-order="posters" class="posters topic-list-data" scope="col" aria-label="Posters"><span></span></th>
+                                        <th data-sort-order="posts" class="posts sortable num topic-list-data" scope="col" aria-label="Sort by replies" tabindex="0" role="button" aria-pressed="false"><span>Replies</span></th>
+                                        <th data-sort-order="views" class="views sortable num topic-list-data" scope="col" aria-label="Sort by views" tabindex="0" role="button" aria-pressed="false"><span>Views</span></th>
+                                        <th data-sort-order="activity" class="activity sortable num topic-list-data" scope="col" aria-label="Sort by activity" tabindex="0" role="button" aria-pressed="false"><span>Activity</span></th>
+                                    </tr>
+                                </thead>
+                                <!---->
+                                <tbody class="topic-list-body">
+                                    <tr data-topic-id="35847" id="ember246" class="topic-list-item category-news tag-beta_test has-excerpt pinned ember-view">
+                                        <td class="main-link clearfix topic-list-data" colspan="1">
+                                            <span class="link-top-line">
+                                                <div class="topic-statuses">
+                                                    <span title="This topic is pinned for you; it will display at the top of its category" class="topic-status">
+                                                        <svg class="fa d-icon d-icon-thumbtack svg-icon pinned svg-string" xmlns="http://www.w3.org/2000/svg">
+                                                            <use href="#thumbtack"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <a href="/t/strapi-5-beta-join-the-early-access-program/35847" role="heading" aria-level="2" class="title raw-link raw-topic-link" data-topic-id="35847"><img width="20" height="20" src="/images/emoji/twitter/star2.png?v=12" title="star2" alt="star2" class="emoji"> Strapi 5 Beta: Join the Early Access Program</a><span class="topic-post-badges"></span>
+                                            </span>
+                                            <div class="link-bottom-line">
+                                                <a class="badge-wrapper bullet" href="/c/news/5"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span data-drop-close="true" class="badge-category clear-badge" title="Strapi community news and announcements"><span class="category-name">News</span></span></a>
+                                                <div class="discourse-tags" role="list" aria-label="Tags"><a href="/tag/beta_test" data-tag-name="beta_test" class="discourse-tag simple">beta_test</a> </div>
+                                            </div>
+                                            <a href="/t/strapi-5-beta-join-the-early-access-program/35847" class="topic-excerpt">
+                                                Hey everyone <img width="20" height="20" src="/images/emoji/twitter/tada.png?v=12" title="tada" alt="tada" class="emoji">
+                                                We’re thrilled to announce that the Beta version of Strapi 5 is almost here, and we want YOU to be a part of this exciting journey. Whether you’re a long-time Strapi user or new to the community, thi…
+                                                <span class="topic-excerpt-more">read more</span>
+                                            </a>
+                                        </td>
+                                        <td class="posters topic-list-data">
+                                            <a href="/u/dmehaffy" data-user-card="DMehaffy" class="latest single"><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/dmehaffy/48/2621_2.png" class="avatar latest single" title="DMehaffy - Original Poster, Most Recent Poster" aria-label="DMehaffy - Original Poster, Most Recent Poster"></a>
+                                        </td>
+                                        <td class="num posts-map posts  topic-list-data" title="This topic has 1 reply">
+                                            <button class="btn-link posts-map badge-posts " aria-label="This topic has 1 reply">
+                                                <span class="number">1</span>
+                                            </button>
+                                        </td>
+                                        <td class="num views  topic-list-data">
+                                            <span class="number" title="this topic has been viewed 147 times">147</span>
+                                        </td>
+                                        <td class="num topic-list-data age activity" title="First post: Feb 9, 2024 11:51 pm
+                              Posted: Feb 16, 2024 8:26 am
+                              ">
+                                            <a class="post-activity" href="/t/strapi-5-beta-join-the-early-access-program/35847/2"><span class="relative-date" data-time="1708046776898" data-format="tiny">1d</span></a>
+                                        </td>
+                                    </tr>
+                                    <!---->
+                                    <!---->
+                                    <tr data-topic-id="32090" id="ember247" class="topic-list-item category-news has-excerpt pinned ember-view">
+                                        <td class="main-link clearfix topic-list-data" colspan="1">
+                                            <span class="link-top-line">
+                                                <div class="topic-statuses">
+                                                    <span title="This topic is pinned for you; it will display at the top of its category" class="topic-status">
+                                                        <svg class="fa d-icon d-icon-thumbtack svg-icon pinned svg-string" xmlns="http://www.w3.org/2000/svg">
+                                                            <use href="#thumbtack"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <a href="/t/stop-by-for-open-office-hours-mon-friday-6am-and-12-30-pm-cst/32090" role="heading" aria-level="2" class="title raw-link raw-topic-link" data-topic-id="32090">Stop by for Open Office Hours Mon - Friday 6AM and 12:30 PM CST</a><span class="topic-post-badges"></span>
+                                            </span>
+                                            <div class="link-bottom-line">
+                                                <a class="badge-wrapper bullet" href="/c/news/5"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span data-drop-close="true" class="badge-category clear-badge" title="Strapi community news and announcements"><span class="category-name">News</span></span></a>
+                                            </div>
+                                            <a href="/t/stop-by-for-open-office-hours-mon-friday-6am-and-12-30-pm-cst/32090" class="topic-excerpt">
+                                                Stop by for Open Office Hours Mon - Friday 6AM CST and 12:30 PM CST
+                                                Do you have a burning question? Or would like to hang out. Stop on by on Discord: Strapi Community
+                                            </a>
+                                        </td>
+                                        <td class="posters topic-list-data">
+                                            <a href="/u/paul_brats" data-user-card="Paul_Brats" class=" group-strapi-employee"><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/paul_brats/48/9047_2.png" class="avatar" title="Paul_Brats - Original Poster" aria-label="Paul_Brats - Original Poster"></a>
+                                            <a href="/u/fido_knn" data-user-card="fido_knn" class="latest"><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/fido_knn/48/15913_2.png" class="avatar latest" title="fido_knn - Most Recent Poster" aria-label="fido_knn - Most Recent Poster"></a>
+                                        </td>
+                                        <td class="num posts-map posts  topic-list-data" title="This topic has 5 replies">
+                                            <button class="btn-link posts-map badge-posts " aria-label="This topic has 5 replies">
+                                                <span class="number">5</span>
+                                            </button>
+                                        </td>
+                                        <td class="num views  topic-list-data">
+                                            <span class="number" title="this topic has been viewed 932 times">932</span>
+                                        </td>
+                                        <td class="num topic-list-data age coldmap-med activity" title="First post: Sep 15, 2023 1:38 am
+                              Posted: Feb 5, 2024 10:16 pm
+                              ">
+                                            <a class="post-activity" href="/t/stop-by-for-open-office-hours-mon-friday-6am-and-12-30-pm-cst/32090/7"><span class="relative-date" data-time="1707146219350" data-format="tiny">12d</span></a>
+                                        </td>
+                                    </tr>
+                                    <!---->
+                                    <!---->
+                                    <tr data-topic-id="33" id="ember248" class="topic-list-item category-discussions has-excerpt pinned ember-view">
+                                        <td class="main-link clearfix topic-list-data" colspan="1">
+                                            <span class="link-top-line">
+                                                <div class="topic-statuses">
+                                                    <span title="This topic is pinned for you; it will display at the top of its category" class="topic-status">
+                                                        <svg class="fa d-icon d-icon-thumbtack svg-icon pinned svg-string" xmlns="http://www.w3.org/2000/svg">
+                                                            <use href="#thumbtack"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <a href="/t/welcome-to-the-discussions/33" role="heading" aria-level="2" class="title raw-link raw-topic-link" data-topic-id="33">Welcome to the discussions!</a><span class="topic-post-badges"></span>
+                                            </span>
+                                            <div class="link-bottom-line">
+                                                <a class="badge-wrapper bullet" href="/c/discussions/6"><span class="badge-category-bg" style="background-color: #4E26E0;"></span><span data-drop-close="true" class="badge-category clear-badge" title="General discussions about Strapi, engaging things that would be cool to build or framework discussions about changes that should be made to the project."><span class="category-name">Discussions</span></span></a>
+                                            </div>
+                                            <a href="/t/welcome-to-the-discussions/33" class="topic-excerpt">
+                                                Hi all <img width="20" height="20" src="/images/emoji/twitter/wave.png?v=12" title="wave" alt="wave" class="emoji">
+                                                As you can see we are in the process of migrating from Github Discussions to our new Strapi community Forums. During this time, we will be directing users to come to the forums instead and will be migratin…
+                                                <span class="topic-excerpt-more">read more</span>
+                                            </a>
+                                        </td>
+                                        <td class="posters topic-list-data">
+                                            <a href="/u/dmehaffy" data-user-card="DMehaffy" class=""><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/dmehaffy/48/2621_2.png" class="avatar" title="DMehaffy - Original Poster" aria-label="DMehaffy - Original Poster"></a>
+                                            <a href="/u/shanerobinson" data-user-card="ShaneRobinson" class=""><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/shanerobinson/48/44_2.png" class="avatar" title="ShaneRobinson - Frequent Poster" aria-label="ShaneRobinson - Frequent Poster"></a>
+                                            <a href="/u/mikeg" data-user-card="MikeG" class=""><img loading="lazy" alt="" width="24" height="24" src="/letter_avatar_proxy/v4/letter/m/3ec8ea/48.png" class="avatar" title="MikeG - Frequent Poster" aria-label="MikeG - Frequent Poster"></a>
+                                            <a href="/u/lazar" data-user-card="lazar" class=""><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/lazar/48/5871_2.png" class="avatar" title="lazar - Frequent Poster" aria-label="lazar - Frequent Poster"></a>
+                                            <a href="/u/ida" data-user-card="ida" class="latest"><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/ida/48/16357_2.png" class="avatar latest" title="ida - Most Recent Poster" aria-label="ida - Most Recent Poster"></a>
+                                        </td>
+                                        <td class="num posts-map posts  topic-list-data" title="This topic has 8 replies">
+                                            <button class="btn-link posts-map badge-posts " aria-label="This topic has 8 replies">
+                                                <span class="number">8</span>
+                                            </button>
+                                        </td>
+                                        <td class="num views heatmap-med topic-list-data">
+                                            <span class="number" title="this topic has been viewed 3035 times">3.0k</span>
+                                        </td>
+                                        <td class="num topic-list-data age coldmap-high activity" title="First post: Sep 3, 2020 3:19 am
+                              Posted: Nov 1, 2023 4:35 pm
+                              ">
+                                            <a class="post-activity" href="/t/welcome-to-the-discussions/33/10"><span class="relative-date with-year" data-time="1698831330491" data-format="tiny">Nov '23</span></a>
+                                        </td>
+                                    </tr>
+                                    <!---->
+                                    <!---->
+                                    <tr data-topic-id="36062" id="ember249" class="topic-list-item category-support ember-view">
+                                        <td class="main-link clearfix topic-list-data" colspan="1">
+                                            <span class="link-top-line">
+                                                <a href="/t/cant-populate-contact-component-under-user-collection-upon-signing-in/36062" role="heading" aria-level="2" class="title raw-link raw-topic-link" data-topic-id="36062">Can’t populate Contact Component under User collection upon signing in</a><span class="topic-post-badges"></span>
+                                            </span>
+                                            <div class="link-bottom-line">
+                                                <a class="badge-wrapper bullet" href="/c/support/7"><span class="badge-category-bg" style="background-color: #2F2E8B;"></span><span data-drop-close="true" class="badge-category clear-badge" title="Support provided by the rest of the Strapi Community. Ask questions or help others with answers."><span class="category-name">Questions and Answers</span></span></a>
+                                            </div>
+                                        </td>
+                                        <td class="posters topic-list-data">
+                                            <a href="/u/lawdev" data-user-card="lawdev" class="latest single"><img loading="lazy" alt="" width="24" height="24" src="/user_avatar/forum.strapi.io/lawdev/48/17699_2.png" class="avatar latest single" title="lawdev - Original Poster, Most Recent Poster" aria-label="lawdev - Original Poster, Most Recent Poster"></a>
+                                        </td>
+                                        <td class="num posts-map posts  topic-list-data" title="This topic has 0 replies">
+                                            <button class="btn-link posts-map badge-posts " aria-label="This topic has 0 replies">
+                                                <span class="number">0</span>
+                                            </button>
+                                        </td>
+                                        <td class="num views  topic-list-data">
+                                            <span class="number" title="this topic has been viewed 5 times">5</span>
+                                        </td>
+                                        <td class="num topic-list-data age activity" title="First post: Feb 17, 2024 3:59 pm
+                              Posted: Feb 17, 2024 3:59 pm
+                              ">
+                                            <a class="post-activity" href="/t/cant-populate-contact-component-under-user-collection-upon-signing-in/36062/1"><span class="relative-date" data-time="1708160363372" data-format="tiny">1h</span></a>
+                                        </td>
+                                    </tr>
+                                    <!---->
+                                
+                                  
+                                    <!---->
+                                </tbody>
+                                <!---->
+                            </table>
+                            <span>
+                                <!---->
+                            </span>
+                        </div>
+                        <footer class="topic-list-bottom">
+                            <div id="ember276" class="loading-container ember-view">  </div>
+                            <!---->
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span>
+            <!---->
+        </span>
+        <!---->
+        <div id="user-card" class="user-card show-badges no-bg group-undefined ember-view" role="dialog" style="left: -9999px; top: -9999px;">
+            <!---->
+        </div>
+        <div id="group-card" class="no-bg group-card show-badges ember-view" style="left: -9999px; top: -9999px;">
+            <!---->
+        </div>
+        <!---->
+    </div>
+
+<div>
